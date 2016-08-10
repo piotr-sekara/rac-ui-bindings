@@ -23,6 +23,10 @@ extension UICollectionViewCell: ReusableView {}
 extension UITableViewCell: ReusableView {}
 
 extension UITableView {
+    func register<T: UITableViewCell where T: ReusableView>(_: T.Type) {
+        registerClass(T.self, forCellReuseIdentifier: T.defaultReuseIdentifier)
+    }
+    
     func dequeueReusableCell<T: UITableViewCell where T: ReusableView>(forIndexPath indexPath: NSIndexPath) -> T {
         guard let cell = dequeueReusableCellWithIdentifier(T.defaultReuseIdentifier, forIndexPath: indexPath) as? T else {
             fatalError("Could not dequeue cell with identifier: \(T.defaultReuseIdentifier). Did you forget to register it first?")

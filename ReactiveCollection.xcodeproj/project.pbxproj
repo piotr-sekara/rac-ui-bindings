@@ -15,8 +15,12 @@
 		D32E1CF11D58919F00BA98BD /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = D32E1CF01D58919F00BA98BD /* Cartfile */; };
 		D32E1CF41D58927800BA98BD /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D32E1CF31D58927800BA98BD /* Result.framework */; };
 		D32E1CF71D58943D00BA98BD /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D32E1CF61D58943D00BA98BD /* ReactiveCocoa.framework */; };
-		D32E1CFA1D5899CF00BA98BD /* UITableView+ReactiveCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32E1CF91D5899CF00BA98BD /* UITableView+ReactiveCollection.swift */; };
-		D32E1D011D59C95C00BA98BD /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D001D59C95C00BA98BD /* ReusableView.swift */; };
+		D32E1D211D5B5E8300BA98BD /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D1E1D5B5E8300BA98BD /* ReusableView.swift */; };
+		D32E1D241D5B5EF300BA98BD /* RACDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D231D5B5EF300BA98BD /* RACDelegateProxy.swift */; };
+		D32E1D261D5B5F6600BA98BD /* UITableView+RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D251D5B5F6600BA98BD /* UITableView+RAC.swift */; };
+		D32E1D281D5B5F9800BA98BD /* RACTableViewDataSourceProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D271D5B5F9800BA98BD /* RACTableViewDataSourceProxy.swift */; };
+		D32E1D2A1D5B5FCD00BA98BD /* RACTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D291D5B5FCD00BA98BD /* RACTableViewDataSource.swift */; };
+		D32E1D2D1D5B601F00BA98BD /* RACExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D2C1D5B601F00BA98BD /* RACExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,8 +35,12 @@
 		D32E1CF01D58919F00BA98BD /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Cartfile; path = ../Cartfile; sourceTree = "<group>"; };
 		D32E1CF31D58927800BA98BD /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
 		D32E1CF61D58943D00BA98BD /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
-		D32E1CF91D5899CF00BA98BD /* UITableView+ReactiveCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+ReactiveCollection.swift"; sourceTree = "<group>"; };
-		D32E1D001D59C95C00BA98BD /* ReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
+		D32E1D1E1D5B5E8300BA98BD /* ReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
+		D32E1D231D5B5EF300BA98BD /* RACDelegateProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACDelegateProxy.swift; sourceTree = "<group>"; };
+		D32E1D251D5B5F6600BA98BD /* UITableView+RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+RAC.swift"; sourceTree = "<group>"; };
+		D32E1D271D5B5F9800BA98BD /* RACTableViewDataSourceProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACTableViewDataSourceProxy.swift; sourceTree = "<group>"; };
+		D32E1D291D5B5FCD00BA98BD /* RACTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACTableViewDataSource.swift; sourceTree = "<group>"; };
+		D32E1D2C1D5B601F00BA98BD /* RACExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,7 +76,7 @@
 		D32E1CDC1D58912E00BA98BD /* ReactiveCollection */ = {
 			isa = PBXGroup;
 			children = (
-				D32E1CF81D58957C00BA98BD /* ReactiveCollection */,
+				D32E1D1B1D5B5E8300BA98BD /* Sources */,
 				D32E1CDD1D58912E00BA98BD /* AppDelegate.swift */,
 				D32E1CDF1D58912E00BA98BD /* ViewController.swift */,
 				D32E1CE11D58912E00BA98BD /* Main.storyboard */,
@@ -90,13 +98,49 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D32E1CF81D58957C00BA98BD /* ReactiveCollection */ = {
+		D32E1D1B1D5B5E8300BA98BD /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				D32E1D001D59C95C00BA98BD /* ReusableView.swift */,
-				D32E1CF91D5899CF00BA98BD /* UITableView+ReactiveCollection.swift */,
+				D32E1D2B1D5B600C00BA98BD /* Extensions */,
+				D32E1D1C1D5B5E8300BA98BD /* CollectionView */,
+				D32E1D1D1D5B5E8300BA98BD /* Protocols */,
+				D32E1D1F1D5B5E8300BA98BD /* TableView */,
 			);
-			path = ReactiveCollection;
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		D32E1D1C1D5B5E8300BA98BD /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CollectionView;
+			sourceTree = "<group>";
+		};
+		D32E1D1D1D5B5E8300BA98BD /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				D32E1D1E1D5B5E8300BA98BD /* ReusableView.swift */,
+				D32E1D231D5B5EF300BA98BD /* RACDelegateProxy.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		D32E1D1F1D5B5E8300BA98BD /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				D32E1D251D5B5F6600BA98BD /* UITableView+RAC.swift */,
+				D32E1D271D5B5F9800BA98BD /* RACTableViewDataSourceProxy.swift */,
+				D32E1D291D5B5FCD00BA98BD /* RACTableViewDataSource.swift */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
+		D32E1D2B1D5B600C00BA98BD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D32E1D2C1D5B601F00BA98BD /* RACExtensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,10 +234,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D32E1CFA1D5899CF00BA98BD /* UITableView+ReactiveCollection.swift in Sources */,
+				D32E1D261D5B5F6600BA98BD /* UITableView+RAC.swift in Sources */,
+				D32E1D211D5B5E8300BA98BD /* ReusableView.swift in Sources */,
 				D32E1CE01D58912E00BA98BD /* ViewController.swift in Sources */,
+				D32E1D2A1D5B5FCD00BA98BD /* RACTableViewDataSource.swift in Sources */,
+				D32E1D241D5B5EF300BA98BD /* RACDelegateProxy.swift in Sources */,
 				D32E1CDE1D58912E00BA98BD /* AppDelegate.swift in Sources */,
-				D32E1D011D59C95C00BA98BD /* ReusableView.swift in Sources */,
+				D32E1D2D1D5B601F00BA98BD /* RACExtensions.swift in Sources */,
+				D32E1D281D5B5F9800BA98BD /* RACTableViewDataSourceProxy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

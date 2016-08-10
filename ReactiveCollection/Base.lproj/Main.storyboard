@@ -17,18 +17,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NcU-va-huU">
+                                <rect key="frame" x="233" y="568" width="135" height="30"/>
+                                <state key="normal" title="Add more"/>
+                                <connections>
+                                    <action selector="addMore:" destination="BYZ-38-t0r" eventType="touchUpInside" id="O9q-TC-yp9"/>
+                                </connections>
+                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vaD-xX-Hsx">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="20" width="600" height="540"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SomeCell" id="8xh-gO-Ydc" customClass="SomeCell" customModule="ReactiveCollection" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8xh-gO-Ydc" id="Zfs-M0-6XK">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WMU-SY-LkP">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WMU-SY-LkP">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -46,15 +53,42 @@
                                             <outlet property="label" destination="WMU-SY-LkP" id="WTc-ds-4im"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SomeCell2" id="rRT-13-Q8q" customClass="SomeCell2" customModule="ReactiveCollection" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="72" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rRT-13-Q8q" id="lUf-vw-cMX">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hbg-W1-6As">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Hbg-W1-6As" firstAttribute="leading" secondItem="lUf-vw-cMX" secondAttribute="leading" id="3QJ-DI-g8P"/>
+                                                <constraint firstItem="Hbg-W1-6As" firstAttribute="top" secondItem="lUf-vw-cMX" secondAttribute="top" id="Asv-2k-bXM"/>
+                                                <constraint firstAttribute="bottom" secondItem="Hbg-W1-6As" secondAttribute="bottom" id="oP1-f0-MMF"/>
+                                                <constraint firstAttribute="trailing" secondItem="Hbg-W1-6As" secondAttribute="trailing" id="ws7-w7-AAN"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="label" destination="Hbg-W1-6As" id="pne-lQ-KJh"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="vaD-xX-Hsx" secondAttribute="bottom" id="E1U-sZ-Vu0"/>
-                            <constraint firstItem="vaD-xX-Hsx" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="SeD-fj-aIO"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="vaD-xX-Hsx" secondAttribute="bottom" constant="40" id="E1U-sZ-Vu0"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="NcU-va-huU" secondAttribute="bottom" constant="2" id="SYY-7w-DjE"/>
                             <constraint firstAttribute="trailing" secondItem="vaD-xX-Hsx" secondAttribute="trailing" id="eKl-h4-XKj"/>
+                            <constraint firstItem="vaD-xX-Hsx" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="l5z-gK-M3L"/>
                             <constraint firstItem="vaD-xX-Hsx" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="qLv-rD-8hP"/>
+                            <constraint firstItem="NcU-va-huU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zx7-8F-CF7"/>
                         </constraints>
                     </view>
                     <connections>
