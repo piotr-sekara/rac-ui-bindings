@@ -16,22 +16,15 @@ extension UITableView {
         static var rac_delegateKey = "rac_delegateKey"
         static var rac_dataSourceKey = "rac_dataSourceKey"
     }
+
     
-    //    func rac_items<Cell: UITableViewCell, S: SequenceType, P: PropertyType where Cell: ReusableView, P.Value == S>
-    //        (cellType cellType: Cell.Type)
-    //        -> (source: P)
-    //        -> (configuration: (NSIndexPath, Cell, S.Generator.Element) -> Void)
-    //        -> Disposable {
-    //            return { source in
-    //                return { config in
-    //                    //let dataSource = get the data source from somewhere
-    //
-    //                    //return observer
-    //
-    //                    return SimpleDisposable()
-    //                }
-    //            }
-    //    }
+    func rac_items<Cell: UITableViewCell, S: SequenceType, P: PropertyType where Cell: ReusableView, P.Value == S>
+        (cellType cellType: Cell.Type)
+        -> (source: P)
+        -> (configuration: (NSIndexPath, Cell, S.Generator.Element) -> Void)
+        -> Disposable {
+            return self.rac_items(cellIdentifier: Cell.defaultReuseIdentifier, cellType: cellType)
+    }
     
     func rac_items<Cell: UITableViewCell, S: SequenceType, P: PropertyType where P.Value == S>
         (cellIdentifier cellIdentifier: String, cellType: Cell.Type = Cell.self)
@@ -40,7 +33,6 @@ extension UITableView {
         -> Disposable {
             return { source in
                 return { config in
-                    //let dataSource = create the data source for this combination of params
                     let dataSource = RACTableViewDataSource<S.Generator.Element, Cell>(identifier: cellIdentifier, cellConfiguration: { (tv, idxPath, elem) -> Cell in
                         let cell: Cell = tv.dequeueReusableCell(forIndexPath: idxPath)
                         config(idxPath, cell, elem)
@@ -69,7 +61,7 @@ extension UITableView {
                         proxy.cellProviderContentDidChange()
                         self?.reloadData()
                     }
-                    }.addTo(compositeDisposable)
+                }.addTo(compositeDisposable)
                 
                 return compositeDisposable
             }

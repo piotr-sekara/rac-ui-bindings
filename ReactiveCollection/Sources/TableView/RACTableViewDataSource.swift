@@ -15,15 +15,8 @@ protocol _RACTableViewCellProvider: class {
     func _tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
 }
 
-protocol RACTableViewDataSourceType {
-    associatedtype E
-    associatedtype Cell
-    
-    var models: [E]? { get }
-    var cellIdentifier: String { get }
+protocol RACTableViewDataSourceType: RACDataSourceType {
     var cellConfiguration: (UITableView, NSIndexPath, E) -> Cell { get }
-    
-    func handleUpdate(update: [E])
 }
 
 class RACTableViewDataSource<E, Cell: UITableViewCell>: RACTableViewDataSourceType, _RACTableViewCellProvider {

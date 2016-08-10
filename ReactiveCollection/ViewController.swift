@@ -28,7 +28,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.data.bindTo(self.tableView.rac_items(cellIdentifier: "SomeCell", cellType: SomeCell.self)) { (idx, cell, elem) in
+        self.data.bindTo(self.tableView.rac_items(cellType: SomeCell.self)) { (idx, cell, elem) in
             cell.label.text = elem
         }
     }
