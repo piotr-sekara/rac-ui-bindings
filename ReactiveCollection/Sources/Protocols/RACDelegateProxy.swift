@@ -33,10 +33,6 @@ public extension RACDelegateProxyType {
         return returnVal
     }
     
-    public static func createProxy(forObject object: AnyObject) -> AnyObject {
-        fatalError("Method should be implemented in class conforming to \(String(RACDelegateProxyType))")
-    }
-    
 }
 
 public class RACDelegateProxy: NSObject, RACDelegateProxyType {
@@ -51,5 +47,8 @@ public class RACDelegateProxy: NSObject, RACDelegateProxyType {
     public class func setAssociatedProxy(proxy: AnyObject, to object: AnyObject) {
         objc_setAssociatedObject(object, &AssociatedKeys.rac_delegateProxyKey, proxy, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
     }
-
+    
+    public class func createProxy(forObject object: AnyObject) -> AnyObject {
+        fatalError("Abstract function, should not be used directly")
+    }
 }

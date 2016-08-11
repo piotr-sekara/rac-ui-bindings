@@ -8,6 +8,7 @@
 
 import Foundation
 import ReactiveCocoa
+import Result
 
 public protocol RACCellProviderType: class {
     associatedtype O
@@ -16,8 +17,6 @@ public protocol RACCellProviderType: class {
     func object(object: O, numberOfItemsInSection section: Int) -> Int
     func object(object: O, cellForItemAtIndexPath indexPath: NSIndexPath) -> BaseCell
 }
-
-
 
 public class RACCollectionDataSourceProxy<C: DataReloadable, T: RACCellProviderType where T.O == C>: RACDelegateProxy {
     
@@ -31,18 +30,28 @@ public class RACCollectionDataSourceProxy<C: DataReloadable, T: RACCellProviderT
         super.init()
     }
     
-    public func registerDataSource<DS: protocol<RACDataSourceType, RACCellProviderType>>(dataSource: DS, forObject object: C) -> Disposable {
+    public func registerDataSource<DS: protocol<RACDataSourceType, RACCellProviderType>, S: SequenceType where DS.E == S.Generator.Element>(dataSource: DS, forObject object: C, signalProducer: SignalProducer<S, NoError>) -> Disposable {
+        let compositeDisposable = CompositeDisposable()
+        
         self.removeDataSource(dataSource.cellIdentifier)
         self.retainedDataSources.append((cellIdentifier: dataSource.cellIdentifier, dataSource: dataSource as! T))
         
-        return ActionDisposable { [weak self] in
+        signalProducer.map(Array.init).startWithNext { [weak dataSource, weak self] seq in
+            dataSource?.handleUpdate(seq)
+            self?.contentDidChange()
+        }.addTo(compositeDisposable)
+        
+        ActionDisposable { [weak self] in
             self?.removeDataSource(dataSource.cellIdentifier)
-            self?.cellProviderContentDidChange()
-            self?.parent?.reloadData()
-        }
+            self?.contentDidChange()
+        }.addTo(compositeDisposable)
+        
+        return compositeDisposable
     }
+
+    //MARK: - Private
     
-     func cellProviderContentDidChange() {
+    private func contentDidChange() {
         var ranges: [Range<Int>] = []
         var currentMax = 0
         for (_, dataSource) in self.retainedDataSources {
@@ -51,9 +60,8 @@ public class RACCollectionDataSourceProxy<C: DataReloadable, T: RACCellProviderT
             currentMax += numberOfRows
         }
         self.dataSourceRanges = ranges
+        self.parent?.reloadData()
     }
-    
-    //MARK: - Private
     
     private func removeDataSource(cellIdentifier: String) -> T? {
         if let idx = self.retainedDataSources.indexOf({ $0.cellIdentifier == cellIdentifier }) {

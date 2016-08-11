@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 
-
 public protocol RACDataSourceType {
     associatedtype E
     associatedtype Cell
@@ -22,23 +21,7 @@ public protocol RACDataSourceType {
     func handleUpdate(update: [E])
 }
 
-public protocol RACTableViewDataSourceType: RACDataSourceType {
-    var cellConfiguration: (UITableView, NSIndexPath, E) -> Cell { get }
-}
-
-public class RACTableViewCellProvider: RACCellProviderType {
-    
-    public func object(object: UITableView, numberOfItemsInSection section: Int) -> Int {
-        fatalError("Abstract function, should not be used directly")
-    }
-    
-    public func object(object: UITableView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        fatalError("Abstract function, should not be used directly")
-    }
-    
-}
-
-public class RACTableViewDataSource<E, Cell: UITableViewCell>:  RACTableViewCellProvider, RACTableViewDataSourceType {
+public class RACTableViewDataSource<E, Cell: UITableViewCell>: RACTableViewCellProvider, RACDataSourceType {
     
     public typealias CellConfiguration = (UITableView, NSIndexPath, E) -> Cell
     

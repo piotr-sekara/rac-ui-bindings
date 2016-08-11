@@ -25,6 +25,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
     var data: MutableProperty<[String]> = MutableProperty<[String]>(["0"])
+    var data2: MutableProperty<[String]> = MutableProperty<[String]>(["1"])
     var index = 1
     
     override func viewDidLoad() {

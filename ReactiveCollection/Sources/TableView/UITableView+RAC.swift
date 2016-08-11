@@ -44,26 +44,13 @@ extension UITableView {
             }
     }
     
-    func rac_items<DS: protocol<RACTableViewDataSourceType, RACCellProviderType>, S: SequenceType, P: PropertyType where P.Value == S, DS.E == S.Generator.Element>
+    func rac_items<DS: protocol<RACDataSourceType, RACCellProviderType>, S: SequenceType, P: PropertyType where P.Value == S, DS.E == S.Generator.Element>
         (dataSource dataSource: DS)
         -> (source: P)
         -> Disposable {
             return { source in
                 let proxy = RACTableViewDataSourceProxy.proxy(forObject: self)
-                
-                let compositeDisposable = CompositeDisposable()
-                
-                proxy.registerDataSource(dataSource, forObject: self).addTo(compositeDisposable)
-                
-                source.producer.map(Array.init).start { [weak dataSource, weak self] evt in
-                    if case let .Next(val) = evt {
-                        dataSource?.handleUpdate(val)
-                        proxy.cellProviderContentDidChange()
-                        self?.reloadData()
-                    }
-                }.addTo(compositeDisposable)
-                
-                return compositeDisposable
+                return proxy.registerDataSource(dataSource, forObject: self, signalProducer: source.producer)
             }
     }
     

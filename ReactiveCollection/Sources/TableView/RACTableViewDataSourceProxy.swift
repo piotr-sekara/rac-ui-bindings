@@ -19,7 +19,7 @@ public class RACTableViewDataSourceProxy: RACCollectionDataSourceProxy<UITableVi
         self.parent?.dataSource = self
     }
     
-    public class func createProxy(forObject object: AnyObject) -> AnyObject {
+    public override static func createProxy(forObject object: AnyObject) -> AnyObject {
         guard let tableView = object as? UITableView else {
             fatalError("Invalid object specified")
         }
@@ -39,4 +39,16 @@ public class RACTableViewDataSourceProxy: RACCollectionDataSourceProxy<UITableVi
         return self.object(tableView, numberOfItemsInSection: section)
     }
     
+}
+
+//Generics <-> Objc stuff
+public class RACTableViewCellProvider: RACCellProviderType {
+    
+    public func object(object: UITableView, numberOfItemsInSection section: Int) -> Int {
+        fatalError("Abstract function, should not be used directly")
+    }
+    
+    public func object(object: UITableView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        fatalError("Abstract function, should not be used directly")
+    }
 }
