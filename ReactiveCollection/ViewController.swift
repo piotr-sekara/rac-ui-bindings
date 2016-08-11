@@ -10,11 +10,13 @@ import UIKit
 import ReactiveCocoa
 import Result
 
-class SomeCell: UITableViewCell {
+class SomeCell2: UITableViewCell {
     @IBOutlet weak var label: UILabel!
 }
 
-class SomeCell2: UITableViewCell {
+
+
+class SomeCell: UITableViewCell {
     @IBOutlet weak var label: UILabel!
 }
 

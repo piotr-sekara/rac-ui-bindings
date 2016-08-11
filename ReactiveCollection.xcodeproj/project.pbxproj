@@ -21,6 +21,7 @@
 		D32E1D281D5B5F9800BA98BD /* RACTableViewDataSourceProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D271D5B5F9800BA98BD /* RACTableViewDataSourceProxy.swift */; };
 		D32E1D2A1D5B5FCD00BA98BD /* RACTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D291D5B5FCD00BA98BD /* RACTableViewDataSource.swift */; };
 		D32E1D2D1D5B601F00BA98BD /* RACExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D2C1D5B601F00BA98BD /* RACExtensions.swift */; };
+		D32E1D2F1D5C717500BA98BD /* DataReloadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D2E1D5C717500BA98BD /* DataReloadable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		D32E1D271D5B5F9800BA98BD /* RACTableViewDataSourceProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACTableViewDataSourceProxy.swift; sourceTree = "<group>"; };
 		D32E1D291D5B5FCD00BA98BD /* RACTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACTableViewDataSource.swift; sourceTree = "<group>"; };
 		D32E1D2C1D5B601F00BA98BD /* RACExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACExtensions.swift; sourceTree = "<group>"; };
+		D32E1D2E1D5C717500BA98BD /* DataReloadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataReloadable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 			children = (
 				D32E1D1E1D5B5E8300BA98BD /* ReusableView.swift */,
 				D32E1D231D5B5EF300BA98BD /* RACDelegateProxy.swift */,
+				D32E1D2E1D5C717500BA98BD /* DataReloadable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 				D32E1CDE1D58912E00BA98BD /* AppDelegate.swift in Sources */,
 				D32E1D2D1D5B601F00BA98BD /* RACExtensions.swift in Sources */,
 				D32E1D281D5B5F9800BA98BD /* RACTableViewDataSourceProxy.swift in Sources */,
+				D32E1D2F1D5C717500BA98BD /* DataReloadable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -44,7 +44,7 @@ extension UITableView {
             }
     }
     
-    func rac_items<DS: protocol<RACTableViewDataSourceType, _RACTableViewCellProvider>, S: SequenceType, P: PropertyType where P.Value == S, DS.E == S.Generator.Element>
+    func rac_items<DS: protocol<RACTableViewDataSourceType, _RACCellProvider>, S: SequenceType, P: PropertyType where P.Value == S, DS.E == S.Generator.Element>
         (dataSource dataSource: DS)
         -> (source: P)
         -> Disposable {
@@ -53,7 +53,10 @@ extension UITableView {
                 
                 let compositeDisposable = CompositeDisposable()
                 
-                proxy.registerDataSource(dataSource, forObject: self).addTo(compositeDisposable)
+                
+                proxy.registerDataSource(dataSource, forObject: self)
+                
+//                proxy.registerDataSource(dataSource, forObject: self).addTo(compositeDisposable)
                 
                 source.producer.map(Array.init).start { [weak dataSource, weak self] evt in
                     if case let .Next(val) = evt {

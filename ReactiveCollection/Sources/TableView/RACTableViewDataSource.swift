@@ -10,39 +10,47 @@ import Foundation
 import UIKit
 
 
-protocol _RACTableViewCellProvider: class {
-    func _tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    func _tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+public class _RACTableViewCellProvider: _RACCellProvider {
+    
+    public func _object(object: UITableView, numberOfItemsInSection section: Int) -> Int {
+        fatalError("Abstract function, should not be used directly")
+    }
+    
+    public func _object(object: UITableView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        fatalError("Abstract function, should not be used directly")
+    }
+    
 }
 
-protocol RACTableViewDataSourceType: RACDataSourceType {
+public protocol RACTableViewDataSourceType: RACDataSourceType {
     var cellConfiguration: (UITableView, NSIndexPath, E) -> Cell { get }
 }
 
-class RACTableViewDataSource<E, Cell: UITableViewCell>: RACTableViewDataSourceType, _RACTableViewCellProvider {
+public class RACTableViewDataSource<E, Cell: UITableViewCell>:  _RACTableViewCellProvider, RACTableViewDataSourceType {
     
-    typealias CellConfiguration = (UITableView, NSIndexPath, E) -> Cell
+    public typealias CellConfiguration = (UITableView, NSIndexPath, E) -> Cell
     
-    let cellIdentifier: String
-    let cellConfiguration: CellConfiguration
-    var models: [E]?
+    public let cellIdentifier: String
+    public let cellConfiguration: CellConfiguration
+    public var models: [E]?
     
     init(identifier: String, cellConfiguration: CellConfiguration) {
         self.cellIdentifier = identifier
         self.cellConfiguration = cellConfiguration
     }
     
-    func handleUpdate(update: [E]) {
+    public func handleUpdate(update: [E]) {
         self.models = update
     }
     
-    func _tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public override func _object(object: UITableView, numberOfItemsInSection section: Int) -> Int {
         guard let models = self.models else { return 0 }
         return models.count
     }
     
-    func _tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    public override func _object(object: UITableView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         guard let models = self.models else { return UITableViewCell() }
-        return self.cellConfiguration(tableView, indexPath, models[indexPath.row])
+        return self.cellConfiguration(object, indexPath, models[indexPath.row])
     }
+    
 }
