@@ -9,12 +9,12 @@
 import Foundation
 import UIKit
 
-protocol ReusableView {
+public protocol ReusableView {
     static var defaultReuseIdentifier: String { get }
 }
 
-extension ReusableView where Self: UIView {
-    static var defaultReuseIdentifier: String {
+public extension ReusableView where Self: UIView {
+    public static var defaultReuseIdentifier: String {
         return String(self)
     }
 }
@@ -22,12 +22,12 @@ extension ReusableView where Self: UIView {
 extension UICollectionViewCell: ReusableView {}
 extension UITableViewCell: ReusableView {}
 
-extension UITableView {
-    func register<T: UITableViewCell where T: ReusableView>(_: T.Type) {
+public extension UITableView {
+    public func register<T: UITableViewCell where T: ReusableView>(_: T.Type) {
         registerClass(T.self, forCellReuseIdentifier: T.defaultReuseIdentifier)
     }
     
-    func dequeueReusableCell<T: UITableViewCell where T: ReusableView>(forIndexPath indexPath: NSIndexPath) -> T {
+    public func dequeueReusableCell<T: UITableViewCell where T: ReusableView>(forIndexPath indexPath: NSIndexPath) -> T {
         guard let cell = dequeueReusableCellWithIdentifier(T.defaultReuseIdentifier, forIndexPath: indexPath) as? T else {
             fatalError("Could not dequeue cell with identifier: \(T.defaultReuseIdentifier). Did you forget to register it first?")
         }
@@ -35,12 +35,12 @@ extension UITableView {
     }
 }
 
-extension UICollectionView {
-    func register<T: UICollectionViewCell where T: ReusableView>(_: T.Type) {
+public extension UICollectionView {
+    public func register<T: UICollectionViewCell where T: ReusableView>(_: T.Type) {
         registerClass(T.self, forCellWithReuseIdentifier: T.defaultReuseIdentifier)
     }
     
-    func dequeueReusableCell<T: UICollectionViewCell where T: ReusableView>(forIndexPath indexPath: NSIndexPath) -> T {
+    public func dequeueReusableCell<T: UICollectionViewCell where T: ReusableView>(forIndexPath indexPath: NSIndexPath) -> T {
         guard let cell = dequeueReusableCellWithReuseIdentifier(T.defaultReuseIdentifier, forIndexPath: indexPath) as? T else {
             fatalError("Could not dequeue cell with identifier: \(T.defaultReuseIdentifier). Did you forget to register it first?")
         }

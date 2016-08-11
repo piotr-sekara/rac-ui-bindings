@@ -10,29 +10,41 @@ import Foundation
 import UIKit
 
 
-public class _RACTableViewCellProvider: _RACCellProvider {
+public protocol RACDataSourceType {
+    associatedtype E
+    associatedtype Cell
+    associatedtype O
     
-    public func _object(object: UITableView, numberOfItemsInSection section: Int) -> Int {
-        fatalError("Abstract function, should not be used directly")
-    }
+    var models: [E]? { get }
+    var cellIdentifier: String { get }
+    var cellConfiguration: (O, NSIndexPath, E) -> Cell { get }
     
-    public func _object(object: UITableView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        fatalError("Abstract function, should not be used directly")
-    }
-    
+    func handleUpdate(update: [E])
 }
 
 public protocol RACTableViewDataSourceType: RACDataSourceType {
     var cellConfiguration: (UITableView, NSIndexPath, E) -> Cell { get }
 }
 
-public class RACTableViewDataSource<E, Cell: UITableViewCell>:  _RACTableViewCellProvider, RACTableViewDataSourceType {
+public class RACTableViewCellProvider: RACCellProviderType {
+    
+    public func object(object: UITableView, numberOfItemsInSection section: Int) -> Int {
+        fatalError("Abstract function, should not be used directly")
+    }
+    
+    public func object(object: UITableView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        fatalError("Abstract function, should not be used directly")
+    }
+    
+}
+
+public class RACTableViewDataSource<E, Cell: UITableViewCell>:  RACTableViewCellProvider, RACTableViewDataSourceType {
     
     public typealias CellConfiguration = (UITableView, NSIndexPath, E) -> Cell
     
     public let cellIdentifier: String
     public let cellConfiguration: CellConfiguration
-    public var models: [E]?
+    public private(set) var models: [E]?
     
     init(identifier: String, cellConfiguration: CellConfiguration) {
         self.cellIdentifier = identifier
@@ -43,12 +55,12 @@ public class RACTableViewDataSource<E, Cell: UITableViewCell>:  _RACTableViewCel
         self.models = update
     }
     
-    public override func _object(object: UITableView, numberOfItemsInSection section: Int) -> Int {
+    public override func object(object: UITableView, numberOfItemsInSection section: Int) -> Int {
         guard let models = self.models else { return 0 }
         return models.count
     }
     
-    public override func _object(object: UITableView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    public override func object(object: UITableView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         guard let models = self.models else { return UITableViewCell() }
         return self.cellConfiguration(object, indexPath, models[indexPath.row])
     }

@@ -22,6 +22,7 @@
 		D32E1D2A1D5B5FCD00BA98BD /* RACTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D291D5B5FCD00BA98BD /* RACTableViewDataSource.swift */; };
 		D32E1D2D1D5B601F00BA98BD /* RACExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D2C1D5B601F00BA98BD /* RACExtensions.swift */; };
 		D32E1D2F1D5C717500BA98BD /* DataReloadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D2E1D5C717500BA98BD /* DataReloadable.swift */; };
+		D32E1D321D5C91E300BA98BD /* RACCollectionDataSourceProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D311D5C91E300BA98BD /* RACCollectionDataSourceProxy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,12 +38,13 @@
 		D32E1CF31D58927800BA98BD /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
 		D32E1CF61D58943D00BA98BD /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		D32E1D1E1D5B5E8300BA98BD /* ReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
-		D32E1D231D5B5EF300BA98BD /* RACDelegateProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACDelegateProxy.swift; sourceTree = "<group>"; };
+		D32E1D231D5B5EF300BA98BD /* RACDelegateProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RACDelegateProxy.swift; path = ../Protocols/RACDelegateProxy.swift; sourceTree = "<group>"; };
 		D32E1D251D5B5F6600BA98BD /* UITableView+RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+RAC.swift"; sourceTree = "<group>"; };
 		D32E1D271D5B5F9800BA98BD /* RACTableViewDataSourceProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACTableViewDataSourceProxy.swift; sourceTree = "<group>"; };
 		D32E1D291D5B5FCD00BA98BD /* RACTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACTableViewDataSource.swift; sourceTree = "<group>"; };
 		D32E1D2C1D5B601F00BA98BD /* RACExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACExtensions.swift; sourceTree = "<group>"; };
 		D32E1D2E1D5C717500BA98BD /* DataReloadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataReloadable.swift; sourceTree = "<group>"; };
+		D32E1D311D5C91E300BA98BD /* RACCollectionDataSourceProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACCollectionDataSourceProxy.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 		D32E1D1B1D5B5E8300BA98BD /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				D32E1D301D5C918700BA98BD /* Core */,
 				D32E1D2B1D5B600C00BA98BD /* Extensions */,
 				D32E1D1C1D5B5E8300BA98BD /* CollectionView */,
 				D32E1D1D1D5B5E8300BA98BD /* Protocols */,
@@ -122,7 +125,6 @@
 			isa = PBXGroup;
 			children = (
 				D32E1D1E1D5B5E8300BA98BD /* ReusableView.swift */,
-				D32E1D231D5B5EF300BA98BD /* RACDelegateProxy.swift */,
 				D32E1D2E1D5C717500BA98BD /* DataReloadable.swift */,
 			);
 			path = Protocols;
@@ -144,6 +146,15 @@
 				D32E1D2C1D5B601F00BA98BD /* RACExtensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D32E1D301D5C918700BA98BD /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				D32E1D231D5B5EF300BA98BD /* RACDelegateProxy.swift */,
+				D32E1D311D5C91E300BA98BD /* RACCollectionDataSourceProxy.swift */,
+			);
+			path = Core;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,6 +256,7 @@
 				D32E1CDE1D58912E00BA98BD /* AppDelegate.swift in Sources */,
 				D32E1D2D1D5B601F00BA98BD /* RACExtensions.swift in Sources */,
 				D32E1D281D5B5F9800BA98BD /* RACTableViewDataSourceProxy.swift in Sources */,
+				D32E1D321D5C91E300BA98BD /* RACCollectionDataSourceProxy.swift in Sources */,
 				D32E1D2F1D5C717500BA98BD /* DataReloadable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

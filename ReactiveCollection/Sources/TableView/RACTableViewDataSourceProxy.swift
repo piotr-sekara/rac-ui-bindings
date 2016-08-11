@@ -12,14 +12,14 @@ import ReactiveCocoa
 import Result
 
 
-public class RACTableViewDataSourceProxy: RACCollectionDataSourceProxy<UITableView, _RACTableViewCellProvider>, UITableViewDataSource {
+public class RACTableViewDataSourceProxy: RACCollectionDataSourceProxy<UITableView, RACTableViewCellProvider>, UITableViewDataSource {
     
     public init(tableView: UITableView) {
         super.init(parent: tableView)
         self.parent?.dataSource = self
     }
     
-    override public class func createProxy(forObject object: AnyObject) -> AnyObject {
+    public class func createProxy(forObject object: AnyObject) -> AnyObject {
         guard let tableView = object as? UITableView else {
             fatalError("Invalid object specified")
         }
@@ -28,7 +28,7 @@ public class RACTableViewDataSourceProxy: RACCollectionDataSourceProxy<UITableVi
     }
     
     public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return self._object(tableView, cellForItemAtIndexPath: indexPath)
+        return self.object(tableView, cellForItemAtIndexPath: indexPath)
     }
     
     public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -36,7 +36,7 @@ public class RACTableViewDataSourceProxy: RACCollectionDataSourceProxy<UITableVi
     }
     
     public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self._object(tableView, numberOfItemsInSection: section)
+        return self.object(tableView, numberOfItemsInSection: section)
     }
     
 }

@@ -33,29 +33,13 @@ public extension RACDelegateProxyType {
         return returnVal
     }
     
+    public static func createProxy(forObject object: AnyObject) -> AnyObject {
+        fatalError("Method should be implemented in class conforming to \(String(RACDelegateProxyType))")
+    }
+    
 }
 
-public protocol RACDataSourceType {
-    associatedtype E
-    associatedtype Cell
-    associatedtype O
-    
-    var models: [E]? { get }
-    var cellIdentifier: String { get }
-    var cellConfiguration: (O, NSIndexPath, E) -> Cell { get }
-    
-    func handleUpdate(update: [E])
-}
-
-public protocol _RACCellProvider: class {
-    associatedtype O
-    associatedtype BaseCell
-    
-    func _object(object: O, numberOfItemsInSection section: Int) -> Int
-    func _object(object: O, cellForItemAtIndexPath indexPath: NSIndexPath) -> BaseCell
-}
-
-public class RACDelegateProxy: NSObject {
+public class RACDelegateProxy: NSObject, RACDelegateProxyType {
     private struct AssociatedKeys {
         static var rac_delegateProxyKey = "rac_delegateProxyKey"
     }
@@ -67,73 +51,5 @@ public class RACDelegateProxy: NSObject {
     public class func setAssociatedProxy(proxy: AnyObject, to object: AnyObject) {
         objc_setAssociatedObject(object, &AssociatedKeys.rac_delegateProxyKey, proxy, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
     }
-}
 
-public class RACCollectionDataSourceProxy<C: DataReloadable, T: _RACCellProvider where T.O == C>: RACDelegateProxy, RACDelegateProxyType, _RACCellProvider {
-    
-    public weak private(set) var parent: C?
-    
-    var retainedDataSources: [(cellIdentifier: String, dataSource: T)] = []
-    var dataSourceRanges: [Range<Int>] = []
-    
-    public init(parent: C) {
-        self.parent = parent
-        super.init()
-    }
-    
-    public class func createProxy(forObject object: AnyObject) -> AnyObject {
-        fatalError("Abstract object, should not be created directly")
-    }
-    
-    func registerDataSource<DS: protocol<RACDataSourceType, _RACCellProvider>>(dataSource: DS, forObject object: C) -> Disposable {
-        self.removeDataSource(dataSource.cellIdentifier)
-        self.retainedDataSources.append((cellIdentifier: dataSource.cellIdentifier, dataSource: dataSource as! T))
-        
-        return ActionDisposable { [weak self] in
-            self?.removeDataSource(dataSource.cellIdentifier)
-            self?.cellProviderContentDidChange()
-            self?.parent?.reloadData()
-        }
-    }
-    
-    func cellProviderContentDidChange() {
-        var ranges: [Range<Int>] = []
-        var currentMax = 0
-        for (_, dataSource) in self.retainedDataSources {
-            let numberOfRows = dataSource._object(self.parent!, numberOfItemsInSection: 0)
-            ranges.append(currentMax ..< currentMax + numberOfRows)
-            currentMax += numberOfRows
-        }
-        self.dataSourceRanges = ranges
-    }
-    
-    //MARK: - Private
-    
-    public func _object(object: C, numberOfItemsInSection section: Int) -> Int {
-        if let range = self.dataSourceRanges.last {
-            return range.endIndex
-        }
-        
-        return 0
-    }
-    
-    public func _object(object: C, cellForItemAtIndexPath indexPath: NSIndexPath) -> T.BaseCell {
-        guard let dsIndex = self.dataSourceRanges.indexOf({ $0.contains(indexPath.row) })
-            where dsIndex < self.retainedDataSources.count
-        else {
-            fatalError("Incorrect number of rows in collection")
-        }
-        
-        let (_, ds) = self.retainedDataSources[dsIndex]
-        let range = self.dataSourceRanges[dsIndex]
-        
-        return ds._object(object, cellForItemAtIndexPath: NSIndexPath(forItem: indexPath.row - range.startIndex, inSection: 0))
-    }
-    
-    private func removeDataSource(cellIdentifier: String) -> T? {
-        if let idx = self.retainedDataSources.indexOf({ $0.cellIdentifier == cellIdentifier }) {
-            return self.retainedDataSources.removeAtIndex(idx).dataSource
-        }
-        return nil
-    }
 }
