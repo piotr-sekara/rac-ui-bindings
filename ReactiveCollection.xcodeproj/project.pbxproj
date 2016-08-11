@@ -23,6 +23,10 @@
 		D32E1D2D1D5B601F00BA98BD /* RACExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D2C1D5B601F00BA98BD /* RACExtensions.swift */; };
 		D32E1D2F1D5C717500BA98BD /* DataReloadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D2E1D5C717500BA98BD /* DataReloadable.swift */; };
 		D32E1D321D5C91E300BA98BD /* RACCollectionDataSourceProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D311D5C91E300BA98BD /* RACCollectionDataSourceProxy.swift */; };
+		D32E1D341D5CAFE800BA98BD /* RACCollectionViewDataSourceProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D331D5CAFE800BA98BD /* RACCollectionViewDataSourceProxy.swift */; };
+		D32E1D361D5CAFF100BA98BD /* RACCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D351D5CAFF100BA98BD /* RACCollectionViewDataSource.swift */; };
+		D32E1D381D5CAFF900BA98BD /* UICollectionView+RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D371D5CAFF900BA98BD /* UICollectionView+RAC.swift */; };
+		D32E1D3A1D5CB0B300BA98BD /* RACDataSourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D391D5CB0B300BA98BD /* RACDataSourceType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +49,10 @@
 		D32E1D2C1D5B601F00BA98BD /* RACExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACExtensions.swift; sourceTree = "<group>"; };
 		D32E1D2E1D5C717500BA98BD /* DataReloadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataReloadable.swift; sourceTree = "<group>"; };
 		D32E1D311D5C91E300BA98BD /* RACCollectionDataSourceProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACCollectionDataSourceProxy.swift; sourceTree = "<group>"; };
+		D32E1D331D5CAFE800BA98BD /* RACCollectionViewDataSourceProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACCollectionViewDataSourceProxy.swift; sourceTree = "<group>"; };
+		D32E1D351D5CAFF100BA98BD /* RACCollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACCollectionViewDataSource.swift; sourceTree = "<group>"; };
+		D32E1D371D5CAFF900BA98BD /* UICollectionView+RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+RAC.swift"; sourceTree = "<group>"; };
+		D32E1D391D5CB0B300BA98BD /* RACDataSourceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACDataSourceType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +125,9 @@
 		D32E1D1C1D5B5E8300BA98BD /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				D32E1D331D5CAFE800BA98BD /* RACCollectionViewDataSourceProxy.swift */,
+				D32E1D351D5CAFF100BA98BD /* RACCollectionViewDataSource.swift */,
+				D32E1D371D5CAFF900BA98BD /* UICollectionView+RAC.swift */,
 			);
 			path = CollectionView;
 			sourceTree = "<group>";
@@ -153,6 +164,7 @@
 			children = (
 				D32E1D231D5B5EF300BA98BD /* RACDelegateProxy.swift */,
 				D32E1D311D5C91E300BA98BD /* RACCollectionDataSourceProxy.swift */,
+				D32E1D391D5CB0B300BA98BD /* RACDataSourceType.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -248,14 +260,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D32E1D361D5CAFF100BA98BD /* RACCollectionViewDataSource.swift in Sources */,
+				D32E1D381D5CAFF900BA98BD /* UICollectionView+RAC.swift in Sources */,
 				D32E1D261D5B5F6600BA98BD /* UITableView+RAC.swift in Sources */,
 				D32E1D211D5B5E8300BA98BD /* ReusableView.swift in Sources */,
+				D32E1D341D5CAFE800BA98BD /* RACCollectionViewDataSourceProxy.swift in Sources */,
 				D32E1CE01D58912E00BA98BD /* ViewController.swift in Sources */,
 				D32E1D2A1D5B5FCD00BA98BD /* RACTableViewDataSource.swift in Sources */,
 				D32E1D241D5B5EF300BA98BD /* RACDelegateProxy.swift in Sources */,
 				D32E1CDE1D58912E00BA98BD /* AppDelegate.swift in Sources */,
 				D32E1D2D1D5B601F00BA98BD /* RACExtensions.swift in Sources */,
 				D32E1D281D5B5F9800BA98BD /* RACTableViewDataSourceProxy.swift in Sources */,
+				D32E1D3A1D5CB0B300BA98BD /* RACDataSourceType.swift in Sources */,
 				D32E1D321D5C91E300BA98BD /* RACCollectionDataSourceProxy.swift in Sources */,
 				D32E1D2F1D5C717500BA98BD /* DataReloadable.swift in Sources */,
 			);

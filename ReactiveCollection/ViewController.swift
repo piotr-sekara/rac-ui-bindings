@@ -10,28 +10,30 @@ import UIKit
 import ReactiveCocoa
 import Result
 
-class SomeCell2: UITableViewCell {
+class SomeCell2: UICollectionViewCell {
     @IBOutlet weak var label: UILabel!
 }
 
-
-
-class SomeCell: UITableViewCell {
+class SomeCell: UICollectionViewCell {
     @IBOutlet weak var label: UILabel!
 }
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var collectionView: UICollectionView!
 
-    var data: MutableProperty<[String]> = MutableProperty<[String]>(["0"])
-    var data2: MutableProperty<[String]> = MutableProperty<[String]>(["1"])
-    var index = 1
+    var data: MutableProperty<[String]> = MutableProperty<[String]>(["0", "1"])
+    var data2: MutableProperty<[String]> = MutableProperty<[String]>(["a", "b"])
+    var index = 2
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.data.bindTo(self.tableView.rac_items(cellType: SomeCell.self)) { (idx, cell, elem) in
+        self.data.bindTo(self.collectionView.rac_items(cellType: SomeCell.self)) { (_, cell, elem) in
+            cell.label.text = elem
+        }
+        
+        self.data2.bindTo(self.collectionView.rac_items(cellType: SomeCell2.self)) { (_, cell, elem) in
             cell.label.text = elem
         }
     }
