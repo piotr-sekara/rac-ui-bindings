@@ -6,38 +6,7 @@
 	objectVersion = 46;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		D32E1CDE1D58912E00BA98BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32E1CDD1D58912E00BA98BD /* AppDelegate.swift */; };
-		D32E1CE01D58912E00BA98BD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32E1CDF1D58912E00BA98BD /* ViewController.swift */; };
-		D32E1CE31D58912E00BA98BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D32E1CE11D58912E00BA98BD /* Main.storyboard */; };
-		D32E1CE51D58912E00BA98BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D32E1CE41D58912E00BA98BD /* Assets.xcassets */; };
-		D32E1CE81D58912E00BA98BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D32E1CE61D58912E00BA98BD /* LaunchScreen.storyboard */; };
-		D32E1CF11D58919F00BA98BD /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = D32E1CF01D58919F00BA98BD /* Cartfile */; };
-		D32E1CF41D58927800BA98BD /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D32E1CF31D58927800BA98BD /* Result.framework */; };
-		D32E1CF71D58943D00BA98BD /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D32E1CF61D58943D00BA98BD /* ReactiveCocoa.framework */; };
-		D32E1D211D5B5E8300BA98BD /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D1E1D5B5E8300BA98BD /* ReusableView.swift */; };
-		D32E1D241D5B5EF300BA98BD /* RACDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D231D5B5EF300BA98BD /* RACDelegateProxy.swift */; };
-		D32E1D261D5B5F6600BA98BD /* UITableView+RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D251D5B5F6600BA98BD /* UITableView+RAC.swift */; };
-		D32E1D281D5B5F9800BA98BD /* RACTableViewDataSourceProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D271D5B5F9800BA98BD /* RACTableViewDataSourceProxy.swift */; };
-		D32E1D2A1D5B5FCD00BA98BD /* RACTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D291D5B5FCD00BA98BD /* RACTableViewDataSource.swift */; };
-		D32E1D2D1D5B601F00BA98BD /* RACExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D2C1D5B601F00BA98BD /* RACExtensions.swift */; };
-		D32E1D321D5C91E300BA98BD /* RACCollectionDataSourceProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D311D5C91E300BA98BD /* RACCollectionDataSourceProxy.swift */; };
-		D32E1D341D5CAFE800BA98BD /* RACCollectionViewDataSourceProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D331D5CAFE800BA98BD /* RACCollectionViewDataSourceProxy.swift */; };
-		D32E1D361D5CAFF100BA98BD /* RACCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D351D5CAFF100BA98BD /* RACCollectionViewDataSource.swift */; };
-		D32E1D381D5CAFF900BA98BD /* UICollectionView+RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D371D5CAFF900BA98BD /* UICollectionView+RAC.swift */; };
-		D32E1D3A1D5CB0B300BA98BD /* RACDataSourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D391D5CB0B300BA98BD /* RACDataSourceType.swift */; };
-		D32E1D3D1D5CB29700BA98BD /* UICollectionView+RAC.m in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D3C1D5CB29700BA98BD /* UICollectionView+RAC.m */; };
-		D32E1D411D5DC78800BA98BD /* UITableView+RAC.m in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D401D5DC78800BA98BD /* UITableView+RAC.m */; };
-		D32E1D441D5DF69D00BA98BD /* HelperExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D431D5DF69D00BA98BD /* HelperExtensions.swift */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXFileReference section */
-		D32E1CDA1D58912E00BA98BD /* ReactiveCollection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReactiveCollection.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D32E1CDD1D58912E00BA98BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D32E1CDF1D58912E00BA98BD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D32E1CE21D58912E00BA98BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		D32E1CE41D58912E00BA98BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D32E1CE71D58912E00BA98BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D32E1CE91D58912E00BA98BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D32E1CEF1D58915200BA98BD /* ObjcBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjcBridge.h; sourceTree = "<group>"; };
 		D32E1CF01D58919F00BA98BD /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Cartfile; path = ../Cartfile; sourceTree = "<group>"; };
@@ -61,18 +30,6 @@
 		D32E1D431D5DF69D00BA98BD /* HelperExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
-/* Begin PBXFrameworksBuildPhase section */
-		D32E1CD71D58912E00BA98BD /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D32E1CF41D58927800BA98BD /* Result.framework in Frameworks */,
-				D32E1CF71D58943D00BA98BD /* ReactiveCocoa.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
-
 /* Begin PBXGroup section */
 		D32E1CD11D58912E00BA98BD = {
 			isa = PBXGroup;
@@ -86,7 +43,6 @@
 		D32E1CDB1D58912E00BA98BD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D32E1CDA1D58912E00BA98BD /* ReactiveCollection.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,11 +51,6 @@
 			isa = PBXGroup;
 			children = (
 				D32E1D1B1D5B5E8300BA98BD /* Sources */,
-				D32E1CDD1D58912E00BA98BD /* AppDelegate.swift */,
-				D32E1CDF1D58912E00BA98BD /* ViewController.swift */,
-				D32E1CE11D58912E00BA98BD /* Main.storyboard */,
-				D32E1CE41D58912E00BA98BD /* Assets.xcassets */,
-				D32E1CE61D58912E00BA98BD /* LaunchScreen.storyboard */,
 				D32E1CE91D58912E00BA98BD /* Info.plist */,
 				D32E1CEF1D58915200BA98BD /* ObjcBridge.h */,
 				D32E1CF01D58919F00BA98BD /* Cartfile */,
@@ -181,27 +132,6 @@
 		};
 /* End PBXGroup section */
 
-/* Begin PBXNativeTarget section */
-		D32E1CD91D58912E00BA98BD /* ReactiveCollection */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D32E1CEC1D58912E00BA98BD /* Build configuration list for PBXNativeTarget "ReactiveCollection" */;
-			buildPhases = (
-				D32E1CD61D58912E00BA98BD /* Sources */,
-				D32E1CD71D58912E00BA98BD /* Frameworks */,
-				D32E1CF51D58927C00BA98BD /* ShellScript */,
-				D32E1CD81D58912E00BA98BD /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = ReactiveCollection;
-			productName = ReactiveCollection;
-			productReference = D32E1CDA1D58912E00BA98BD /* ReactiveCollection.app */;
-			productType = "com.apple.product-type.application";
-		};
-/* End PBXNativeTarget section */
-
 /* Begin PBXProject section */
 		D32E1CD21D58912E00BA98BD /* Project object */ = {
 			isa = PBXProject;
@@ -209,11 +139,6 @@
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Codewise Sp. z o.o. Sp. K.";
-				TargetAttributes = {
-					D32E1CD91D58912E00BA98BD = {
-						CreatedOnToolsVersion = 7.3.1;
-					};
-				};
 			};
 			buildConfigurationList = D32E1CD51D58912E00BA98BD /* Build configuration list for PBXProject "ReactiveCollection" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -228,87 +153,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D32E1CD91D58912E00BA98BD /* ReactiveCollection */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXResourcesBuildPhase section */
-		D32E1CD81D58912E00BA98BD /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D32E1CE81D58912E00BA98BD /* LaunchScreen.storyboard in Resources */,
-				D32E1CE51D58912E00BA98BD /* Assets.xcassets in Resources */,
-				D32E1CF11D58919F00BA98BD /* Cartfile in Resources */,
-				D32E1CE31D58912E00BA98BD /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		D32E1CF51D58927C00BA98BD /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/ReactiveCocoa.framework",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
-		};
-/* End PBXShellScriptBuildPhase section */
-
-/* Begin PBXSourcesBuildPhase section */
-		D32E1CD61D58912E00BA98BD /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D32E1D361D5CAFF100BA98BD /* RACCollectionViewDataSource.swift in Sources */,
-				D32E1D381D5CAFF900BA98BD /* UICollectionView+RAC.swift in Sources */,
-				D32E1D261D5B5F6600BA98BD /* UITableView+RAC.swift in Sources */,
-				D32E1D211D5B5E8300BA98BD /* ReusableView.swift in Sources */,
-				D32E1D341D5CAFE800BA98BD /* RACCollectionViewDataSourceProxy.swift in Sources */,
-				D32E1CE01D58912E00BA98BD /* ViewController.swift in Sources */,
-				D32E1D3D1D5CB29700BA98BD /* UICollectionView+RAC.m in Sources */,
-				D32E1D2A1D5B5FCD00BA98BD /* RACTableViewDataSource.swift in Sources */,
-				D32E1D441D5DF69D00BA98BD /* HelperExtensions.swift in Sources */,
-				D32E1D241D5B5EF300BA98BD /* RACDelegateProxy.swift in Sources */,
-				D32E1CDE1D58912E00BA98BD /* AppDelegate.swift in Sources */,
-				D32E1D2D1D5B601F00BA98BD /* RACExtensions.swift in Sources */,
-				D32E1D281D5B5F9800BA98BD /* RACTableViewDataSourceProxy.swift in Sources */,
-				D32E1D3A1D5CB0B300BA98BD /* RACDataSourceType.swift in Sources */,
-				D32E1D321D5C91E300BA98BD /* RACCollectionDataSourceProxy.swift in Sources */,
-				D32E1D411D5DC78800BA98BD /* UITableView+RAC.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		D32E1CE11D58912E00BA98BD /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D32E1CE21D58912E00BA98BD /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		D32E1CE61D58912E00BA98BD /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D32E1CE71D58912E00BA98BD /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		D32E1CEA1D58912E00BA98BD /* Debug */ = {
@@ -396,40 +243,6 @@
 			};
 			name = Release;
 		};
-		D32E1CED1D58912E00BA98BD /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
-				INFOPLIST_FILE = ReactiveCollection/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.codewise.ReactiveCollection;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/$(PROJECT_NAME)/ObjcBridge.h";
-			};
-			name = Debug;
-		};
-		D32E1CEE1D58912E00BA98BD /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
-				INFOPLIST_FILE = ReactiveCollection/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.codewise.ReactiveCollection;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/$(PROJECT_NAME)/ObjcBridge.h";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -441,14 +254,6 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
-		};
-		D32E1CEC1D58912E00BA98BD /* Build configuration list for PBXNativeTarget "ReactiveCollection" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D32E1CED1D58912E00BA98BD /* Debug */,
-				D32E1CEE1D58912E00BA98BD /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
