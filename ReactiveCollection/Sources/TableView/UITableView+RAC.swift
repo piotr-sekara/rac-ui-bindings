@@ -13,6 +13,19 @@ import Result
 
 extension UITableView {
     
+    public var forwardDataSource: UITableViewDataSource? {
+        get {
+            guard let proxy = self.dataSource as? RACDataSourceProxy else {
+                return nil
+            }
+            return proxy.forwardDataSource as? UITableViewDataSource
+        }
+        set {
+            let proxy = RACTableViewDataSourceProxy.proxy(forObject: self)
+            proxy.forwardDataSource = newValue as? NSObject
+        }
+    }
+    
     func rac_items<Cell: UITableViewCell, S: SequenceType, P: PropertyType where Cell: ReusableView, P.Value == S>
         (cellType cellType: Cell.Type)
         -> (source: P)

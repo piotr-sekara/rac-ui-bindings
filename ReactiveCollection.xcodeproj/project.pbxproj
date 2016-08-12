@@ -21,12 +21,14 @@
 		D32E1D281D5B5F9800BA98BD /* RACTableViewDataSourceProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D271D5B5F9800BA98BD /* RACTableViewDataSourceProxy.swift */; };
 		D32E1D2A1D5B5FCD00BA98BD /* RACTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D291D5B5FCD00BA98BD /* RACTableViewDataSource.swift */; };
 		D32E1D2D1D5B601F00BA98BD /* RACExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D2C1D5B601F00BA98BD /* RACExtensions.swift */; };
-		D32E1D2F1D5C717500BA98BD /* DataReloadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D2E1D5C717500BA98BD /* DataReloadable.swift */; };
 		D32E1D321D5C91E300BA98BD /* RACCollectionDataSourceProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D311D5C91E300BA98BD /* RACCollectionDataSourceProxy.swift */; };
 		D32E1D341D5CAFE800BA98BD /* RACCollectionViewDataSourceProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D331D5CAFE800BA98BD /* RACCollectionViewDataSourceProxy.swift */; };
 		D32E1D361D5CAFF100BA98BD /* RACCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D351D5CAFF100BA98BD /* RACCollectionViewDataSource.swift */; };
 		D32E1D381D5CAFF900BA98BD /* UICollectionView+RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D371D5CAFF900BA98BD /* UICollectionView+RAC.swift */; };
 		D32E1D3A1D5CB0B300BA98BD /* RACDataSourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D391D5CB0B300BA98BD /* RACDataSourceType.swift */; };
+		D32E1D3D1D5CB29700BA98BD /* UICollectionView+RAC.m in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D3C1D5CB29700BA98BD /* UICollectionView+RAC.m */; };
+		D32E1D411D5DC78800BA98BD /* UITableView+RAC.m in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D401D5DC78800BA98BD /* UITableView+RAC.m */; };
+		D32E1D441D5DF69D00BA98BD /* HelperExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D431D5DF69D00BA98BD /* HelperExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,12 +49,16 @@
 		D32E1D271D5B5F9800BA98BD /* RACTableViewDataSourceProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACTableViewDataSourceProxy.swift; sourceTree = "<group>"; };
 		D32E1D291D5B5FCD00BA98BD /* RACTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACTableViewDataSource.swift; sourceTree = "<group>"; };
 		D32E1D2C1D5B601F00BA98BD /* RACExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACExtensions.swift; sourceTree = "<group>"; };
-		D32E1D2E1D5C717500BA98BD /* DataReloadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataReloadable.swift; sourceTree = "<group>"; };
 		D32E1D311D5C91E300BA98BD /* RACCollectionDataSourceProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACCollectionDataSourceProxy.swift; sourceTree = "<group>"; };
 		D32E1D331D5CAFE800BA98BD /* RACCollectionViewDataSourceProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACCollectionViewDataSourceProxy.swift; sourceTree = "<group>"; };
 		D32E1D351D5CAFF100BA98BD /* RACCollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		D32E1D371D5CAFF900BA98BD /* UICollectionView+RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+RAC.swift"; sourceTree = "<group>"; };
 		D32E1D391D5CB0B300BA98BD /* RACDataSourceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACDataSourceType.swift; sourceTree = "<group>"; };
+		D32E1D3B1D5CB29700BA98BD /* UICollectionView+RAC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionView+RAC.h"; sourceTree = "<group>"; };
+		D32E1D3C1D5CB29700BA98BD /* UICollectionView+RAC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionView+RAC.m"; sourceTree = "<group>"; };
+		D32E1D3F1D5DC78800BA98BD /* UITableView+RAC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+RAC.h"; sourceTree = "<group>"; };
+		D32E1D401D5DC78800BA98BD /* UITableView+RAC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+RAC.m"; sourceTree = "<group>"; };
+		D32E1D431D5DF69D00BA98BD /* HelperExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,7 +142,6 @@
 			isa = PBXGroup;
 			children = (
 				D32E1D1E1D5B5E8300BA98BD /* ReusableView.swift */,
-				D32E1D2E1D5C717500BA98BD /* DataReloadable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -155,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				D32E1D2C1D5B601F00BA98BD /* RACExtensions.swift */,
+				D32E1D431D5DF69D00BA98BD /* HelperExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -162,9 +168,13 @@
 		D32E1D301D5C918700BA98BD /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				D32E1D3F1D5DC78800BA98BD /* UITableView+RAC.h */,
+				D32E1D401D5DC78800BA98BD /* UITableView+RAC.m */,
 				D32E1D231D5B5EF300BA98BD /* RACDelegateProxy.swift */,
 				D32E1D311D5C91E300BA98BD /* RACCollectionDataSourceProxy.swift */,
 				D32E1D391D5CB0B300BA98BD /* RACDataSourceType.swift */,
+				D32E1D3B1D5CB29700BA98BD /* UICollectionView+RAC.h */,
+				D32E1D3C1D5CB29700BA98BD /* UICollectionView+RAC.m */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -266,14 +276,16 @@
 				D32E1D211D5B5E8300BA98BD /* ReusableView.swift in Sources */,
 				D32E1D341D5CAFE800BA98BD /* RACCollectionViewDataSourceProxy.swift in Sources */,
 				D32E1CE01D58912E00BA98BD /* ViewController.swift in Sources */,
+				D32E1D3D1D5CB29700BA98BD /* UICollectionView+RAC.m in Sources */,
 				D32E1D2A1D5B5FCD00BA98BD /* RACTableViewDataSource.swift in Sources */,
+				D32E1D441D5DF69D00BA98BD /* HelperExtensions.swift in Sources */,
 				D32E1D241D5B5EF300BA98BD /* RACDelegateProxy.swift in Sources */,
 				D32E1CDE1D58912E00BA98BD /* AppDelegate.swift in Sources */,
 				D32E1D2D1D5B601F00BA98BD /* RACExtensions.swift in Sources */,
 				D32E1D281D5B5F9800BA98BD /* RACTableViewDataSourceProxy.swift in Sources */,
 				D32E1D3A1D5CB0B300BA98BD /* RACDataSourceType.swift in Sources */,
 				D32E1D321D5C91E300BA98BD /* RACCollectionDataSourceProxy.swift in Sources */,
-				D32E1D2F1D5C717500BA98BD /* DataReloadable.swift in Sources */,
+				D32E1D411D5DC78800BA98BD /* UITableView+RAC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

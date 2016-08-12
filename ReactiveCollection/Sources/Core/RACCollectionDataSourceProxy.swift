@@ -18,9 +18,15 @@ public protocol RACCellProviderType: class {
     func object(object: O, cellForItemAtIndexPath indexPath: NSIndexPath) -> BaseCell
 }
 
-public class RACCollectionDataSourceProxy<C: DataReloadable, T: RACCellProviderType where T.O == C>: RACDelegateProxy {
+public class RACCollectionDataSourceProxy<C: DataReloadable, T: RACCellProviderType where T.O == C>: RACDataSourceProxy {
     
     public weak private(set) var parent: C?
+    
+    public override var forwardDataSource: NSObject? {
+        didSet {
+            self.copyForwardDataSourceMethods()
+        }
+    }
     
     private var retainedDataSources: [(cellIdentifier: String, dataSource: T)] = []
     private var dataSourceRanges: [Range<Int>] = []
@@ -48,28 +54,18 @@ public class RACCollectionDataSourceProxy<C: DataReloadable, T: RACCellProviderT
         
         return compositeDisposable
     }
-
-    //MARK: - Private
     
-    private func contentDidChange() {
-        var ranges: [Range<Int>] = []
-        var currentMax = 0
-        for (_, dataSource) in self.retainedDataSources {
-            let numberOfRows = dataSource.object(self.parent!, numberOfItemsInSection: 0)
-            ranges.append(currentMax ..< currentMax + numberOfRows)
-            currentMax += numberOfRows
+    public override func respondsToSelector(aSelector: Selector) -> Bool {
+        let dsSelectors = C.optionalDataSourceSelectors
+        
+        if dsSelectors.contains(String(aSelector)) && self.forwardDataSource == nil {
+            return false
         }
-        self.dataSourceRanges = ranges
-        self.parent?.reloadData()
-    }
-    
-    private func removeDataSource(cellIdentifier: String) -> T? {
-        if let idx = self.retainedDataSources.indexOf({ $0.cellIdentifier == cellIdentifier }) {
-            return self.retainedDataSources.removeAtIndex(idx).dataSource
-        }
-        return nil
+        
+        return super.respondsToSelector(aSelector)
     }
 }
+
 
 extension RACCollectionDataSourceProxy: RACCellProviderType {
     
@@ -94,3 +90,43 @@ extension RACCollectionDataSourceProxy: RACCellProviderType {
         return ds.object(object, cellForItemAtIndexPath: NSIndexPath(forItem: indexPath.row - range.startIndex, inSection: 0))
     }
 }
+
+//MARK: - Private
+extension RACCollectionDataSourceProxy {
+    
+    private func copyForwardDataSourceMethods() {
+        let protocolMethodStrings = C.optionalDataSourceSelectors
+        if let ds = self.forwardDataSource {
+            let (forwardMethods, forwardSelectors) = ds.methodsAndSelectors
+            
+            for i in 0 ..< forwardSelectors.count {
+                if protocolMethodStrings.contains(forwardSelectors[i]) {
+                    if !class_addMethod(self.dynamicType, NSSelectorFromString(forwardSelectors[i]), method_getImplementation(forwardMethods[i]), method_getTypeEncoding(forwardMethods[i])) {
+                        
+                        method_setImplementation(class_getInstanceMethod(self.dynamicType, NSSelectorFromString(forwardSelectors[i])), method_getImplementation(forwardMethods[i]))
+                    }
+                }
+            }
+        }
+    }
+    
+    private func contentDidChange() {
+        var ranges: [Range<Int>] = []
+        var currentMax = 0
+        for (_, dataSource) in self.retainedDataSources {
+            let numberOfRows = dataSource.object(self.parent!, numberOfItemsInSection: 0)
+            ranges.append(currentMax ..< currentMax + numberOfRows)
+            currentMax += numberOfRows
+        }
+        self.dataSourceRanges = ranges
+        self.parent?.reloadData()
+    }
+    
+    private func removeDataSource(cellIdentifier: String) -> T? {
+        if let idx = self.retainedDataSources.indexOf({ $0.cellIdentifier == cellIdentifier }) {
+            return self.retainedDataSources.removeAtIndex(idx).dataSource
+        }
+        return nil
+    }
+}
+

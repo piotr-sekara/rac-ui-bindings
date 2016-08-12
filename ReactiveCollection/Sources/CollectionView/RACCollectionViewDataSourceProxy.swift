@@ -13,7 +13,7 @@ import ReactiveCocoa
 
 
 public class RACCollectionViewDataSourceProxy: RACCollectionDataSourceProxy<UICollectionView, RACCollectionViewCellProvider>, UICollectionViewDataSource {
-    
+
     public init(collectionView: UICollectionView) {
         super.init(parent: collectionView)
         self.parent?.dataSource = self

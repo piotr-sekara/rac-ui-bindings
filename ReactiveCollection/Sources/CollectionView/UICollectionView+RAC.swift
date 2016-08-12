@@ -10,11 +10,25 @@ import Foundation
 import UIKit
 import ReactiveCocoa
 import Result
+import ObjectiveC.runtime
 
 
-extension UICollectionView {
+public extension UICollectionView {
+
+    public var forwardDataSource: UICollectionViewDataSource? {
+        get {
+            guard let proxy = self.dataSource as? RACDataSourceProxy else {
+                return nil
+            }
+            return proxy.forwardDataSource as? UICollectionViewDataSource
+        }
+        set {
+            let proxy = RACCollectionViewDataSourceProxy.proxy(forObject: self)
+            proxy.forwardDataSource = newValue as? NSObject
+        }
+    }
     
-    func rac_items<Cell: UICollectionViewCell, S: SequenceType, P: PropertyType where Cell: ReusableView, P.Value == S>
+    public func rac_items<Cell: UICollectionViewCell, S: SequenceType, P: PropertyType where Cell: ReusableView, P.Value == S>
         (cellType cellType: Cell.Type)
         -> (source: P)
         -> (configuration: (NSIndexPath, Cell, S.Generator.Element) -> Void)
@@ -22,7 +36,7 @@ extension UICollectionView {
             return self.rac_items(cellIdentifier: Cell.defaultReuseIdentifier, cellType: cellType)
     }
     
-    func rac_items<Cell: UICollectionViewCell, S: SequenceType, P: PropertyType where P.Value == S>
+    public func rac_items<Cell: UICollectionViewCell, S: SequenceType, P: PropertyType where P.Value == S>
         (cellIdentifier cellIdentifier: String, cellType: Cell.Type = Cell.self)
         -> (source: P)
         -> (configuration: (NSIndexPath, Cell, S.Generator.Element) -> Void)
@@ -40,7 +54,7 @@ extension UICollectionView {
             }
     }
     
-    func rac_items<DS: protocol<RACDataSourceType, RACCellProviderType>, S: SequenceType, P: PropertyType where P.Value == S, DS.E == S.Generator.Element>
+    public func rac_items<DS: protocol<RACDataSourceType, RACCellProviderType>, S: SequenceType, P: PropertyType where P.Value == S, DS.E == S.Generator.Element>
         (dataSource dataSource: DS)
         -> (source: P)
         -> Disposable {
@@ -50,3 +64,4 @@ extension UICollectionView {
             }
     }
 }
+
