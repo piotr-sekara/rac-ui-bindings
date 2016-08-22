@@ -8,7 +8,7 @@
 
 #import "UITableView+RAC.h"
 #import <objc/runtime.h>
-#import "ReactiveCollection-Swift.h"
+#import <ReactiveUIBindings/ReactiveUIBindings-Swift.h>
 
 @implementation UITableView (RAC)
 

@@ -96,6 +96,7 @@ extension RACCollectionDataSourceProxy {
     
     private func copyForwardDataSourceMethods() {
         let protocolMethodStrings = C.optionalDataSourceSelectors
+        
         if let ds = self.forwardDataSource {
             let (forwardMethods, forwardSelectors) = ds.methodsAndSelectors
             
