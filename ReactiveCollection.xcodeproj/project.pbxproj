@@ -26,7 +26,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D32E1CEF1D58915200BA98BD /* ObjcBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjcBridge.h; sourceTree = "<group>"; };
 		D32E1CF01D58919F00BA98BD /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Cartfile; path = ../Cartfile; sourceTree = "<group>"; };
 		D32E1CF31D58927800BA98BD /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
 		D32E1CF61D58943D00BA98BD /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
@@ -85,7 +84,6 @@
 			isa = PBXGroup;
 			children = (
 				D32E1D1B1D5B5E8300BA98BD /* Sources */,
-				D32E1CEF1D58915200BA98BD /* ObjcBridge.h */,
 				D3CC378A1D6AFA6C0019DDC0 /* Info.plist */,
 				D32E1CF01D58919F00BA98BD /* Cartfile */,
 				D3CC37881D6AFA6C0019DDC0 /* ReactiveUIBindings.h */,
