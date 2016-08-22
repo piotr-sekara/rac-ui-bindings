@@ -36,7 +36,7 @@ public class RACCollectionDataSourceProxy<C: DataReloadable, T: RACCellProviderT
         super.init()
     }
     
-    public func registerDataSource<DS: protocol<RACDataSourceType, RACCellProviderType>, S: SequenceType where DS.E == S.Generator.Element>(dataSource: DS, forObject object: C, signalProducer: SignalProducer<S, NoError>) -> Disposable {
+    public func registerDataSource<DS: protocol<RACDataSourceType, RACCellProviderType>, S: SequenceType, P: SignalProducerType where DS.E == S.Generator.Element, P.Value == S, P.Error == NoError>(dataSource: DS, forObject object: C, signalProducer: P) -> Disposable {
         let compositeDisposable = CompositeDisposable()
         
         self.removeDataSource(dataSource.cellIdentifier)
@@ -45,12 +45,12 @@ public class RACCollectionDataSourceProxy<C: DataReloadable, T: RACCellProviderT
         signalProducer.map(Array.init).startWithNext { [weak dataSource, weak self] seq in
             dataSource?.handleUpdate(seq)
             self?.contentDidChange()
-        }.addTo(compositeDisposable)
+            }.addTo(compositeDisposable)
         
         ActionDisposable { [weak self] in
             self?.removeDataSource(dataSource.cellIdentifier)
             self?.contentDidChange()
-        }.addTo(compositeDisposable)
+            }.addTo(compositeDisposable)
         
         return compositeDisposable
     }
@@ -96,7 +96,6 @@ extension RACCollectionDataSourceProxy {
     
     private func copyForwardDataSourceMethods() {
         let protocolMethodStrings = C.optionalDataSourceSelectors
-        
         if let ds = self.forwardDataSource {
             let (forwardMethods, forwardSelectors) = ds.methodsAndSelectors
             
@@ -130,4 +129,3 @@ extension RACCollectionDataSourceProxy {
         return nil
     }
 }
-

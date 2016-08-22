@@ -34,12 +34,30 @@ extension UITableView {
             return self.rac_items(cellIdentifier: Cell.defaultReuseIdentifier, cellType: cellType)
     }
     
+    func rac_items<Cell: UITableViewCell, S: SequenceType, P: SignalProducerType where Cell: ReusableView, P.Value == S, P.Error == NoError>
+        (cellType cellType: Cell.Type)
+        -> (producer: P)
+        -> (configuration: (NSIndexPath, Cell, S.Generator.Element) -> Void)
+        -> Disposable {
+            return self.rac_items(cellIdentifier: Cell.defaultReuseIdentifier, cellType: cellType)
+    }
+    
     func rac_items<Cell: UITableViewCell, S: SequenceType, P: PropertyType where P.Value == S>
         (cellIdentifier cellIdentifier: String, cellType: Cell.Type = Cell.self)
         -> (source: P)
         -> (configuration: (NSIndexPath, Cell, S.Generator.Element) -> Void)
         -> Disposable {
             return { source in
+                return self.rac_items(cellIdentifier: cellIdentifier, cellType: cellType)(producer: source.producer)
+            }
+    }
+    
+    func rac_items<Cell: UITableViewCell, S: SequenceType, P: SignalProducerType where P.Value == S, P.Error == NoError>
+        (cellIdentifier cellIdentifier: String, cellType: Cell.Type = Cell.self)
+        -> (producer: P)
+        -> (configuration: (NSIndexPath, Cell, S.Generator.Element) -> Void)
+        -> Disposable {
+            return { producer in
                 return { config in
                     let dataSource = RACTableViewDataSource<S.Generator.Element, Cell>(identifier: cellIdentifier, cellConfiguration: { (tv, idxPath, elem) -> Cell in
                         let cell: Cell = tv.dequeueReusableCell(forIndexPath: idxPath)
@@ -47,7 +65,7 @@ extension UITableView {
                         return cell
                     })
                     
-                    return self.rac_items(dataSource: dataSource)(source: source)
+                    return self.rac_items(dataSource: dataSource)(producer: producer)
                 }
             }
     }
@@ -57,8 +75,17 @@ extension UITableView {
         -> (source: P)
         -> Disposable {
             return { source in
+                return self.rac_items(dataSource: dataSource)(producer: source.producer)
+            }
+    }
+    
+    func rac_items<DS: protocol<RACDataSourceType, RACCellProviderType>, S: SequenceType, P: SignalProducerType where P.Value == S, DS.E == S.Generator.Element, P.Error == NoError>
+        (dataSource dataSource: DS)
+        -> (producer: P)
+        -> Disposable {
+            return { producer in
                 let proxy = RACTableViewDataSourceProxy.proxy(forObject: self)
-                return proxy.registerDataSource(dataSource, forObject: self, signalProducer: source.producer)
+                return proxy.registerDataSource(dataSource, forObject: self, signalProducer: producer)
             }
     }
     
