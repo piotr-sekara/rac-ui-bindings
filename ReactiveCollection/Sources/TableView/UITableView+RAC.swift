@@ -11,7 +11,7 @@ import UIKit
 import ReactiveCocoa
 import Result
 
-extension UITableView {
+public extension UITableView {
     
     public var forwardDataSource: UITableViewDataSource? {
         get {
@@ -60,7 +60,9 @@ extension UITableView {
             return { producer in
                 return { config in
                     let dataSource = RACTableViewDataSource<S.Generator.Element, Cell>(identifier: cellIdentifier, cellConfiguration: { (tv, idxPath, elem) -> Cell in
-                        let cell: Cell = tv.dequeueReusableCell(forIndexPath: idxPath)
+                        guard let cell = tv.dequeueReusableCellWithIdentifier(cellIdentifier) as? Cell else {
+                            fatalError("Could not dequeue cell with identifier \(cellIdentifier) for indexPath \(idxPath)")
+                        }
                         config(idxPath, cell, elem)
                         return cell
                     })

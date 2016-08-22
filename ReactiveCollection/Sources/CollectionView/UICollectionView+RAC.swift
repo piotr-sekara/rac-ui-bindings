@@ -10,8 +10,6 @@ import Foundation
 import UIKit
 import ReactiveCocoa
 import Result
-import ObjectiveC.runtime
-
 
 public extension UICollectionView {
     
@@ -63,8 +61,10 @@ public extension UICollectionView {
         -> Disposable {
             return { producer in
                 return { config in
-                    let dataSource = RACCollectionViewDataSource<S.Generator.Element, Cell>(identifier: cellIdentifier, cellConfiguration: { (tv, idxPath, elem) -> Cell in
-                        let cell: Cell = tv.dequeueReusableCell(forIndexPath: idxPath)
+                    let dataSource = RACCollectionViewDataSource<S.Generator.Element, Cell>(identifier: cellIdentifier, cellConfiguration: { (cv, idxPath, elem) -> Cell in
+                        guard let cell = cv.dequeueReusableCellWithReuseIdentifier(cellIdentifier, forIndexPath: idxPath) as? Cell else {
+                            fatalError("Could not dequeue cell with identifier \(cellIdentifier)")
+                        }
                         config(idxPath, cell, elem)
                         return cell
                     })
