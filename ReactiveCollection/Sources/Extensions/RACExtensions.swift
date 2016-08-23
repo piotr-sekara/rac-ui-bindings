@@ -17,6 +17,13 @@ public extension PropertyType where Value: SequenceType {
     }
 }
 
+public extension SignalProducerType where Value: SequenceType {
+    
+    func bindTo<R1, R2>(binding: Self -> R1 -> R2, curriedArg: R1) -> R2 {
+        return binding(self)(curriedArg)
+    }
+}
+
 public extension Disposable {
     func addTo(compositeDisposable: CompositeDisposable) -> Disposable {
         compositeDisposable.addDisposable(self)
