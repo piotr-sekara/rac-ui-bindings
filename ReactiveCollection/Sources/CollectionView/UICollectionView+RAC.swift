@@ -63,7 +63,7 @@ public extension UICollectionView {
                 return { config in
                     let dataSource = RACCollectionViewDataSource<S.Generator.Element, Cell>(identifier: cellIdentifier, cellConfiguration: { (cv, idxPath, elem) -> Cell in
                         guard let cell = cv.dequeueReusableCellWithReuseIdentifier(cellIdentifier, forIndexPath: idxPath) as? Cell else {
-                            fatalError("Could not dequeue cell with identifier \(cellIdentifier)")
+                            fatalError("Could not dequeue cell with identifier \(cellIdentifier) for indexPath \(idxPath)")
                         }
                         config(idxPath, cell, elem)
                         return cell
