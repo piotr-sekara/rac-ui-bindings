@@ -11,6 +11,7 @@ import UIKit
 
 public protocol ReusableView {
     static var defaultReuseIdentifier: String { get }
+    var reuseIdentifier: String? { get }
 }
 
 public extension ReusableView where Self: UIView {

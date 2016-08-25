@@ -23,10 +23,56 @@
 		D3CC379F1D6AFB630019DDC0 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D32E1CF61D58943D00BA98BD /* ReactiveCocoa.framework */; };
 		D3CC37A01D6AFC2A0019DDC0 /* UICollectionView+RAC.m in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D3C1D5CB29700BA98BD /* UICollectionView+RAC.m */; };
 		D3CC37A11D6B00560019DDC0 /* UITableView+RAC.m in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D401D5DC78800BA98BD /* UITableView+RAC.m */; };
+		D3CC37A51D6B1E6E0019DDC0 /* Cartfile.private in Resources */ = {isa = PBXBuildFile; fileRef = D3CC37A41D6B1E6E0019DDC0 /* Cartfile.private */; };
+		D3CC37AF1D6B28570019DDC0 /* ReactiveUIBindings.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3CC37861D6AFA6C0019DDC0 /* ReactiveUIBindings.framework */; };
+		D3CC37B81D6B28EA0019DDC0 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3CC37B61D6B28EA0019DDC0 /* Nimble.framework */; };
+		D3CC37B91D6B28EA0019DDC0 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3CC37B71D6B28EA0019DDC0 /* Quick.framework */; };
+		D3CC37BD1D6B295A0019DDC0 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D3CC37B61D6B28EA0019DDC0 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D3CC37BE1D6B295A0019DDC0 /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D3CC37B71D6B28EA0019DDC0 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D3CC37BF1D6B2A540019DDC0 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D32E1CF61D58943D00BA98BD /* ReactiveCocoa.framework */; };
+		D3CC37C01D6B2A560019DDC0 /* ReactiveCocoa.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D32E1CF61D58943D00BA98BD /* ReactiveCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D3CC37C11D6B2A5F0019DDC0 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D32E1CF31D58927800BA98BD /* Result.framework */; };
+		D3CC37C21D6B2A610019DDC0 /* Result.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D32E1CF31D58927800BA98BD /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D3CC37D11D6D995C0019DDC0 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CC37D01D6D995C0019DDC0 /* TestHelpers.swift */; };
+		D3CC37D61D6DAD8C0019DDC0 /* ReactiveCollectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CC37C71D6C71990019DDC0 /* ReactiveCollectionTests.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		D3CC37B01D6B28570019DDC0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D32E1CD21D58912E00BA98BD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D3CC37851D6AFA6C0019DDC0;
+			remoteInfo = ReactiveUIBindings;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D3CC37B51D6B28D50019DDC0 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3CC37BC1D6B29540019DDC0 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D3CC37BD1D6B295A0019DDC0 /* Nimble.framework in CopyFiles */,
+				D3CC37C21D6B2A610019DDC0 /* Result.framework in CopyFiles */,
+				D3CC37BE1D6B295A0019DDC0 /* Quick.framework in CopyFiles */,
+				D3CC37C01D6B2A560019DDC0 /* ReactiveCocoa.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		D32E1CEF1D58915200BA98BD /* ObjcBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjcBridge.h; sourceTree = "<group>"; };
 		D32E1CF01D58919F00BA98BD /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Cartfile; path = ../Cartfile; sourceTree = "<group>"; };
 		D32E1CF31D58927800BA98BD /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
 		D32E1CF61D58943D00BA98BD /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
@@ -49,6 +95,13 @@
 		D3CC37861D6AFA6C0019DDC0 /* ReactiveUIBindings.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ReactiveUIBindings.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3CC37881D6AFA6C0019DDC0 /* ReactiveUIBindings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ReactiveUIBindings.h; path = ../ReactiveUIBindings.h; sourceTree = "<group>"; };
 		D3CC378A1D6AFA6C0019DDC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
+		D3CC37A41D6B1E6E0019DDC0 /* Cartfile.private */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Cartfile.private; path = ../Cartfile.private; sourceTree = "<group>"; };
+		D3CC37AA1D6B28570019DDC0 /* ReactiveUIBindingsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReactiveUIBindingsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3CC37AE1D6B28570019DDC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3CC37B61D6B28EA0019DDC0 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
+		D3CC37B71D6B28EA0019DDC0 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
+		D3CC37C71D6C71990019DDC0 /* ReactiveCollectionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveCollectionTests.swift; sourceTree = "<group>"; };
+		D3CC37D01D6D995C0019DDC0 /* TestHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +113,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D3CC37A71D6B28570019DDC0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3CC37AF1D6B28570019DDC0 /* ReactiveUIBindings.framework in Frameworks */,
+				D3CC37B81D6B28EA0019DDC0 /* Nimble.framework in Frameworks */,
+				D3CC37BF1D6B2A540019DDC0 /* ReactiveCocoa.framework in Frameworks */,
+				D3CC37C11D6B2A5F0019DDC0 /* Result.framework in Frameworks */,
+				D3CC37B91D6B28EA0019DDC0 /* Quick.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -67,7 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				D32E1CDC1D58912E00BA98BD /* ReactiveCollection */,
-				D3CC37871D6AFA6C0019DDC0 /* ReactiveUIBindings */,
+				D3CC37AB1D6B28570019DDC0 /* ReactiveUIBindingsTests */,
 				D32E1CF21D58926800BA98BD /* Frameworks */,
 				D32E1CDB1D58912E00BA98BD /* Products */,
 			);
@@ -77,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				D3CC37861D6AFA6C0019DDC0 /* ReactiveUIBindings.framework */,
+				D3CC37AA1D6B28570019DDC0 /* ReactiveUIBindingsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -85,9 +151,9 @@
 			isa = PBXGroup;
 			children = (
 				D32E1D1B1D5B5E8300BA98BD /* Sources */,
-				D32E1CEF1D58915200BA98BD /* ObjcBridge.h */,
 				D3CC378A1D6AFA6C0019DDC0 /* Info.plist */,
 				D32E1CF01D58919F00BA98BD /* Cartfile */,
+				D3CC37A41D6B1E6E0019DDC0 /* Cartfile.private */,
 				D3CC37881D6AFA6C0019DDC0 /* ReactiveUIBindings.h */,
 			);
 			path = ReactiveCollection;
@@ -96,6 +162,8 @@
 		D32E1CF21D58926800BA98BD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D3CC37B61D6B28EA0019DDC0 /* Nimble.framework */,
+				D3CC37B71D6B28EA0019DDC0 /* Quick.framework */,
 				D32E1CF61D58943D00BA98BD /* ReactiveCocoa.framework */,
 				D32E1CF31D58927800BA98BD /* Result.framework */,
 			);
@@ -165,11 +233,22 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
-		D3CC37871D6AFA6C0019DDC0 /* ReactiveUIBindings */ = {
+		D3CC37AB1D6B28570019DDC0 /* ReactiveUIBindingsTests */ = {
 			isa = PBXGroup;
 			children = (
+				D3CC37CF1D6D99450019DDC0 /* Helpers */,
+				D3CC37AE1D6B28570019DDC0 /* Info.plist */,
+				D3CC37C71D6C71990019DDC0 /* ReactiveCollectionTests.swift */,
 			);
-			path = ReactiveUIBindings;
+			path = ReactiveUIBindingsTests;
+			sourceTree = "<group>";
+		};
+		D3CC37CF1D6D99450019DDC0 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D3CC37D01D6D995C0019DDC0 /* TestHelpers.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,6 +283,25 @@
 			productReference = D3CC37861D6AFA6C0019DDC0 /* ReactiveUIBindings.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		D3CC37A91D6B28570019DDC0 /* ReactiveUIBindingsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D3CC37B21D6B28570019DDC0 /* Build configuration list for PBXNativeTarget "ReactiveUIBindingsTests" */;
+			buildPhases = (
+				D3CC37A61D6B28570019DDC0 /* Sources */,
+				D3CC37A71D6B28570019DDC0 /* Frameworks */,
+				D3CC37BC1D6B29540019DDC0 /* CopyFiles */,
+				D3CC37B51D6B28D50019DDC0 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D3CC37B11D6B28570019DDC0 /* PBXTargetDependency */,
+			);
+			name = ReactiveUIBindingsTests;
+			productName = ReactiveUIBindingsTests;
+			productReference = D3CC37AA1D6B28570019DDC0 /* ReactiveUIBindingsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -215,6 +313,9 @@
 				ORGANIZATIONNAME = "Codewise Sp. z o.o. Sp. K.";
 				TargetAttributes = {
 					D3CC37851D6AFA6C0019DDC0 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					D3CC37A91D6B28570019DDC0 = {
 						CreatedOnToolsVersion = 7.3.1;
 					};
 				};
@@ -233,6 +334,7 @@
 			projectRoot = "";
 			targets = (
 				D3CC37851D6AFA6C0019DDC0 /* ReactiveUIBindings */,
+				D3CC37A91D6B28570019DDC0 /* ReactiveUIBindingsTests */,
 			);
 		};
 /* End PBXProject section */
@@ -242,6 +344,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3CC37A51D6B1E6E0019DDC0 /* Cartfile.private in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,7 +372,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D3CC37A61D6B28570019DDC0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3CC37D61D6DAD8C0019DDC0 /* ReactiveCollectionTests.swift in Sources */,
+				D3CC37D11D6D995C0019DDC0 /* TestHelpers.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D3CC37B11D6B28570019DDC0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D3CC37851D6AFA6C0019DDC0 /* ReactiveUIBindings */;
+			targetProxy = D3CC37B01D6B28570019DDC0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		D32E1CEA1D58912E00BA98BD /* Debug */ = {
@@ -407,6 +527,34 @@
 			};
 			name = Release;
 		};
+		D3CC37B31D6B28570019DDC0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = ReactiveUIBindingsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.codewise.ReactiveUIBindingsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D3CC37B41D6B28570019DDC0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = ReactiveUIBindingsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.codewise.ReactiveUIBindingsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -424,6 +572,15 @@
 			buildConfigurations = (
 				D3CC378B1D6AFA6C0019DDC0 /* Debug */,
 				D3CC378C1D6AFA6C0019DDC0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D3CC37B21D6B28570019DDC0 /* Build configuration list for PBXNativeTarget "ReactiveUIBindingsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D3CC37B31D6B28570019DDC0 /* Debug */,
+				D3CC37B41D6B28570019DDC0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
