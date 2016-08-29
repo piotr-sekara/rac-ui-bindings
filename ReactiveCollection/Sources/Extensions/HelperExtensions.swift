@@ -9,7 +9,8 @@
 import Foundation
 import ObjectiveC.runtime
 import UIKit
-
+import ReactiveCocoa
+import Result
 
 public protocol DataReloadable: class {
     static var optionalDataSourceSelectors: [String] { get }
@@ -36,6 +37,12 @@ extension NSObject {
             forwardMethodStrings.append(String(method_getName(forwardMethods[i])))
         }
         return (forwardMethods, forwardMethodStrings)
+    }
+    
+    func rac_willDeallocSignal() -> SignalProducer<(), NoError> {
+        return self.rac_willDeallocSignal().toSignalProducer().map { _ -> () in }.flatMapError { _ -> SignalProducer<(), NoError> in
+            return SignalProducer<(), NoError>.empty
+        }
     }
     
 }
