@@ -34,7 +34,9 @@
 		D3CC37C11D6B2A5F0019DDC0 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D32E1CF31D58927800BA98BD /* Result.framework */; };
 		D3CC37C21D6B2A610019DDC0 /* Result.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D32E1CF31D58927800BA98BD /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D3CC37D11D6D995C0019DDC0 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CC37D01D6D995C0019DDC0 /* TestHelpers.swift */; };
-		D3CC37D61D6DAD8C0019DDC0 /* ReactiveCollectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CC37C71D6C71990019DDC0 /* ReactiveCollectionTests.swift */; };
+		D3CC37DF1D7066DE0019DDC0 /* UIControl+RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CC37DE1D7066DE0019DDC0 /* UIControl+RAC.swift */; };
+		D3CC37E11D706A8A0019DDC0 /* UIButton+RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CC37E01D706A8A0019DDC0 /* UIButton+RAC.swift */; };
+		D3CC37E31D7431B70019DDC0 /* ReactiveButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CC37E21D7431B70019DDC0 /* ReactiveButtonTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +104,9 @@
 		D3CC37B71D6B28EA0019DDC0 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		D3CC37C71D6C71990019DDC0 /* ReactiveCollectionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveCollectionTests.swift; sourceTree = "<group>"; };
 		D3CC37D01D6D995C0019DDC0 /* TestHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
+		D3CC37DE1D7066DE0019DDC0 /* UIControl+RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIControl+RAC.swift"; sourceTree = "<group>"; };
+		D3CC37E01D706A8A0019DDC0 /* UIButton+RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+RAC.swift"; sourceTree = "<group>"; };
+		D3CC37E21D7431B70019DDC0 /* ReactiveButtonTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveButtonTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,6 +220,8 @@
 			children = (
 				D32E1D2C1D5B601F00BA98BD /* RACExtensions.swift */,
 				D32E1D431D5DF69D00BA98BD /* HelperExtensions.swift */,
+				D3CC37DE1D7066DE0019DDC0 /* UIControl+RAC.swift */,
+				D3CC37E01D706A8A0019DDC0 /* UIButton+RAC.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -239,6 +246,7 @@
 				D3CC37CF1D6D99450019DDC0 /* Helpers */,
 				D3CC37AE1D6B28570019DDC0 /* Info.plist */,
 				D3CC37C71D6C71990019DDC0 /* ReactiveCollectionTests.swift */,
+				D3CC37E21D7431B70019DDC0 /* ReactiveButtonTests.swift */,
 			);
 			path = ReactiveUIBindingsTests;
 			sourceTree = "<group>";
@@ -361,7 +369,9 @@
 				D3CC37991D6AFB0F0019DDC0 /* UICollectionView+RAC.swift in Sources */,
 				D3CC37A01D6AFC2A0019DDC0 /* UICollectionView+RAC.m in Sources */,
 				D3CC379B1D6AFB2C0019DDC0 /* ReusableView.swift in Sources */,
+				D3CC37DF1D7066DE0019DDC0 /* UIControl+RAC.swift in Sources */,
 				D3CC379C1D6AFB300019DDC0 /* UITableView+RAC.swift in Sources */,
+				D3CC37E11D706A8A0019DDC0 /* UIButton+RAC.swift in Sources */,
 				D3CC37971D6AFB0F0019DDC0 /* RACCollectionViewDataSourceProxy.swift in Sources */,
 				D3CC37A11D6B00560019DDC0 /* UITableView+RAC.m in Sources */,
 				D3CC37921D6AFB0A0019DDC0 /* RACDataSourceType.swift in Sources */,
@@ -376,8 +386,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3CC37D61D6DAD8C0019DDC0 /* ReactiveCollectionTests.swift in Sources */,
 				D3CC37D11D6D995C0019DDC0 /* TestHelpers.swift in Sources */,
+				D3CC37E31D7431B70019DDC0 /* ReactiveButtonTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -583,6 +593,7 @@
 				D3CC37B41D6B28570019DDC0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

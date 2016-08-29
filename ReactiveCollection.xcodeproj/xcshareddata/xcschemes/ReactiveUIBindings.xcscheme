@@ -28,7 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D3CC37A91D6B28570019DDC0"
+               BuildableName = "ReactiveUIBindingsTests.xctest"
+               BlueprintName = "ReactiveUIBindingsTests"
+               ReferencedContainer = "container:ReactiveCollection.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "D3CC37851D6AFA6C0019DDC0"
+            BuildableName = "ReactiveUIBindings.framework"
+            BlueprintName = "ReactiveUIBindings"
+            ReferencedContainer = "container:ReactiveCollection.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
