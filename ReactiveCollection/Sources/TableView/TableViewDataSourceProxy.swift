@@ -1,5 +1,5 @@
 //
-//  RACTableViewDataSourceProxy.swift
+//  TableViewDataSourceProxy.swift
 //  ReactiveCollection
 //
 //  Created by Paweł Sękara on 10.08.2016.
@@ -12,7 +12,7 @@ import ReactiveCocoa
 import Result
 
 
-public class RACTableViewDataSourceProxy: RACCollectionDataSourceProxy<UITableView, RACTableViewCellProvider>, UITableViewDataSource {
+public class TableViewDataSourceProxy: CollectionDataSourceProxy<UITableView, TableViewCellProvider>, UITableViewDataSource {
     
     public init(tableView: UITableView) {
         super.init(parent: tableView)
@@ -24,7 +24,7 @@ public class RACTableViewDataSourceProxy: RACCollectionDataSourceProxy<UITableVi
             fatalError("Invalid object specified")
         }
         
-        return RACTableViewDataSourceProxy(tableView: tableView)
+        return TableViewDataSourceProxy(tableView: tableView)
     }
     
     public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -42,7 +42,7 @@ public class RACTableViewDataSourceProxy: RACCollectionDataSourceProxy<UITableVi
 }
 
 //Generics <-> Objc stuff
-public class RACTableViewCellProvider: RACCellProviderType {
+public class TableViewCellProvider: CellProviderType {
     
     public func object(object: UITableView, numberOfItemsInSection section: Int) -> Int {
         fatalError("Abstract function, should not be used directly")

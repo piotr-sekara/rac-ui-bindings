@@ -1,5 +1,5 @@
 //
-//  RACDataSourceProxy.swift
+//  DelegateProxy.swift
 //  ReactiveCollection
 //
 //  Created by Paweł Sękara on 10.08.2016.
@@ -10,13 +10,13 @@ import Foundation
 import ObjectiveC.runtime
 import ReactiveCocoa
 
-public protocol RACDataSourceProxyType {
+public protocol DelegateProxyType {
     static func associatedProxy(object: AnyObject) -> AnyObject?
     static func setAssociatedProxy(proxy: AnyObject, to object: AnyObject)
     static func createProxy(forObject object: AnyObject) -> AnyObject
 }
 
-public extension RACDataSourceProxyType {
+public extension DelegateProxyType {
     
     public static func proxy(forObject object: AnyObject) -> Self {
         if let proxy = Self.associatedProxy(object) as? Self {
@@ -35,7 +35,7 @@ public extension RACDataSourceProxyType {
     
 }
 
-public class RACDataSourceProxy: NSObject, RACDataSourceProxyType {
+public class DelegateProxy: NSObject, DelegateProxyType {
     private struct AssociatedKeys {
         static var rac_delegateProxyKey = "rac_delegateProxyKey"
     }

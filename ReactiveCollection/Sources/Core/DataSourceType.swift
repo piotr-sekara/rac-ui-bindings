@@ -1,5 +1,5 @@
 //
-//  RACDataSourceType.swift
+//  DataSourceType.swift
 //  ReactiveCollection
 //
 //  Created by Paweł Sękara on 11.08.2016.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol RACDataSourceType {
+public protocol DataSourceType {
     associatedtype E
     associatedtype Cell
     associatedtype O

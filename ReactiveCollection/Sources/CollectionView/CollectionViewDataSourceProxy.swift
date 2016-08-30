@@ -1,5 +1,5 @@
 //
-//  RACCollectionViewDataSourceProxy.swift
+//  CollectionViewDataSourceProxy.swift
 //  ReactiveCollection
 //
 //  Created by Paweł Sękara on 11.08.2016.
@@ -12,7 +12,7 @@ import Result
 import ReactiveCocoa
 
 
-public class RACCollectionViewDataSourceProxy: RACCollectionDataSourceProxy<UICollectionView, RACCollectionViewCellProvider>, UICollectionViewDataSource {
+public class CollectionViewDataSourceProxy: CollectionDataSourceProxy<UICollectionView, CollectionViewCellProvider>, UICollectionViewDataSource {
 
     public init(collectionView: UICollectionView) {
         super.init(parent: collectionView)
@@ -24,7 +24,7 @@ public class RACCollectionViewDataSourceProxy: RACCollectionDataSourceProxy<UICo
             fatalError("Invalid object specified")
         }
         
-        return RACCollectionViewDataSourceProxy(collectionView: collectionView)
+        return CollectionViewDataSourceProxy(collectionView: collectionView)
     }
     
     public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -42,7 +42,7 @@ public class RACCollectionViewDataSourceProxy: RACCollectionDataSourceProxy<UICo
 
 
 //Generics <-> Objc stuff
-public class RACCollectionViewCellProvider: RACCellProviderType {
+public class CollectionViewCellProvider: CellProviderType {
     public func object(object: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         fatalError("Abstract function, should not be used directly")
     }

@@ -15,13 +15,13 @@ public extension UICollectionView {
     
     public var forwardDataSource: UICollectionViewDataSource? {
         get {
-            guard let proxy = self.dataSource as? RACDataSourceProxy else {
+            guard let proxy = self.dataSource as? DelegateProxy else {
                 return nil
             }
             return proxy.forwardDataSource as? UICollectionViewDataSource
         }
         set {
-            let proxy = RACCollectionViewDataSourceProxy.proxy(forObject: self)
+            let proxy = CollectionViewDataSourceProxy.proxy(forObject: self)
             proxy.forwardDataSource = newValue as? NSObject
         }
     }
@@ -61,7 +61,7 @@ public extension UICollectionView {
         -> Disposable {
             return { producer in
                 return { config in
-                    let dataSource = RACCollectionViewDataSource<S.Generator.Element, Cell>(identifier: cellIdentifier, cellConfiguration: { (cv, idxPath, elem) -> Cell in
+                    let dataSource = CollectionViewDataSource<S.Generator.Element, Cell>(identifier: cellIdentifier, cellConfiguration: { (cv, idxPath, elem) -> Cell in
                         guard let cell = cv.dequeueReusableCellWithReuseIdentifier(cellIdentifier, forIndexPath: idxPath) as? Cell else {
                             fatalError("Could not dequeue cell with identifier \(cellIdentifier) for indexPath \(idxPath)")
                         }
@@ -74,7 +74,7 @@ public extension UICollectionView {
             }
     }
     
-    public func rac_items<DS: protocol<RACDataSourceType, RACCellProviderType>, S: SequenceType, P: PropertyType where P.Value == S, DS.E == S.Generator.Element>
+    public func rac_items<DS: protocol<DataSourceType, CellProviderType>, S: SequenceType, P: PropertyType where P.Value == S, DS.E == S.Generator.Element>
         (dataSource dataSource: DS)
         -> (source: P)
         -> Disposable {
@@ -83,12 +83,12 @@ public extension UICollectionView {
             }
     }
     
-    public func rac_items<DS: protocol<RACDataSourceType, RACCellProviderType>, S: SequenceType, P: SignalProducerType where P.Value == S, DS.E == S.Generator.Element, P.Error == NoError>
+    public func rac_items<DS: protocol<DataSourceType, CellProviderType>, S: SequenceType, P: SignalProducerType where P.Value == S, DS.E == S.Generator.Element, P.Error == NoError>
         (dataSource dataSource: DS)
         -> (producer: P)
         -> Disposable {
             return { producer in
-                let proxy = RACCollectionViewDataSourceProxy.proxy(forObject: self)
+                let proxy = CollectionViewDataSourceProxy.proxy(forObject: self)
                 return proxy.registerDataSource(dataSource, forObject: self, signalProducer: producer)
             }
     }
