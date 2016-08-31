@@ -13,7 +13,7 @@ import Result
 
 public extension UICollectionView {
     
-    public var forwardDataSource: UICollectionViewDataSource? {
+    public weak var forwardDataSource: UICollectionViewDataSource? {
         get {
             guard let proxy = self.dataSource as? DelegateProxy else {
                 return nil

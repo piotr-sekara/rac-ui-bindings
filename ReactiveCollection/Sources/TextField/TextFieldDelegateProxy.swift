@@ -23,6 +23,10 @@ public class TextFieldDelegateProxy: DelegateProxy {
         return self.rac_textFieldDidEndEditing.0
     }
     
+    public var rac_textSignal: Signal<String, NoError> {
+        return self.rac_textDidChangeSignal.0
+    }
+    
     
     public init(textField: UITextField) {
         super.init()
@@ -30,6 +34,7 @@ public class TextFieldDelegateProxy: DelegateProxy {
         self.forwardDelegate = self.textField?.delegate as? NSObject
         self.textField?.delegate = self //some forward delegate
     }
+    
     
     public override static func createProxy(forObject object: AnyObject) -> AnyObject {
         guard let textField = object as? UITextField else {
@@ -39,11 +44,18 @@ public class TextFieldDelegateProxy: DelegateProxy {
         return TextFieldDelegateProxy(textField: textField)
     }
     
-    private let rac_textFieldDidBeginEditing = Signal<Void, NoError>.pipe()
-    private let rac_textFieldDidEndEditing = Signal<Void, NoError>.pipe()
+    private let rac_textFieldDidBeginEditing    = Signal<Void, NoError>.pipe()
+    private let rac_textFieldDidEndEditing      = Signal<Void, NoError>.pipe()
+    private let rac_textDidChangeSignal         = Signal<String, NoError>.pipe()
 }
 
 extension TextFieldDelegateProxy: UITextFieldDelegate {
+    
+    public func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        self.rac_textDidChangeSignal.1.sendNext(((textField.text ?? "") as NSString).stringByReplacingCharactersInRange(range, withString: string))
+        
+        return (self.forwardDelegate as? UITextFieldDelegate)?.textField?(textField, shouldChangeCharactersInRange: range, replacementString: string) ?? true
+    }
     
     public func textFieldDidBeginEditing(textField: UITextField) {
         self.rac_textFieldDidBeginEditing.1.sendNext(())

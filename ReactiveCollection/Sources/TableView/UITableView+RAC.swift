@@ -13,7 +13,7 @@ import Result
 
 public extension UITableView {
     
-    public var forwardDataSource: UITableViewDataSource? {
+    public weak var forwardDataSource: UITableViewDataSource? {
         get {
             guard let proxy = self.dataSource as? DelegateProxy else {
                 return nil
