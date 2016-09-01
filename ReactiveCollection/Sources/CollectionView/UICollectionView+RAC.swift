@@ -13,16 +13,16 @@ import Result
 
 public extension UICollectionView {
     
-    public var forwardDataSource: UICollectionViewDataSource? {
+    public weak var forwardDataSource: UICollectionViewDataSource? {
         get {
             guard let proxy = self.dataSource as? DelegateProxy else {
                 return nil
             }
-            return proxy.forwardDataSource as? UICollectionViewDataSource
+            return proxy.forwardDelegate as? UICollectionViewDataSource
         }
         set {
             let proxy = CollectionViewDataSourceProxy.proxy(forObject: self)
-            proxy.forwardDataSource = newValue as? NSObject
+            proxy.forwardDelegate = newValue as? NSObject
         }
     }
     

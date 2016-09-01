@@ -22,9 +22,9 @@ public class CollectionDataSourceProxy<C: DataReloadable, T: CellProviderType wh
     
     public weak private(set) var parent: C?
     
-    public override var forwardDataSource: NSObject? {
+    public override var forwardDelegate: NSObject? {
         didSet {
-            self.copyForwardDataSourceMethods()
+            self.copyforwardDelegateMethods()
         }
     }
     
@@ -58,7 +58,7 @@ public class CollectionDataSourceProxy<C: DataReloadable, T: CellProviderType wh
     public override func respondsToSelector(aSelector: Selector) -> Bool {
         let dsSelectors = C.optionalDataSourceSelectors
         
-        if dsSelectors.contains(String(aSelector)) && self.forwardDataSource == nil {
+        if dsSelectors.contains(String(aSelector)) && self.forwardDelegate == nil {
             return false
         }
         
@@ -94,9 +94,9 @@ extension CollectionDataSourceProxy: CellProviderType {
 //MARK: - Private
 extension CollectionDataSourceProxy {
     
-    private func copyForwardDataSourceMethods() {
+    private func copyforwardDelegateMethods() {
         let protocolMethodStrings = C.optionalDataSourceSelectors
-        if let ds = self.forwardDataSource {
+        if let ds = self.forwardDelegate {
             let (forwardMethods, forwardSelectors) = ds.methodsAndSelectors
             
             for i in 0 ..< forwardSelectors.count {

@@ -13,16 +13,16 @@ import Result
 
 public extension UITableView {
     
-    public var forwardDataSource: UITableViewDataSource? {
+    public weak var forwardDataSource: UITableViewDataSource? {
         get {
             guard let proxy = self.dataSource as? DelegateProxy else {
                 return nil
             }
-            return proxy.forwardDataSource as? UITableViewDataSource
+            return proxy.forwardDelegate as? UITableViewDataSource
         }
         set {
             let proxy = TableViewDataSourceProxy.proxy(forObject: self)
-            proxy.forwardDataSource = newValue as? NSObject
+            proxy.forwardDelegate = newValue as? NSObject
         }
     }
     
