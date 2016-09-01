@@ -27,7 +27,6 @@ public class TextFieldDelegateProxy: DelegateProxy {
         return self.rac_textDidChangeSignal.0
     }
     
-    
     public init(textField: UITextField) {
         super.init()
         self.textField = textField
@@ -51,20 +50,45 @@ public class TextFieldDelegateProxy: DelegateProxy {
 
 extension TextFieldDelegateProxy: UITextFieldDelegate {
     
+    public var _forwardDelegate: UITextFieldDelegate? {
+        get {
+            return super.forwardDelegate as? UITextFieldDelegate
+        }
+        set {
+            super.forwardDelegate = newValue as? NSObject
+        }
+    }
+    
+    public func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        return self._forwardDelegate?.textFieldShouldBeginEditing?(textField) ?? true
+    }
+    
+    public func textFieldShouldClear(textField: UITextField) -> Bool {
+        return self._forwardDelegate?.textFieldShouldClear?(textField) ?? true
+    }
+    
+    public func textFieldShouldReturn(textField: UITextField) -> Bool {
+        return self._forwardDelegate?.textFieldShouldReturn?(textField) ?? true
+    }
+    
+    public func textFieldShouldEndEditing(textField: UITextField) -> Bool {
+        return self._forwardDelegate?.textFieldShouldEndEditing?(textField) ?? true
+    }
+    
     public func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         self.rac_textDidChangeSignal.1.sendNext(((textField.text ?? "") as NSString).stringByReplacingCharactersInRange(range, withString: string))
         
-        return (self.forwardDelegate as? UITextFieldDelegate)?.textField?(textField, shouldChangeCharactersInRange: range, replacementString: string) ?? true
+        return self._forwardDelegate?.textField?(textField, shouldChangeCharactersInRange: range, replacementString: string) ?? true
     }
     
     public func textFieldDidBeginEditing(textField: UITextField) {
         self.rac_textFieldDidBeginEditing.1.sendNext(())
-        (self.forwardDelegate as? UITextFieldDelegate)?.textFieldDidBeginEditing?(textField)
+        self._forwardDelegate?.textFieldDidBeginEditing?(textField)
     }
     
     public func textFieldDidEndEditing(textField: UITextField) {
         self.rac_textFieldDidEndEditing.1.sendNext(())
-        (self.forwardDelegate as? UITextFieldDelegate)?.textFieldDidEndEditing?(textField)
+        self._forwardDelegate?.textFieldDidEndEditing?(textField)
     }
     
 }
