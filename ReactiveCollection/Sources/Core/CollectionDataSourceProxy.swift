@@ -1,5 +1,5 @@
 //
-//  RACCollectionDataSourceProxy.swift
+//  CollectionDataSourceProxy.swift
 //  ReactiveCollection
 //
 //  Created by Paweł Sękara on 11.08.2016.
@@ -10,7 +10,7 @@ import Foundation
 import ReactiveCocoa
 import Result
 
-public protocol RACCellProviderType: class {
+public protocol CellProviderType: class {
     associatedtype O
     associatedtype BaseCell
     
@@ -18,13 +18,13 @@ public protocol RACCellProviderType: class {
     func object(object: O, cellForItemAtIndexPath indexPath: NSIndexPath) -> BaseCell
 }
 
-public class RACCollectionDataSourceProxy<C: DataReloadable, T: RACCellProviderType where T.O == C>: RACDataSourceProxy {
+public class CollectionDataSourceProxy<C: DataReloadable, T: CellProviderType where T.O == C>: DelegateProxy {
     
     public weak private(set) var parent: C?
     
-    public override var forwardDataSource: NSObject? {
+    public override var forwardDelegate: NSObject? {
         didSet {
-            self.copyForwardDataSourceMethods()
+            self.copyforwardDelegateMethods()
         }
     }
     
@@ -36,7 +36,7 @@ public class RACCollectionDataSourceProxy<C: DataReloadable, T: RACCellProviderT
         super.init()
     }
     
-    public func registerDataSource<DS: protocol<RACDataSourceType, RACCellProviderType>, S: SequenceType, P: SignalProducerType where DS.E == S.Generator.Element, P.Value == S, P.Error == NoError>(dataSource: DS, forObject object: C, signalProducer: P) -> Disposable {
+    public func registerDataSource<DS: protocol<DataSourceType, CellProviderType>, S: SequenceType, P: SignalProducerType where DS.E == S.Generator.Element, P.Value == S, P.Error == NoError>(dataSource: DS, forObject object: C, signalProducer: P) -> Disposable {
         let compositeDisposable = CompositeDisposable()
         
         self.removeDataSource(dataSource.cellIdentifier)
@@ -58,7 +58,7 @@ public class RACCollectionDataSourceProxy<C: DataReloadable, T: RACCellProviderT
     public override func respondsToSelector(aSelector: Selector) -> Bool {
         let dsSelectors = C.optionalDataSourceSelectors
         
-        if dsSelectors.contains(String(aSelector)) && self.forwardDataSource == nil {
+        if dsSelectors.contains(String(aSelector)) && self.forwardDelegate == nil {
             return false
         }
         
@@ -67,7 +67,7 @@ public class RACCollectionDataSourceProxy<C: DataReloadable, T: RACCellProviderT
 }
 
 
-extension RACCollectionDataSourceProxy: RACCellProviderType {
+extension CollectionDataSourceProxy: CellProviderType {
     
     public func object(object: C, numberOfItemsInSection section: Int) -> Int {
         if let range = self.dataSourceRanges.last {
@@ -92,11 +92,11 @@ extension RACCollectionDataSourceProxy: RACCellProviderType {
 }
 
 //MARK: - Private
-extension RACCollectionDataSourceProxy {
+extension CollectionDataSourceProxy {
     
-    private func copyForwardDataSourceMethods() {
+    private func copyforwardDelegateMethods() {
         let protocolMethodStrings = C.optionalDataSourceSelectors
-        if let ds = self.forwardDataSource {
+        if let ds = self.forwardDelegate {
             let (forwardMethods, forwardSelectors) = ds.methodsAndSelectors
             
             for i in 0 ..< forwardSelectors.count {

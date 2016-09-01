@@ -26,7 +26,7 @@
 }
 
 - (void)rac_setDataSource:(id<UITableViewDataSource>)dataSource {
-    [RACDataSourceProxy displayWarningsIfNeeded:self.dataSource
+    [DelegateProxy displayWarningsIfNeeded:self.dataSource
                                   newDataSource:dataSource];
     
     [self rac_setDataSource:dataSource];

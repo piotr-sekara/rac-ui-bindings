@@ -13,16 +13,16 @@ import Result
 
 public extension UITableView {
     
-    public var forwardDataSource: UITableViewDataSource? {
+    public weak var forwardDataSource: UITableViewDataSource? {
         get {
-            guard let proxy = self.dataSource as? RACDataSourceProxy else {
+            guard let proxy = self.dataSource as? DelegateProxy else {
                 return nil
             }
-            return proxy.forwardDataSource as? UITableViewDataSource
+            return proxy.forwardDelegate as? UITableViewDataSource
         }
         set {
-            let proxy = RACTableViewDataSourceProxy.proxy(forObject: self)
-            proxy.forwardDataSource = newValue as? NSObject
+            let proxy = TableViewDataSourceProxy.proxy(forObject: self)
+            proxy.forwardDelegate = newValue as? NSObject
         }
     }
     
@@ -59,7 +59,7 @@ public extension UITableView {
         -> Disposable {
             return { producer in
                 return { config in
-                    let dataSource = RACTableViewDataSource<S.Generator.Element, Cell>(identifier: cellIdentifier, cellConfiguration: { (tv, idxPath, elem) -> Cell in
+                    let dataSource = TableViewDataSource<S.Generator.Element, Cell>(identifier: cellIdentifier, cellConfiguration: { (tv, idxPath, elem) -> Cell in
                         guard let cell = tv.dequeueReusableCellWithIdentifier(cellIdentifier) as? Cell else {
                             fatalError("Could not dequeue cell with identifier \(cellIdentifier) for indexPath \(idxPath)")
                         }
@@ -72,7 +72,7 @@ public extension UITableView {
             }
     }
     
-    func rac_items<DS: protocol<RACDataSourceType, RACCellProviderType>, S: SequenceType, P: PropertyType where P.Value == S, DS.E == S.Generator.Element>
+    func rac_items<DS: protocol<DataSourceType, CellProviderType>, S: SequenceType, P: PropertyType where P.Value == S, DS.E == S.Generator.Element>
         (dataSource dataSource: DS)
         -> (source: P)
         -> Disposable {
@@ -81,12 +81,12 @@ public extension UITableView {
             }
     }
     
-    func rac_items<DS: protocol<RACDataSourceType, RACCellProviderType>, S: SequenceType, P: SignalProducerType where P.Value == S, DS.E == S.Generator.Element, P.Error == NoError>
+    func rac_items<DS: protocol<DataSourceType, CellProviderType>, S: SequenceType, P: SignalProducerType where P.Value == S, DS.E == S.Generator.Element, P.Error == NoError>
         (dataSource dataSource: DS)
         -> (producer: P)
         -> Disposable {
             return { producer in
-                let proxy = RACTableViewDataSourceProxy.proxy(forObject: self)
+                let proxy = TableViewDataSourceProxy.proxy(forObject: self)
                 return proxy.registerDataSource(dataSource, forObject: self, signalProducer: producer)
             }
     }

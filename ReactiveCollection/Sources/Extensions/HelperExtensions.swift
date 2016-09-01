@@ -19,11 +19,11 @@ public protocol DataReloadable: class {
 }
 
 extension UITableView: DataReloadable {
-    @nonobjc public static var optionalDataSourceSelectors: [String] = RACDataSourceProxy.optionalSelectorsFor(UITableViewDataSource)
+    @nonobjc public static var optionalDataSourceSelectors: [String] = DelegateProxy.optionalSelectorsFor(UITableViewDataSource)
 }
 
 extension UICollectionView: DataReloadable {
-    @nonobjc public static var optionalDataSourceSelectors: [String] = RACDataSourceProxy.optionalSelectorsFor(UICollectionViewDataSource)
+    @nonobjc public static var optionalDataSourceSelectors: [String] = DelegateProxy.optionalSelectorsFor(UICollectionViewDataSource)
 }
 
 
@@ -47,13 +47,13 @@ extension NSObject {
     
 }
 
-extension RACDataSourceProxy {
+extension DelegateProxy {
     
     public class func displayWarningsIfNeeded(selfDataSource: AnyObject?, newDataSource: AnyObject?) {
-        if newDataSource is RACDataSourceProxy && !(selfDataSource is RACDataSourceProxy) && selfDataSource != nil {
+        if newDataSource is DelegateProxy && !(selfDataSource is DelegateProxy) && selfDataSource != nil {
             print("Warning: Binding dataSource with RAC will override one that is already set.")
             print("         Setting dataSource to nil before binding will silence this warning.")
-        } else if selfDataSource is RACDataSourceProxy && newDataSource != nil {
+        } else if selfDataSource is DelegateProxy && newDataSource != nil {
             print("Warning: Setting dataSource will override RAC bindings.")
             print("         If you would like to keep RAC bindings and use other dataSource methods, please use forwardDataSource property instead.")
             print("         If you are sure you want to override RAC bindings, set dataSource to nil before setting new one.")
@@ -61,7 +61,7 @@ extension RACDataSourceProxy {
     }
 }
 
-extension RACDataSourceProxy {
+extension DelegateProxy {
     class func optionalSelectorsFor(proto: Protocol) -> [String] {
         var outCount: UInt32 = 0
         let protocolMethods = protocol_copyMethodDescriptionList(proto, false, true, &outCount)
