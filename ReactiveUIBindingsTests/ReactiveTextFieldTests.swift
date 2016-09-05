@@ -105,6 +105,17 @@ class ReactiveTextFieldTests: XCTestCase {
         expect(text).toEventually(equal("Fixture text"))
     }
     
+    func testBUG_signalShouldEmitWhenChangedManually() {
+        var text = ""
+        self.sut.rac_textSignal.startWithNext { val in
+            text = val
+        }
+        
+        self.sut.text = "Fixture text"
+        
+        expect(text).toEventually(equal("Fixture text"))
+    }
+    
     //MARK: - Delegate already set
     
     func testTextFieldBinding_havingDelegateAlready_shouldGetStartedSignal() {

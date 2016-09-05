@@ -13,7 +13,7 @@ import Result
 
 public class TextFieldDelegateProxy: DelegateProxy {
     
-    public weak private(set) var textField: UITextField?
+    public weak private(set) var textField: UITextField!
     
     public var rac_editingStarted: Signal<Void, NoError> {
         return self.rac_textFieldDidBeginEditing.0
@@ -24,7 +24,13 @@ public class TextFieldDelegateProxy: DelegateProxy {
     }
     
     public var rac_textSignal: SignalProducer<String, NoError> {
-        return self.rac_textDidChangeProperty.producer
+        let textObserver = self.textField.rac_valuesForKeyPath("text", observer: self)
+            .toSignalProducer()
+            .ignoreNil()
+            .map(String.init)
+            .flatMapError { _ in SignalProducer<String, NoError>.empty }
+            .takeUntil(self.textField.rac_willDeallocSignal())
+        return SignalProducer.merge(self.rac_textDidChangeProperty.producer, textObserver).skipRepeats()
     }
     
     public init(textField: UITextField) {
@@ -32,8 +38,12 @@ public class TextFieldDelegateProxy: DelegateProxy {
         self.textField = textField
         self.forwardDelegate = self.textField?.delegate as? NSObject
         self.textField?.delegate = self //some forward delegate
+        
     }
-    
+
+    func contentDidChange(textField: UITextField) {
+        self.rac_textDidChangeProperty.value = textField.text ?? ""
+    }
     
     public override static func createProxy(forObject object: AnyObject) -> AnyObject {
         guard let textField = object as? UITextField else {
