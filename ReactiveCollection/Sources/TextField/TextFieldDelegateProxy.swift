@@ -23,8 +23,8 @@ public class TextFieldDelegateProxy: DelegateProxy {
         return self.rac_textFieldDidEndEditing.0
     }
     
-    public var rac_textSignal: Signal<String, NoError> {
-        return self.rac_textDidChangeSignal.0
+    public var rac_textSignal: SignalProducer<String, NoError> {
+        return self.rac_textDidChangeProperty.producer
     }
     
     public init(textField: UITextField) {
@@ -45,7 +45,7 @@ public class TextFieldDelegateProxy: DelegateProxy {
     
     private let rac_textFieldDidBeginEditing    = Signal<Void, NoError>.pipe()
     private let rac_textFieldDidEndEditing      = Signal<Void, NoError>.pipe()
-    private let rac_textDidChangeSignal         = Signal<String, NoError>.pipe()
+    private let rac_textDidChangeProperty       = MutableProperty<String>("")
 }
 
 extension TextFieldDelegateProxy: UITextFieldDelegate {
@@ -76,7 +76,7 @@ extension TextFieldDelegateProxy: UITextFieldDelegate {
     }
     
     public func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        self.rac_textDidChangeSignal.1.sendNext(((textField.text ?? "") as NSString).stringByReplacingCharactersInRange(range, withString: string))
+        self.rac_textDidChangeProperty.swap(((textField.text ?? "") as NSString).stringByReplacingCharactersInRange(range, withString: string))
         
         return self._forwardDelegate?.textField?(textField, shouldChangeCharactersInRange: range, replacementString: string) ?? true
     }

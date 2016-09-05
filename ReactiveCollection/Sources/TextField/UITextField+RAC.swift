@@ -37,7 +37,7 @@ public extension UITextField {
         return proxy.rac_editingEnded
     }
     
-    public var rac_textSignal: Signal<String, NoError> {
+    public var rac_textSignal: SignalProducer<String, NoError> {
         let proxy = TextFieldDelegateProxy.proxy(forObject: self)
         return proxy.rac_textSignal
     }

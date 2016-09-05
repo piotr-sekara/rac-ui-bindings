@@ -96,7 +96,7 @@ class ReactiveTextFieldTests: XCTestCase {
     
     func testTextFieldBinding_changingTextFieldContent_shouldGetContentViaSignal() {
         var text = ""
-        self.sut.rac_textSignal.observeNext { val in
+        self.sut.rac_textSignal.startWithNext { val in
             text = val
         }
         
@@ -136,7 +136,7 @@ class ReactiveTextFieldTests: XCTestCase {
     func testTextFieldBinding_havingDelegateAlready_shouldGetTextSignal() {
         self.sut.delegate = self.delegate
         var text = ""
-        self.sut.rac_textSignal.observeNext { val in
+        self.sut.rac_textSignal.startWithNext { val in
             text = val
         }
         
@@ -152,7 +152,7 @@ class ReactiveTextFieldTests: XCTestCase {
         var eventsObserved = 0
         self.sut.rac_editingStarted.observeNext { eventsObserved += 1 }
         self.sut.rac_editingEnded.observeNext { eventsObserved += 1 }
-        self.sut.rac_textSignal.observeNext { _ in eventsObserved += 1 }
+        self.sut.rac_textSignal.skip(1).startWithNext { _ in eventsObserved += 1 }
         
         self.sut.delegate?.textFieldDidBeginEditing?(self.sut)
         self.sut.delegate?.textFieldDidEndEditing?(self.sut)
