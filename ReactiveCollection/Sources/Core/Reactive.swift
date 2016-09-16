@@ -28,3 +28,5 @@ public extension ReactiveProtocol {
         return Reactive(self)
     }
 }
+
+extension NSObject: ReactiveProtocol {}

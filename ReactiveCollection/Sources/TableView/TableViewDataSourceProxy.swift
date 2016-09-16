@@ -12,14 +12,14 @@ import ReactiveSwift
 import Result
 
 
-public class TableViewDataSourceProxy: CollectionDataSourceProxy<UITableView, TableViewCellProvider>, UITableViewDataSource {
+open class TableViewDataSourceProxy: CollectionDataSourceProxy<UITableView, TableViewCellProvider>, UITableViewDataSource {
     
     public init(tableView: UITableView) {
         super.init(parent: tableView)
         self.parent?.dataSource = self
     }
     
-    public override static func createProxy(forObject object: AnyObject) -> AnyObject {
+    open override static func createProxy(forObject object: AnyObject) -> AnyObject {
         guard let tableView = object as? UITableView else {
             fatalError("Invalid object specified")
         }
@@ -42,7 +42,7 @@ public class TableViewDataSourceProxy: CollectionDataSourceProxy<UITableView, Ta
 }
 
 //Generics <-> Objc stuff
-public class TableViewCellProvider: CellProviderType {
+open class TableViewCellProvider: CellProviderType {
     
     public func object(_ object: UITableView, numberOfItemsInSection section: Int) -> Int {
         fatalError("Abstract function, should not be used directly")

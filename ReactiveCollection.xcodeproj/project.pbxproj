@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D33BD8411D8C164C002D15B8 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3BFAFAD1D8AB922008A529A /* ReactiveSwift.framework */; };
+		D33BD8421D8C165A002D15B8 /* ReactiveSwift.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D3BFAFAD1D8AB922008A529A /* ReactiveSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D33BD8441D8C1813002D15B8 /* NSObject+RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33BD8431D8C1813002D15B8 /* NSObject+RAC.swift */; };
 		D37D1E6E1D77129900C897AB /* UITextField+RAC.m in Sources */ = {isa = PBXBuildFile; fileRef = D37D1E6D1D77129900C897AB /* UITextField+RAC.m */; };
 		D3BFAFAE1D8AB922008A529A /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3BFAFAD1D8AB922008A529A /* ReactiveSwift.framework */; };
 		D3BFAFB01D8BE876008A529A /* Reactive.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BFAFAF1D8BE876008A529A /* Reactive.swift */; };
@@ -68,6 +71,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				D33BD8421D8C165A002D15B8 /* ReactiveSwift.framework in CopyFiles */,
 				D3CC37BD1D6B295A0019DDC0 /* Nimble.framework in CopyFiles */,
 				D3CC37C21D6B2A610019DDC0 /* Result.framework in CopyFiles */,
 				D3CC37BE1D6B295A0019DDC0 /* Quick.framework in CopyFiles */,
@@ -94,6 +98,7 @@
 		D32E1D3F1D5DC78800BA98BD /* UITableView+RAC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+RAC.h"; sourceTree = "<group>"; };
 		D32E1D401D5DC78800BA98BD /* UITableView+RAC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+RAC.m"; sourceTree = "<group>"; };
 		D32E1D431D5DF69D00BA98BD /* HelperExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperExtensions.swift; sourceTree = "<group>"; };
+		D33BD8431D8C1813002D15B8 /* NSObject+RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+RAC.swift"; sourceTree = "<group>"; };
 		D37D1E6B1D77126D00C897AB /* UITextField+RAC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+RAC.h"; sourceTree = "<group>"; };
 		D37D1E6D1D77129900C897AB /* UITextField+RAC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+RAC.m"; sourceTree = "<group>"; };
 		D3BFAFAD1D8AB922008A529A /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = Carthage/Build/iOS/ReactiveSwift.framework; sourceTree = "<group>"; };
@@ -130,6 +135,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3CC37AF1D6B28570019DDC0 /* ReactiveUIBindings.framework in Frameworks */,
+				D33BD8411D8C164C002D15B8 /* ReactiveSwift.framework in Frameworks */,
 				D3CC37B81D6B28EA0019DDC0 /* Nimble.framework in Frameworks */,
 				D3CC37C11D6B2A5F0019DDC0 /* Result.framework in Frameworks */,
 				D3CC37B91D6B28EA0019DDC0 /* Quick.framework in Frameworks */,
@@ -235,6 +241,7 @@
 				D32E1D3B1D5CB29700BA98BD /* UICollectionView+RAC.h */,
 				D32E1D3C1D5CB29700BA98BD /* UICollectionView+RAC.m */,
 				D3BFAFAF1D8BE876008A529A /* Reactive.swift */,
+				D33BD8431D8C1813002D15B8 /* NSObject+RAC.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -378,6 +385,7 @@
 			files = (
 				D3CC37981D6AFB0F0019DDC0 /* CollectionViewDataSource.swift in Sources */,
 				D3BFAFB01D8BE876008A529A /* Reactive.swift in Sources */,
+				D33BD8441D8C1813002D15B8 /* NSObject+RAC.swift in Sources */,
 				D3CC37EA1D75C4170019DDC0 /* UITextField+RAC.swift in Sources */,
 				D3CC37961D6AFB0D0019DDC0 /* HelperExtensions.swift in Sources */,
 				D3CC37EC1D75C6500019DDC0 /* TextFieldDelegateProxy.swift in Sources */,
@@ -459,7 +467,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -501,7 +509,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

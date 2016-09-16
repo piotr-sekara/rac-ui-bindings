@@ -25,6 +25,7 @@ public class TextFieldDelegateProxy: DelegateProxy {
     
     //TODO: fixme
     public var rac_textSignal: SignalProducer<String, NoError> {
+
 //        let textObserver = self.textField.rac_valuesForKeyPath("text", observer: self)
 //            .toSignalProducer()
 //            .ignoreNil()

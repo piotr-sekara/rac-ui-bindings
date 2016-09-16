@@ -12,14 +12,14 @@ import ReactiveSwift
 
 public extension PropertyProtocol where Value: Sequence {
     
-    func bindTo<R1, R2>(binding: (Self) -> (R1) -> R2, curriedArg: R1) -> R2 {
+    func bindTo<R1, R2>(_ binding: (Self) -> (R1) -> R2, curriedArg: R1) -> R2 {
         return binding(self)(curriedArg)
     }
 }
 
 public extension SignalProducerProtocol where Value: Sequence {
     
-    func bindTo<R1, R2>(binding: (Self) -> (R1) -> R2, curriedArg: R1) -> R2 {
+    func bindTo<R1, R2>(_ binding: (Self) -> (R1) -> R2, curriedArg: R1) -> R2 {
         return binding(self)(curriedArg)
     }
 }

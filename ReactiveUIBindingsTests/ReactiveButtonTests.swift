@@ -11,7 +11,7 @@ import XCTest
 import Nimble
 
 @testable import ReactiveUIBindings
-import ReactiveCocoa
+import ReactiveSwift
 import Result
 
 class ReactiveButtonTests: XCTestCase {
@@ -34,17 +34,17 @@ class ReactiveButtonTests: XCTestCase {
     }
     
     func testButtonTitle_setNoTitle_shouldBeNil() {
-        expect(self.sut.titleForState(.Normal)).to(beNil())
+        expect(self.sut.title(for: .normal)).to(beNil())
     }
     
     func testButtonTitle_bindingTitlesToStates_shouldSetTitle() {
         self.setupBindings()
         
-        expect(self.sut.titleForState(.Normal)) == "titleNormal"
-        expect(self.sut.titleForState(.Highlighted)) == "titleHighlighted"
-        expect(self.sut.titleForState(.Disabled)) == "titleDisabled"
-        expect(self.sut.titleForState(.Selected)) == "titleSelected"
-        expect(self.sut.titleForState(.Focused)) == "titleFocused"
+        expect(self.sut.title(for: .normal)) == "titleNormal"
+        expect(self.sut.title(for: .highlighted)) == "titleHighlighted"
+        expect(self.sut.title(for: .disabled)) == "titleDisabled"
+        expect(self.sut.title(for: .selected)) == "titleSelected"
+        expect(self.sut.title(for: .focused)) == "titleFocused"
     }
     
     func testButtonTitle_bindingTitlesAndUpdatingStrings_shouldUpdateTitle() {
@@ -54,42 +54,42 @@ class ReactiveButtonTests: XCTestCase {
         self.titleSelected.swap("updatedSelected")
         self.titleDisabled.swap("updatedDisabled")
         
-        expect(self.sut.titleForState(.Normal)) == "updatedNormal"
-        expect(self.sut.titleForState(.Highlighted)) == "titleHighlighted"
-        expect(self.sut.titleForState(.Disabled)) == "updatedDisabled"
-        expect(self.sut.titleForState(.Selected)) == "updatedSelected"
-        expect(self.sut.titleForState(.Focused)) == "titleFocused"
+        expect(self.sut.title(for: .normal)) == "updatedNormal"
+        expect(self.sut.title(for: .highlighted)) == "titleHighlighted"
+        expect(self.sut.title(for: .disabled)) == "updatedDisabled"
+        expect(self.sut.title(for: .selected)) == "updatedSelected"
+        expect(self.sut.title(for: .focused)) == "titleFocused"
     }
     
     func testButtonEnabled_bindVariable_shouldSetAndUpdateEnabledState() {
         sut.rac_enabled <~ self.enabledProperty
         
-        expect(self.sut.enabled) == true
+        expect(self.sut.isEnabled) == true
         
         self.enabledProperty.value = false
         
-        expect(self.sut.enabled) == false
+        expect(self.sut.isEnabled) == false
     }
     
     func testButtonSelected_bindVariable_shouldSetAndUpdateSelectedState() {
         sut.rac_selected <~ self.enabledProperty
         
-        expect(self.sut.selected) == true
+        expect(self.sut.isSelected) == true
         
         self.enabledProperty.value = false
         
-        expect(self.sut.selected) == false
+        expect(self.sut.isSelected) == false
     }
     
 }
 
 
 extension ReactiveButtonTests {
-    private func setupBindings() {
-        sut.rac_titleForState(.Normal) <~ self.titleNormal
-        sut.rac_titleForState(.Highlighted) <~ self.titleHighlighted
-        sut.rac_titleForState(.Disabled) <~ self.titleDisabled
-        sut.rac_titleForState(.Selected) <~ self.titleSelected
-        sut.rac_titleForState(.Focused) <~ self.titleFocused
+    fileprivate func setupBindings() {
+        sut.rac_titleForState(.normal) <~ self.titleNormal
+        sut.rac_titleForState(.highlighted) <~ self.titleHighlighted
+        sut.rac_titleForState(.disabled) <~ self.titleDisabled
+        sut.rac_titleForState(.selected) <~ self.titleSelected
+        sut.rac_titleForState(.focused) <~ self.titleFocused
     }
 }

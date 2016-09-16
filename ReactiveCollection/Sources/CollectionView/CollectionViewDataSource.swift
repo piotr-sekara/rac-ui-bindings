@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+
 open class CollectionViewDataSource<Element, Cell: UICollectionViewCell>: CollectionViewCellProvider, DataSourceType {
 
     public typealias CellConfiguration = (UICollectionView, IndexPath, Element) -> Cell

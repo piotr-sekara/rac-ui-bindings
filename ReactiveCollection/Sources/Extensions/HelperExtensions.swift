@@ -27,33 +27,6 @@ extension UICollectionView: DataReloadable {
 }
 
 
-public extension NSObject {
-    private struct AssociatedKeys {
-        static var lifetimeToken = "lifetimeToken"
-    }
-    
-    var methodsAndSelectors: (UnsafeMutablePointer<Method?>?, [String]) {
-        var outCount: UInt32 = 0
-        let forwardMethods = class_copyMethodList(type(of: self), &outCount)
-        var forwardMethodStrings: [String] = []
-        for i in 0 ..< Int(outCount) {
-            forwardMethodStrings.append(String(describing: method_getName(forwardMethods?[i])))
-        }
-        return (forwardMethods, forwardMethodStrings)
-    }
-    
-//    var rac_lifetimeToken : Lifetime.Token {
-//        guard let token = objc_getAssociatedObject(self, &AssociatedKeys.lifetimeToken) as? Lifetime.Token else {
-//            
-//        }
-//    }
-    
-//    fileprivate var _lifetimeToken = Lifetime.Token()
-    
-}
-
-
-
 
 extension DelegateProxy {
     

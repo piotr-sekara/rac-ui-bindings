@@ -10,12 +10,12 @@ import Foundation
 import UIKit
 
 
-public class TableViewDataSource<E, Cell: UITableViewCell>: TableViewCellProvider, DataSourceType {
+open class TableViewDataSource<E, Cell: UITableViewCell>: TableViewCellProvider, DataSourceType {
     
     public typealias CellConfiguration = (UITableView, IndexPath, E) -> Cell
     
-    public let cellIdentifier: String
-    public let cellConfiguration: CellConfiguration
+    open let cellIdentifier: String
+    open let cellConfiguration: CellConfiguration
     public private(set) var models: [E]?
     
     init(identifier: String, cellConfiguration: @escaping CellConfiguration) {

@@ -36,7 +36,7 @@ open class CollectionDataSourceProxy<C: DataReloadable, T: CellProviderType>: De
         super.init()
     }
     
-    public func registerDataSource<DS: DataSourceType & CellProviderType, S: Sequence, P: SignalProducerProtocol>(dataSource: DS, forObject object: C, signalProducer: P) -> Disposable where DS.E == S.Iterator.Element, P.Value == S, P.Error == NoError {
+    open func registerDataSource<DS: DataSourceType & CellProviderType, S: Sequence, P: SignalProducerProtocol>(dataSource: DS, forObject object: C, signalProducer: P) -> Disposable where DS.E == S.Iterator.Element, P.Value == S, P.Error == NoError {
         let compositeDisposable = CompositeDisposable()
         
         self.removeDataSource(cellIdentifier: dataSource.cellIdentifier)

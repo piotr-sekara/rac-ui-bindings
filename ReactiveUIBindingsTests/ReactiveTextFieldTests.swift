@@ -11,7 +11,7 @@ import XCTest
 import Nimble
 
 @testable import ReactiveUIBindings
-import ReactiveCocoa
+import ReactiveSwift
 import Result
 
 class FakeDelegate: NSObject, UITextFieldDelegate {
@@ -100,7 +100,7 @@ class ReactiveTextFieldTests: XCTestCase {
             text = val
         }
         
-        self.sut.delegate?.textField?(sut, shouldChangeCharactersIn: NSRange(location: 0, length: 0), replacementString: "Fixture text")
+        _ = self.sut.delegate?.textField?(sut, shouldChangeCharactersIn: NSRange(location: 0, length: 0), replacementString: "Fixture text")
         
         expect(text).toEventually(equal("Fixture text"))
     }
@@ -151,7 +151,7 @@ class ReactiveTextFieldTests: XCTestCase {
             text = val
         }
         
-        self.sut.delegate?.textField?(sut, shouldChangeCharactersIn: NSRange(location: 0, length: 0), replacementString: "Fixture text")
+        _ = self.sut.delegate?.textField?(sut, shouldChangeCharactersIn: NSRange(location: 0, length: 0), replacementString: "Fixture text")
         
         expect(text).toEventually(equal("Fixture text"))
         expect(self.delegate.textSignal) == "Fixture text"
@@ -163,15 +163,15 @@ class ReactiveTextFieldTests: XCTestCase {
         var eventsObserved = 0
         self.sut.rac_editingStarted.observeNext { eventsObserved += 1 }
         self.sut.rac_editingEnded.observeNext { eventsObserved += 1 }
-        self.sut.rac_textSignal.skip(1).startWithNext { _ in eventsObserved += 1 }
+        self.sut.rac_textSignal.skip(first: 1).startWithNext { _ in eventsObserved += 1 }
         
         self.sut.delegate?.textFieldDidBeginEditing?(self.sut)
         self.sut.delegate?.textFieldDidEndEditing?(self.sut)
-        self.sut.delegate?.textField?(sut, shouldChangeCharactersIn: NSRange(location: 0, length: 0), replacementString: "Fixture text")
-        self.sut.delegate?.textFieldShouldBeginEditing?(self.sut)
-        self.sut.delegate?.textFieldShouldClear?(self.sut)
-        self.sut.delegate?.textFieldShouldReturn?(self.sut)
-        self.sut.delegate?.textFieldShouldEndEditing?(self.sut)
+        _ = self.sut.delegate?.textField?(sut, shouldChangeCharactersIn: NSRange(location: 0, length: 0), replacementString: "Fixture text")
+        _ = self.sut.delegate?.textFieldShouldBeginEditing?(self.sut)
+        _ = self.sut.delegate?.textFieldShouldClear?(self.sut)
+        _ = self.sut.delegate?.textFieldShouldReturn?(self.sut)
+        _ = self.sut.delegate?.textFieldShouldEndEditing?(self.sut)
         
         expect(eventsObserved).toEventually(equal(3))
         expect(self.delegate.textFieldShouldBeginEditing) == true
