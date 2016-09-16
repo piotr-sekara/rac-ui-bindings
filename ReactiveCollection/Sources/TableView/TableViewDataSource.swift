@@ -12,13 +12,13 @@ import UIKit
 
 public class TableViewDataSource<E, Cell: UITableViewCell>: TableViewCellProvider, DataSourceType {
     
-    public typealias CellConfiguration = (UITableView, NSIndexPath, E) -> Cell
+    public typealias CellConfiguration = (UITableView, IndexPath, E) -> Cell
     
     public let cellIdentifier: String
     public let cellConfiguration: CellConfiguration
     public private(set) var models: [E]?
     
-    init(identifier: String, cellConfiguration: CellConfiguration) {
+    init(identifier: String, cellConfiguration: @escaping CellConfiguration) {
         self.cellIdentifier = identifier
         self.cellConfiguration = cellConfiguration
     }
@@ -27,12 +27,12 @@ public class TableViewDataSource<E, Cell: UITableViewCell>: TableViewCellProvide
         self.models = update
     }
     
-    public override func object(object: UITableView, numberOfItemsInSection section: Int) -> Int {
+    public override func object(_ object: UITableView, numberOfItemsInSection section: Int) -> Int {
         guard let models = self.models else { return 0 }
         return models.count
     }
     
-    public override func object(object: UITableView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    public override func object(_ object: UITableView, cellForItemAtIndexPath indexPath: IndexPath) -> UITableViewCell {
         guard let models = self.models else { return UITableViewCell() }
         return self.cellConfiguration(object, indexPath, models[indexPath.row])
     }

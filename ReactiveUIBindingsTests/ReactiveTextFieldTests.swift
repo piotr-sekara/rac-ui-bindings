@@ -23,35 +23,35 @@ class FakeDelegate: NSObject, UITextFieldDelegate {
     var textFieldShouldReturn = false
     var textFieldShouldEndEditing = false
     
-    func textFieldDidEndEditing(textField: UITextField) {
+    func textFieldDidEndEditing(_ textField: UITextField) {
         self.editingEnded = true
     }
     
-    func textFieldDidBeginEditing(textField: UITextField) {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
         self.editingStarted = true
     }
     
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        self.textSignal = ((textField.text ?? "") as NSString).stringByReplacingCharactersInRange(range, withString: string)
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        self.textSignal = ((textField.text ?? "") as NSString).replacingCharacters(in: range, with: string)
         return true
     }
     
-    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         self.textFieldShouldBeginEditing = true
         return true
     }
     
-    func textFieldShouldClear(textField: UITextField) -> Bool {
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
         self.textFieldShouldClear = true
         return true
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.textFieldShouldReturn = true
         return true
     }
     
-    func textFieldShouldEndEditing(textField: UITextField) -> Bool {
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         self.textFieldShouldEndEditing = true
         return true
     }
@@ -100,7 +100,7 @@ class ReactiveTextFieldTests: XCTestCase {
             text = val
         }
         
-        self.sut.delegate?.textField?(sut, shouldChangeCharactersInRange: NSRange(location: 0, length: 0), replacementString: "Fixture text")
+        self.sut.delegate?.textField?(sut, shouldChangeCharactersIn: NSRange(location: 0, length: 0), replacementString: "Fixture text")
         
         expect(text).toEventually(equal("Fixture text"))
     }
@@ -151,7 +151,7 @@ class ReactiveTextFieldTests: XCTestCase {
             text = val
         }
         
-        self.sut.delegate?.textField?(sut, shouldChangeCharactersInRange: NSRange(location: 0, length: 0), replacementString: "Fixture text")
+        self.sut.delegate?.textField?(sut, shouldChangeCharactersIn: NSRange(location: 0, length: 0), replacementString: "Fixture text")
         
         expect(text).toEventually(equal("Fixture text"))
         expect(self.delegate.textSignal) == "Fixture text"
@@ -167,7 +167,7 @@ class ReactiveTextFieldTests: XCTestCase {
         
         self.sut.delegate?.textFieldDidBeginEditing?(self.sut)
         self.sut.delegate?.textFieldDidEndEditing?(self.sut)
-        self.sut.delegate?.textField?(sut, shouldChangeCharactersInRange: NSRange(location: 0, length: 0), replacementString: "Fixture text")
+        self.sut.delegate?.textField?(sut, shouldChangeCharactersIn: NSRange(location: 0, length: 0), replacementString: "Fixture text")
         self.sut.delegate?.textFieldShouldBeginEditing?(self.sut)
         self.sut.delegate?.textFieldShouldClear?(self.sut)
         self.sut.delegate?.textFieldShouldReturn?(self.sut)

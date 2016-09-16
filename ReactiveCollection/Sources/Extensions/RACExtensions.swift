@@ -7,26 +7,27 @@
 //
 
 import Foundation
-import ReactiveCocoa
+import ReactiveSwift
 
 
-public extension PropertyType where Value: SequenceType {
+public extension PropertyProtocol where Value: Sequence {
     
-    func bindTo<R1, R2>(binding: Self -> R1 -> R2, curriedArg: R1) -> R2 {
+    func bindTo<R1, R2>(binding: (Self) -> (R1) -> R2, curriedArg: R1) -> R2 {
         return binding(self)(curriedArg)
     }
 }
 
-public extension SignalProducerType where Value: SequenceType {
+public extension SignalProducerProtocol where Value: Sequence {
     
-    func bindTo<R1, R2>(binding: Self -> R1 -> R2, curriedArg: R1) -> R2 {
+    func bindTo<R1, R2>(binding: (Self) -> (R1) -> R2, curriedArg: R1) -> R2 {
         return binding(self)(curriedArg)
     }
 }
 
 public extension Disposable {
+    @discardableResult
     func addTo(compositeDisposable: CompositeDisposable) -> Disposable {
-        compositeDisposable.addDisposable(self)
+        compositeDisposable.add(self)
         return self
     }
 }

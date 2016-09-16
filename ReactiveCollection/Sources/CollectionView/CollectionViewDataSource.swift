@@ -9,31 +9,31 @@
 import Foundation
 import UIKit
 
-public class CollectionViewDataSource<E, Cell: UICollectionViewCell>: CollectionViewCellProvider, DataSourceType {
+open class CollectionViewDataSource<Element, Cell: UICollectionViewCell>: CollectionViewCellProvider, DataSourceType {
+
+    public typealias CellConfiguration = (UICollectionView, IndexPath, Element) -> Cell
     
-    public typealias CellConfiguration = (UICollectionView, NSIndexPath, E) -> Cell
+    open let cellIdentifier: String
+    open let cellConfiguration: CellConfiguration
+    open fileprivate(set) var models: [Element]?
     
-    public let cellIdentifier: String
-    public let cellConfiguration: CellConfiguration
-    public private(set) var models: [E]?
-    
-    init(identifier: String, cellConfiguration: CellConfiguration) {
+    init(identifier: String, cellConfiguration: @escaping CellConfiguration) {
         self.cellIdentifier = identifier
         self.cellConfiguration = cellConfiguration
     }
     
-    public func handleUpdate(update: [E]) {
+    open func handleUpdate(update: [Element]) {
         self.models = update
     }
     
-    public override func object(object: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    open override func object(_ object: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let models = self.models else { return 0 }
         return models.count
     }
     
-    public override func object(object: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    open override func object(_ object: UICollectionView, cellForItemAtIndexPath indexPath: IndexPath) -> UICollectionViewCell {
         guard let models = self.models else { return UICollectionViewCell() }
-        return self.cellConfiguration(object, indexPath, models[indexPath.row])
+        return self.cellConfiguration(object, indexPath, models[(indexPath as NSIndexPath).row])
     }
     
 }

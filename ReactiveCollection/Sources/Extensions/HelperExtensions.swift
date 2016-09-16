@@ -9,7 +9,7 @@
 import Foundation
 import ObjectiveC.runtime
 import UIKit
-import ReactiveCocoa
+import ReactiveSwift
 import Result
 
 public protocol DataReloadable: class {
@@ -19,37 +19,45 @@ public protocol DataReloadable: class {
 }
 
 extension UITableView: DataReloadable {
-    @nonobjc public static var optionalDataSourceSelectors: [String] = DelegateProxy.optionalSelectorsFor(UITableViewDataSource)
+    @nonobjc public static var optionalDataSourceSelectors: [String] = DelegateProxy.optionalSelectorsFor(UITableViewDataSource.self)
 }
 
 extension UICollectionView: DataReloadable {
-    @nonobjc public static var optionalDataSourceSelectors: [String] = DelegateProxy.optionalSelectorsFor(UICollectionViewDataSource)
+    @nonobjc public static var optionalDataSourceSelectors: [String] = DelegateProxy.optionalSelectorsFor(UICollectionViewDataSource.self)
 }
 
 
-extension NSObject {
+public extension NSObject {
+    private struct AssociatedKeys {
+        static var lifetimeToken = "lifetimeToken"
+    }
     
-    var methodsAndSelectors: (UnsafeMutablePointer<Method>, [String]) {
+    var methodsAndSelectors: (UnsafeMutablePointer<Method?>?, [String]) {
         var outCount: UInt32 = 0
-        let forwardMethods = class_copyMethodList(self.dynamicType, &outCount)
+        let forwardMethods = class_copyMethodList(type(of: self), &outCount)
         var forwardMethodStrings: [String] = []
         for i in 0 ..< Int(outCount) {
-            forwardMethodStrings.append(String(method_getName(forwardMethods[i])))
+            forwardMethodStrings.append(String(describing: method_getName(forwardMethods?[i])))
         }
         return (forwardMethods, forwardMethodStrings)
     }
     
-    func rac_willDeallocSignal() -> SignalProducer<(), NoError> {
-        return self.rac_willDeallocSignal().toSignalProducer().map { _ -> () in }.flatMapError { _ -> SignalProducer<(), NoError> in
-            return SignalProducer<(), NoError>.empty
-        }
-    }
+//    var rac_lifetimeToken : Lifetime.Token {
+//        guard let token = objc_getAssociatedObject(self, &AssociatedKeys.lifetimeToken) as? Lifetime.Token else {
+//            
+//        }
+//    }
+    
+//    fileprivate var _lifetimeToken = Lifetime.Token()
     
 }
 
+
+
+
 extension DelegateProxy {
     
-    public class func displayWarningsIfNeeded(selfDataSource: AnyObject?, newDataSource: AnyObject?) {
+    public class func displayWarningsIfNeeded(_ selfDataSource: AnyObject?, newDataSource: AnyObject?) {
         if newDataSource is DelegateProxy && !(selfDataSource is DelegateProxy) && selfDataSource != nil {
             print("Warning: Binding dataSource with RAC will override one that is already set.")
             print("         Setting dataSource to nil before binding will silence this warning.")
@@ -62,12 +70,12 @@ extension DelegateProxy {
 }
 
 extension DelegateProxy {
-    class func optionalSelectorsFor(proto: Protocol) -> [String] {
+    class func optionalSelectorsFor(_ proto: Protocol) -> [String] {
         var outCount: UInt32 = 0
         let protocolMethods = protocol_copyMethodDescriptionList(proto, false, true, &outCount)
         var protocolMethodStrings: [String] = []
         for i in 0 ..< Int(outCount) {
-            protocolMethodStrings.append(String(protocolMethods[i].name))
+            protocolMethodStrings.append(String(describing: protocolMethods?[i].name))
         }
         return protocolMethodStrings
     }

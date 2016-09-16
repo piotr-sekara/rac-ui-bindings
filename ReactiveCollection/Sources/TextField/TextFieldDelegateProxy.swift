@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import ReactiveCocoa
+import ReactiveSwift
 import Result
 
 
@@ -23,14 +23,17 @@ public class TextFieldDelegateProxy: DelegateProxy {
         return self.rac_textFieldDidEndEditing.0
     }
     
+    //TODO: fixme
     public var rac_textSignal: SignalProducer<String, NoError> {
-        let textObserver = self.textField.rac_valuesForKeyPath("text", observer: self)
-            .toSignalProducer()
-            .ignoreNil()
-            .map(String.init)
-            .flatMapError { _ in SignalProducer<String, NoError>.empty }
-            .takeUntil(self.textField.rac_willDeallocSignal())
-        return SignalProducer.merge(self.rac_textDidChangeProperty.producer, textObserver).skipRepeats()
+//        let textObserver = self.textField.rac_valuesForKeyPath("text", observer: self)
+//            .toSignalProducer()
+//            .ignoreNil()
+//            .map(String.init)
+//            .flatMapError { _ in SignalProducer<String, NoError>.empty }
+//            .takeUntil(self.textField.rac_willDeallocSignal())
+        
+//        return SignalProducer.merge(self.rac_textDidChangeProperty.producer, textObserver).skipRepeats()
+        return self.rac_textDidChangeProperty.producer
     }
     
     public init(textField: UITextField) {
@@ -53,9 +56,9 @@ public class TextFieldDelegateProxy: DelegateProxy {
         return TextFieldDelegateProxy(textField: textField)
     }
     
-    private let rac_textFieldDidBeginEditing    = Signal<Void, NoError>.pipe()
-    private let rac_textFieldDidEndEditing      = Signal<Void, NoError>.pipe()
-    private let rac_textDidChangeProperty       = MutableProperty<String>("")
+    fileprivate let rac_textFieldDidBeginEditing    = Signal<Void, NoError>.pipe()
+    fileprivate let rac_textFieldDidEndEditing      = Signal<Void, NoError>.pipe()
+    fileprivate let rac_textDidChangeProperty       = MutableProperty<String>("")
 }
 
 extension TextFieldDelegateProxy: UITextFieldDelegate {
@@ -69,34 +72,34 @@ extension TextFieldDelegateProxy: UITextFieldDelegate {
         }
     }
     
-    public func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+    public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         return self._forwardDelegate?.textFieldShouldBeginEditing?(textField) ?? true
     }
     
-    public func textFieldShouldClear(textField: UITextField) -> Bool {
+    public func textFieldShouldClear(_ textField: UITextField) -> Bool {
         return self._forwardDelegate?.textFieldShouldClear?(textField) ?? true
     }
     
-    public func textFieldShouldReturn(textField: UITextField) -> Bool {
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return self._forwardDelegate?.textFieldShouldReturn?(textField) ?? true
     }
     
-    public func textFieldShouldEndEditing(textField: UITextField) -> Bool {
+    public func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         return self._forwardDelegate?.textFieldShouldEndEditing?(textField) ?? true
     }
     
-    public func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        self.rac_textDidChangeProperty.swap(((textField.text ?? "") as NSString).stringByReplacingCharactersInRange(range, withString: string))
+    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        self.rac_textDidChangeProperty.swap(((textField.text ?? "") as NSString).replacingCharacters(in: range, with: string))
         
-        return self._forwardDelegate?.textField?(textField, shouldChangeCharactersInRange: range, replacementString: string) ?? true
+        return self._forwardDelegate?.textField?(textField, shouldChangeCharactersIn: range, replacementString: string) ?? true
     }
     
-    public func textFieldDidBeginEditing(textField: UITextField) {
+    public func textFieldDidBeginEditing(_ textField: UITextField) {
         self.rac_textFieldDidBeginEditing.1.sendNext(())
         self._forwardDelegate?.textFieldDidBeginEditing?(textField)
     }
     
-    public func textFieldDidEndEditing(textField: UITextField) {
+    public func textFieldDidEndEditing(_ textField: UITextField) {
         self.rac_textFieldDidEndEditing.1.sendNext(())
         self._forwardDelegate?.textFieldDidEndEditing?(textField)
     }

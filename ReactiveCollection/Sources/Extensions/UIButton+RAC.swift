@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import ReactiveCocoa
+import ReactiveSwift
 
 public extension UIButton {
     private struct AssociatedKeys {
@@ -25,13 +25,14 @@ public extension UIButton {
                 objc_setAssociatedObject(self, &AssociatedKeys.rac_titleForState, properties, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             }
             
-            guard let property = properties.objectForKey(state.stringValue) as? MutableProperty<String?> else {
+            guard let property = properties.object(forKey: state.stringValue) as? MutableProperty<String?> else {
                 
-                let property = MutableProperty<String?>(self.titleForState(state))
-                property.producer.takeUntil(self.rac_willDeallocSignal()).startWithNext { [weak self] value in
-                    self?.setTitle(value, forState: state)
+                //TODO: add takeUntil
+                let property = MutableProperty<String?>(self.title(for: state))
+                property.producer.startWithNext { [weak self] value in
+                    self?.setTitle(value, for: state)
                 }
-                properties.setObject(property, forKey: state.stringValue)
+                properties.setObject(property, forKey: state.stringValue as NSString)
                 
                 return property
             }
@@ -50,13 +51,14 @@ public extension UIButton {
                 objc_setAssociatedObject(self, &AssociatedKeys.rac_attributedTitleForState, properties, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             }
             
-            guard let property = properties.objectForKey(state.stringValue) as? MutableProperty<NSAttributedString?> else {
+            guard let property = properties.object(forKey: state.stringValue) as? MutableProperty<NSAttributedString?> else {
                 
-                let property = MutableProperty<NSAttributedString?>(self.attributedTitleForState(state))
-                property.producer.takeUntil(self.rac_willDeallocSignal()).startWithNext { [weak self] value in
-                    self?.setAttributedTitle(value, forState: state)
+                //TODO: add takeUntil
+                let property = MutableProperty<NSAttributedString?>(self.attributedTitle(for: state))
+                property.producer.startWithNext { [weak self] value in
+                    self?.setAttributedTitle(value, for: state)
                 }
-                properties.setObject(property, forKey: state.stringValue)
+                properties.setObject(property, forKey: state.stringValue as NSString)
                 
                 return property
             }

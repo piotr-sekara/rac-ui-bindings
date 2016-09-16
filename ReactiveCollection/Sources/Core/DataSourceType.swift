@@ -15,7 +15,7 @@ public protocol DataSourceType {
     
     var models: [E]? { get }
     var cellIdentifier: String { get }
-    var cellConfiguration: (O, NSIndexPath, E) -> Cell { get }
+    var cellConfiguration: (O, IndexPath, E) -> Cell { get }
     
     func handleUpdate(update: [E])
 }

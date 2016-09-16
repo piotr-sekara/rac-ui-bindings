@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-import ReactiveCocoa
+import ReactiveSwift
 import Result
 
 
@@ -27,15 +27,15 @@ public class TableViewDataSourceProxy: CollectionDataSourceProxy<UITableView, Ta
         return TableViewDataSourceProxy(tableView: tableView)
     }
     
-    public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return self.object(tableView, cellForItemAtIndexPath: indexPath)
     }
     
-    public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    public func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.object(tableView, numberOfItemsInSection: section)
     }
     
@@ -44,11 +44,11 @@ public class TableViewDataSourceProxy: CollectionDataSourceProxy<UITableView, Ta
 //Generics <-> Objc stuff
 public class TableViewCellProvider: CellProviderType {
     
-    public func object(object: UITableView, numberOfItemsInSection section: Int) -> Int {
+    public func object(_ object: UITableView, numberOfItemsInSection section: Int) -> Int {
         fatalError("Abstract function, should not be used directly")
     }
     
-    public func object(object: UITableView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    public func object(_ object: UITableView, cellForItemAtIndexPath indexPath: IndexPath) -> UITableViewCell {
         fatalError("Abstract function, should not be used directly")
     }
 }

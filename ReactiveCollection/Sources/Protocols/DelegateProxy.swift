@@ -8,11 +8,11 @@
 
 import Foundation
 import ObjectiveC.runtime
-import ReactiveCocoa
+import ReactiveSwift
 
 public protocol DelegateProxyType {
-    static func associatedProxy(object: AnyObject) -> AnyObject?
-    static func setAssociatedProxy(proxy: AnyObject, to object: AnyObject)
+    static func associatedProxy(_ object: AnyObject) -> AnyObject?
+    static func setAssociatedProxy(_ proxy: AnyObject, to object: AnyObject)
     static func createProxy(forObject object: AnyObject) -> AnyObject
 }
 
@@ -35,22 +35,22 @@ public extension DelegateProxyType {
     
 }
 
-public class DelegateProxy: NSObject, DelegateProxyType {
-    private struct AssociatedKeys {
+open class DelegateProxy: NSObject, DelegateProxyType {
+    fileprivate struct AssociatedKeys {
         static var rac_delegateProxyKey = "rac_delegateProxyKey"
     }
     
-    public weak var forwardDelegate: NSObject? 
+    open weak var forwardDelegate: NSObject? 
     
-    public class func associatedProxy(object: AnyObject) -> AnyObject? {
-        return objc_getAssociatedObject(object, &AssociatedKeys.rac_delegateProxyKey)
+    open class func associatedProxy(_ object: AnyObject) -> AnyObject? {
+        return objc_getAssociatedObject(object, &AssociatedKeys.rac_delegateProxyKey) as AnyObject?
     }
     
-    public class func setAssociatedProxy(proxy: AnyObject, to object: AnyObject) {
+    open class func setAssociatedProxy(_ proxy: AnyObject, to object: AnyObject) {
         objc_setAssociatedObject(object, &AssociatedKeys.rac_delegateProxyKey, proxy, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
     }
     
-    public class func createProxy(forObject object: AnyObject) -> AnyObject {
+    open class func createProxy(forObject object: AnyObject) -> AnyObject {
         fatalError("Abstract function, should not be used directly")
     }
 }

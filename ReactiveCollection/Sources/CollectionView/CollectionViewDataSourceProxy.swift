@@ -9,17 +9,17 @@
 import Foundation
 import UIKit
 import Result
-import ReactiveCocoa
+import ReactiveSwift
 
 
-public class CollectionViewDataSourceProxy: CollectionDataSourceProxy<UICollectionView, CollectionViewCellProvider>, UICollectionViewDataSource {
+open class CollectionViewDataSourceProxy: CollectionDataSourceProxy<UICollectionView, CollectionViewCellProvider>, UICollectionViewDataSource {
 
     public init(collectionView: UICollectionView) {
         super.init(parent: collectionView)
         self.parent?.dataSource = self
     }
     
-    public override static func createProxy(forObject object: AnyObject) -> AnyObject {
+    open override static func createProxy(forObject object: AnyObject) -> AnyObject {
         guard let collectionView = object as? UICollectionView else {
             fatalError("Invalid object specified")
         }
@@ -27,11 +27,11 @@ public class CollectionViewDataSourceProxy: CollectionDataSourceProxy<UICollecti
         return CollectionViewDataSourceProxy(collectionView: collectionView)
     }
     
-    public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.object(collectionView, numberOfItemsInSection: section)
     }
     
-    public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         return self.object(collectionView, cellForItemAtIndexPath: indexPath)
     }
     
@@ -42,12 +42,12 @@ public class CollectionViewDataSourceProxy: CollectionDataSourceProxy<UICollecti
 
 
 //Generics <-> Objc stuff
-public class CollectionViewCellProvider: CellProviderType {
-    public func object(object: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+open class CollectionViewCellProvider: CellProviderType {
+    public func object(_ object: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         fatalError("Abstract function, should not be used directly")
     }
     
-    public func object(object: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    public func object(_ object: UICollectionView, cellForItemAtIndexPath indexPath: IndexPath) -> UICollectionViewCell {
         fatalError("Abstract function, should not be used directly")
     }
 }
