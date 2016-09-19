@@ -26,7 +26,7 @@ public extension SignalProducerProtocol where Value: Sequence {
 
 public extension Disposable {
     @discardableResult
-    func addTo(compositeDisposable: CompositeDisposable) -> Disposable {
+    func addTo(_ compositeDisposable: CompositeDisposable) -> Disposable {
         compositeDisposable.add(self)
         return self
     }

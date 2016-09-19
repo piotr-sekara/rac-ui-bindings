@@ -26,17 +26,21 @@ public extension UITableView {
         }
     }
     
-    func rac_items<Cell: UITableViewCell, S: Sequence, P: PropertyProtocol>
+}
+
+public extension Reactive where Base: UITableView {
+    
+    public func items<Cell: UITableViewCell, S: Sequence, P: PropertyProtocol>
         (cellIdentifier: String, cellType: Cell.Type = Cell.self)
         -> (_: P)
         -> (_: @escaping (IndexPath, Cell, S.Iterator.Element) -> Void)
         -> Disposable where P.Value == S {
             return { source in
-                return self.rac_items(cellIdentifier: cellIdentifier, cellType: cellType)(source.producer)
+                return self.items(cellIdentifier: cellIdentifier, cellType: cellType)(source.producer)
             }
     }
     
-    func rac_items<Cell: UITableViewCell, S: Sequence, P: SignalProducerProtocol>
+    public func items<Cell: UITableViewCell, S: Sequence, P: SignalProducerProtocol>
         (cellIdentifier: String, cellType: Cell.Type = Cell.self)
         -> (_: P)
         -> (_: @escaping (IndexPath, Cell, S.Iterator.Element) -> Void)
@@ -51,28 +55,27 @@ public extension UITableView {
                         return cell
                     })
                     
-                    return self.rac_items(dataSource: dataSource)(producer)
+                    return self.items(dataSource: dataSource)(producer)
                 }
             }
     }
     
-    func rac_items<DS: DataSourceType & CellProviderType, S: Sequence, P: PropertyProtocol>
+    public func items<DS: DataSourceType & CellProviderType, S: Sequence, P: PropertyProtocol>
         (dataSource: DS)
         -> (_ source: P)
         -> Disposable where P.Value == S, DS.E == S.Iterator.Element {
             return { source in
-                return self.rac_items(dataSource: dataSource)(source.producer)
+                return self.items(dataSource: dataSource)(source.producer)
             }
     }
     
-    func rac_items<DS: DataSourceType & CellProviderType, S: Sequence, P: SignalProducerProtocol>
+    public func items<DS: DataSourceType & CellProviderType, S: Sequence, P: SignalProducerProtocol>
         (dataSource: DS)
         -> (_ producer: P)
         -> Disposable where P.Value == S, DS.E == S.Iterator.Element, P.Error == NoError {
             return { producer in
-                let proxy = TableViewDataSourceProxy.proxy(forObject: self)
-                return proxy.registerDataSource(dataSource: dataSource, forObject: self, signalProducer: producer)
+                let proxy = TableViewDataSourceProxy.proxy(forObject: self.base)
+                return proxy.registerDataSource(dataSource: dataSource, forObject: self.base, signalProducer: producer)
             }
     }
-    
 }

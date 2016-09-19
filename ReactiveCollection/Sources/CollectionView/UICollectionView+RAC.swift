@@ -26,18 +26,21 @@ public extension UICollectionView {
         }
     }
     
+}
+
+public extension Reactive where Base: UICollectionView {
     
-    func rac_items<Cell: UICollectionViewCell, S: Sequence, P: PropertyProtocol>
+    public func items<Cell: UICollectionViewCell, S: Sequence, P: PropertyProtocol>
         (cellIdentifier: String, cellType: Cell.Type = Cell.self)
         -> (_: P)
         -> (_: @escaping (IndexPath, Cell, S.Iterator.Element) -> Void)
         -> Disposable where P.Value == S {
             return { source in
-                return self.rac_items(cellIdentifier: cellIdentifier, cellType: cellType)(source.producer)
+                return self.items(cellIdentifier: cellIdentifier, cellType: cellType)(source.producer)
             }
     }
     
-    public func rac_items<Cell: UICollectionViewCell, S: Sequence, P: SignalProducerProtocol>
+    public func items<Cell: UICollectionViewCell, S: Sequence, P: SignalProducerProtocol>
         (cellIdentifier: String, cellType: Cell.Type = Cell.self)
         -> (_: P)
         -> (_: @escaping (IndexPath, Cell, S.Iterator.Element) -> Void)
@@ -53,28 +56,29 @@ public extension UICollectionView {
                         return cell
                     })
                     
-                    return self.rac_items(dataSource: dataSource)(producer)
+                    return self.items(dataSource: dataSource)(producer)
                 }
             }
     }
     
-    public func rac_items<DS: DataSourceType & CellProviderType, S: Sequence, P: PropertyProtocol>
+    public func items<DS: DataSourceType & CellProviderType, S: Sequence, P: PropertyProtocol>
         (dataSource: DS)
         -> (_: P)
         -> Disposable  where P.Value == S, DS.E == S.Iterator.Element {
             return { source in
-                return self.rac_items(dataSource: dataSource)(source.producer)
+                return self.items(dataSource: dataSource)(source.producer)
             }
     }
     
-    public func rac_items<DS: DataSourceType & CellProviderType, S: Sequence, P: SignalProducerProtocol>
+    public func items<DS: DataSourceType & CellProviderType, S: Sequence, P: SignalProducerProtocol>
         (dataSource: DS)
         -> (_: P)
         -> Disposable  where P.Value == S, DS.E == S.Iterator.Element, P.Error == NoError {
             return { producer in
-                let proxy = CollectionViewDataSourceProxy.proxy(forObject: self)
-                return proxy.registerDataSource(dataSource: dataSource, forObject: self, signalProducer: producer)
+                let proxy = CollectionViewDataSourceProxy.proxy(forObject: self.base)
+                return proxy.registerDataSource(dataSource: dataSource, forObject: self.base, signalProducer: producer)
             }
     }
 }
+
 

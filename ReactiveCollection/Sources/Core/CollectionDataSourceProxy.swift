@@ -45,12 +45,12 @@ open class CollectionDataSourceProxy<C: DataReloadable, T: CellProviderType>: De
         signalProducer.map(Array.init).startWithNext { [weak dataSource, weak self] seq in
             dataSource?.handleUpdate(update: seq)
             self?.contentDidChange()
-            }.addTo(compositeDisposable: compositeDisposable)
+            }.addTo(compositeDisposable)
         
         ActionDisposable { [weak self] in
             _ = self?.removeDataSource(cellIdentifier: dataSource.cellIdentifier)
             self?.contentDidChange()
-            }.addTo(compositeDisposable: compositeDisposable)
+            }.addTo(compositeDisposable)
         
         return compositeDisposable
     }

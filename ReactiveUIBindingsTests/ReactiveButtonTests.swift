@@ -62,7 +62,7 @@ class ReactiveButtonTests: XCTestCase {
     }
     
     func testButtonEnabled_bindVariable_shouldSetAndUpdateEnabledState() {
-        sut.rac_enabled <~ self.enabledProperty
+        sut.rac.enabled <~ self.enabledProperty
         
         expect(self.sut.isEnabled) == true
         
@@ -72,7 +72,7 @@ class ReactiveButtonTests: XCTestCase {
     }
     
     func testButtonSelected_bindVariable_shouldSetAndUpdateSelectedState() {
-        sut.rac_selected <~ self.enabledProperty
+        sut.rac.selected <~ self.enabledProperty
         
         expect(self.sut.isSelected) == true
         
@@ -86,10 +86,10 @@ class ReactiveButtonTests: XCTestCase {
 
 extension ReactiveButtonTests {
     fileprivate func setupBindings() {
-        sut.rac_titleForState(.normal) <~ self.titleNormal
-        sut.rac_titleForState(.highlighted) <~ self.titleHighlighted
-        sut.rac_titleForState(.disabled) <~ self.titleDisabled
-        sut.rac_titleForState(.selected) <~ self.titleSelected
-        sut.rac_titleForState(.focused) <~ self.titleFocused
+        sut.rac.title(for: .normal) <~ self.titleNormal
+        sut.rac.title(for: .highlighted) <~ self.titleHighlighted
+        sut.rac.title(for: .disabled) <~ self.titleDisabled
+        sut.rac.title(for: .selected) <~ self.titleSelected
+        sut.rac.title(for: .focused) <~ self.titleFocused
     }
 }

@@ -9,11 +9,13 @@
 import Foundation
 import ReactiveSwift
 import Result
+import ReactiveCocoa
 
 
 public extension NSObject {
     private struct AssociatedKeys {
         static var lifetimeToken = "lifetimeToken"
+        static var observers = "observers"
     }
     
     var methodsAndSelectors: (UnsafeMutablePointer<Method?>?, [String]) {
@@ -27,71 +29,15 @@ public extension NSObject {
         return (forwardMethods, forwardMethodStrings)
     }
     
-    
-    fileprivate var rac_lifetimeToken: Lifetime.Token {
-        guard let token = objc_getAssociatedObject(self, &AssociatedKeys.lifetimeToken) as? Lifetime.Token else {
-            let token = Lifetime.Token()
-            objc_setAssociatedObject(self, &AssociatedKeys.lifetimeToken, token, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-            return token
-        }
-        return token
-    }
-    
-    fileprivate func rac_values(forKeyPath: String) -> SignalProducer<Any?, NoError> {
-        var observers: NSMutableDictionary
-        //TODO: finish implementation of valueforkeypath
-    }
-    
-    
 }
 
 extension Reactive where Base: NSObject {
     
-//    public func values(forKeyPath: String) -> SignalProducer<Any?, NoError> {
-//        
-//    }
-    
-//    public func values(forKeyPath: String) -> SignalProducer<AnyObject?, NoError> {
-//        
-////        return SignalProducer { obs, dis in
-////            
-////        }
-//        return SignalProducer.empty
-//    }
+    public func values(forKeyPath: String) -> SignalProducer<AnyObject?, NoError> {
+        return self.base.values(forKeyPath: forKeyPath)
+    }
     
     public var lifetime: Lifetime {
-        return Lifetime(self.base.rac_lifetimeToken)
+        return self.base.rac_lifetime
     }
-}
-
-
-internal final class KVObserver: NSObject {
-    private struct Context {
-        static var context = "keyPath"
-    }
-    
-    fileprivate var rac_value = MutableProperty<Any?>(nil)
-    
-    unowned let object: AnyObject
-    let keyPath: String
-    
-    init(object: AnyObject, keyPath: String) {
-        self.object = object
-        self.keyPath = keyPath
-        
-        super.init()
-        
-        self.object.addObserver(self, forKeyPath: self.keyPath, options: [.new, .initial], context: &Context.context)
-    }
-    
-    deinit {
-        self.object.removeObserver(self, forKeyPath: self.keyPath, context: &Context.context)
-    }
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if context == &Context.context {
-            self.rac_value.value = object
-        }
-    }
-    
 }

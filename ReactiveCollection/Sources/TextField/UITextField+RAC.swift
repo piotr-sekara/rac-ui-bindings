@@ -26,20 +26,23 @@ public extension UITextField {
             proxy.forwardDelegate = newValue as? NSObject
         }
     }
+        
+}
+
+public extension Reactive where Base: UITextField {
     
-    public var rac_editingStarted: Signal<Void, NoError> {
-        let proxy = TextFieldDelegateProxy.proxy(forObject: self)
+    public var editingStarted: Signal<Void, NoError> {
+        let proxy = TextFieldDelegateProxy.proxy(forObject: self.base)
         return proxy.rac_editingStarted
     }
     
-    public var rac_editingEnded: Signal<Void, NoError> {
-        let proxy = TextFieldDelegateProxy.proxy(forObject: self)
+    public var editingEnded: Signal<Void, NoError> {
+        let proxy = TextFieldDelegateProxy.proxy(forObject: self.base)
         return proxy.rac_editingEnded
     }
     
-    public var rac_textSignal: SignalProducer<String, NoError> {
-        let proxy = TextFieldDelegateProxy.proxy(forObject: self)
+    public var textSignal: SignalProducer<String, NoError> {
+        let proxy = TextFieldDelegateProxy.proxy(forObject: self.base)
         return proxy.rac_textSignal
     }
-    
 }

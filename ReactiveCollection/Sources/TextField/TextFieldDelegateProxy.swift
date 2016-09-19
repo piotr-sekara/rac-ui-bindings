@@ -13,28 +13,22 @@ import Result
 
 public class TextFieldDelegateProxy: DelegateProxy {
     
-    public weak private(set) var textField: UITextField!
+    weak private(set) var textField: UITextField!
     
-    public var rac_editingStarted: Signal<Void, NoError> {
+    var rac_editingStarted: Signal<Void, NoError> {
         return self.rac_textFieldDidBeginEditing.0
     }
     
-    public var rac_editingEnded: Signal<Void, NoError> {
+    var rac_editingEnded: Signal<Void, NoError> {
         return self.rac_textFieldDidEndEditing.0
     }
     
-    //TODO: fixme
-    public var rac_textSignal: SignalProducer<String, NoError> {
-
-//        let textObserver = self.textField.rac_valuesForKeyPath("text", observer: self)
-//            .toSignalProducer()
-//            .ignoreNil()
-//            .map(String.init)
-//            .flatMapError { _ in SignalProducer<String, NoError>.empty }
-//            .takeUntil(self.textField.rac_willDeallocSignal())
-        
-//        return SignalProducer.merge(self.rac_textDidChangeProperty.producer, textObserver).skipRepeats()
-        return self.rac_textDidChangeProperty.producer
+    var rac_textSignal: SignalProducer<String, NoError> {
+        let textObserver = self.textField.rac.values(forKeyPath: #keyPath(UITextField.text)).map { (any) -> String? in
+            print(any)
+            return any as? String
+        }.skipNil()
+        return SignalProducer.merge(self.rac_textDidChangeProperty.producer, textObserver).skipRepeats().take(during: self.textField.rac.lifetime)
     }
     
     public init(textField: UITextField) {

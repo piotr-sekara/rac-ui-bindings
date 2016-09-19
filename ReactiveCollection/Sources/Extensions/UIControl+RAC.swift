@@ -10,34 +10,38 @@ import Foundation
 import ReactiveSwift
 
 public extension UIControl {
-    private struct AssociatedKeys {
+    fileprivate struct AssociatedKeys {
         static var rac_enabledKey = "rac_enabledKey"
         static var rac_selectedKey = "rac_selectedKey"
     }
+}
+
+public extension Reactive where Base: UIControl {
     
-    public var rac_enabled: MutableProperty<Bool> {
-        guard let property = objc_getAssociatedObject(self, &UIControl.AssociatedKeys.rac_enabledKey) as? MutableProperty<Bool> else {
-            let property = MutableProperty<Bool>(self.isEnabled)
-            property.producer.take(during: self.rac.lifetime).startWithNext { [weak self] value in
-                self?.isEnabled = value
+    public var enabled: MutableProperty<Bool> {
+        guard let property = objc_getAssociatedObject(self.base, &UIControl.AssociatedKeys.rac_enabledKey) as? MutableProperty<Bool> else {
+            let property = MutableProperty<Bool>(self.base.isEnabled)
+            property.producer.take(during: (self.base as UIControl).rac.lifetime).startWithNext { [weak base] value in
+                base?.isEnabled = value
             }
-            objc_setAssociatedObject(self, &UIButton.AssociatedKeys.rac_enabledKey, property, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self.base, &UIButton.AssociatedKeys.rac_enabledKey, property, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             return property
         }
         
         return property
     }
     
-    public var rac_selected: MutableProperty<Bool> {
-        guard let property = objc_getAssociatedObject(self, &UIControl.AssociatedKeys.rac_selectedKey) as? MutableProperty<Bool> else {
-            let property = MutableProperty<Bool>(self.isSelected)
-            property.producer.take(during: self.rac.lifetime).startWithNext { [weak self] value in
-                self?.isSelected = value
+    public var selected: MutableProperty<Bool> {
+        guard let property = objc_getAssociatedObject(self.base, &UIControl.AssociatedKeys.rac_selectedKey) as? MutableProperty<Bool> else {
+            let property = MutableProperty<Bool>(self.base.isSelected)
+            property.producer.take(during: (self.base as UIControl).rac.lifetime).startWithNext { [weak base] value in
+                base?.isSelected = value
             }
-            objc_setAssociatedObject(self, &UIButton.AssociatedKeys.rac_selectedKey, property, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self.base, &UIButton.AssociatedKeys.rac_selectedKey, property, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             return property
         }
         
         return property
     }
 }
+

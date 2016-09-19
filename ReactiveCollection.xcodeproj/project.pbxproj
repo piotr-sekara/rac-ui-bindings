@@ -10,6 +10,8 @@
 		D33BD8411D8C164C002D15B8 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3BFAFAD1D8AB922008A529A /* ReactiveSwift.framework */; };
 		D33BD8421D8C165A002D15B8 /* ReactiveSwift.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D3BFAFAD1D8AB922008A529A /* ReactiveSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D33BD8441D8C1813002D15B8 /* NSObject+RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33BD8431D8C1813002D15B8 /* NSObject+RAC.swift */; };
+		D33BD8461D8FB7F4002D15B8 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D33BD8451D8FB7F4002D15B8 /* ReactiveCocoa.framework */; };
+		D33BD8491D8FB805002D15B8 /* ReactiveCocoa.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D33BD8451D8FB7F4002D15B8 /* ReactiveCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D37D1E6E1D77129900C897AB /* UITextField+RAC.m in Sources */ = {isa = PBXBuildFile; fileRef = D37D1E6D1D77129900C897AB /* UITextField+RAC.m */; };
 		D3BFAFAE1D8AB922008A529A /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3BFAFAD1D8AB922008A529A /* ReactiveSwift.framework */; };
 		D3BFAFB01D8BE876008A529A /* Reactive.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BFAFAF1D8BE876008A529A /* Reactive.swift */; };
@@ -71,6 +73,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				D33BD8491D8FB805002D15B8 /* ReactiveCocoa.framework in CopyFiles */,
 				D33BD8421D8C165A002D15B8 /* ReactiveSwift.framework in CopyFiles */,
 				D3CC37BD1D6B295A0019DDC0 /* Nimble.framework in CopyFiles */,
 				D3CC37C21D6B2A610019DDC0 /* Result.framework in CopyFiles */,
@@ -99,6 +102,7 @@
 		D32E1D401D5DC78800BA98BD /* UITableView+RAC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+RAC.m"; sourceTree = "<group>"; };
 		D32E1D431D5DF69D00BA98BD /* HelperExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperExtensions.swift; sourceTree = "<group>"; };
 		D33BD8431D8C1813002D15B8 /* NSObject+RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+RAC.swift"; sourceTree = "<group>"; };
+		D33BD8451D8FB7F4002D15B8 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		D37D1E6B1D77126D00C897AB /* UITextField+RAC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+RAC.h"; sourceTree = "<group>"; };
 		D37D1E6D1D77129900C897AB /* UITextField+RAC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+RAC.m"; sourceTree = "<group>"; };
 		D3BFAFAD1D8AB922008A529A /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = Carthage/Build/iOS/ReactiveSwift.framework; sourceTree = "<group>"; };
@@ -134,6 +138,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D33BD8461D8FB7F4002D15B8 /* ReactiveCocoa.framework in Frameworks */,
 				D3CC37AF1D6B28570019DDC0 /* ReactiveUIBindings.framework in Frameworks */,
 				D33BD8411D8C164C002D15B8 /* ReactiveSwift.framework in Frameworks */,
 				D3CC37B81D6B28EA0019DDC0 /* Nimble.framework in Frameworks */,
@@ -179,6 +184,7 @@
 		D32E1CF21D58926800BA98BD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D33BD8451D8FB7F4002D15B8 /* ReactiveCocoa.framework */,
 				D3BFAFAD1D8AB922008A529A /* ReactiveSwift.framework */,
 				D3CC37B61D6B28EA0019DDC0 /* Nimble.framework */,
 				D3CC37B71D6B28EA0019DDC0 /* Quick.framework */,
