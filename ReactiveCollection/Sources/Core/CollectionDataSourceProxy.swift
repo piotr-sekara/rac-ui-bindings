@@ -42,7 +42,7 @@ open class CollectionDataSourceProxy<C: DataReloadable, T: CellProviderType>: De
         self.removeDataSource(cellIdentifier: dataSource.cellIdentifier)
         self.retainedDataSources.append((cellIdentifier: dataSource.cellIdentifier, dataSource: dataSource as! T))
         
-        signalProducer.map(Array.init).startWithNext { [weak dataSource, weak self] seq in
+        signalProducer.map(Array.init).startWithValues { [weak dataSource, weak self] seq in
             dataSource?.handleUpdate(update: seq)
             self?.contentDidChange()
             }.addTo(compositeDisposable)

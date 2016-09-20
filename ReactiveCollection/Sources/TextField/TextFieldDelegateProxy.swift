@@ -90,12 +90,12 @@ extension TextFieldDelegateProxy: UITextFieldDelegate {
     }
     
     public func textFieldDidBeginEditing(_ textField: UITextField) {
-        self.rac_textFieldDidBeginEditing.1.sendNext(())
+        self.rac_textFieldDidBeginEditing.1.send(value: ())
         self._forwardDelegate?.textFieldDidBeginEditing?(textField)
     }
     
     public func textFieldDidEndEditing(_ textField: UITextField) {
-        self.rac_textFieldDidEndEditing.1.sendNext(())
+        self.rac_textFieldDidEndEditing.1.send(value: ())
         self._forwardDelegate?.textFieldDidEndEditing?(textField)
     }
     

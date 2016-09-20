@@ -49,12 +49,12 @@ class ReactiveCollectionTests<C: UITestCollection, Cell1: UITestCell, Cell2: UIT
             ])
         
         ds3 = SignalProducer<[String], NoError> { (obs, disposable) in
-            obs.sendNext(self.ds1.value)
+            obs.send(value: self.ds1.value)
             self.ds3Obs = obs
         }
         
         ds4 = SignalProducer<[String], NoError> { (obs, disposable) in
-            obs.sendNext(self.ds2.value)
+            obs.send(value: self.ds2.value)
         }
         
     }
@@ -187,7 +187,7 @@ class ReactiveCollectionTests<C: UITestCollection, Cell1: UITestCell, Cell2: UIT
             C.testCellIdentifier1 : IndexPath(row: 0, section: 0)
             ])
         
-        ds3Obs.sendNext(["Fixture1", "Fixture2"])
+        ds3Obs.send(value: ["Fixture1", "Fixture2"])
         
         checkIfCorrect(sut, numberOfItems: 2)
     }

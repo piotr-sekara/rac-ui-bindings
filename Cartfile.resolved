@@ -1,5 +1,5 @@
 github "pawel-sekara/Nimble" "4.1.1"
-github "Quick/Quick" "1503fb019d72417d5d6e4fbebdbaa03c9e4a125f"
+github "Quick/Quick" "36ebbc75e093c7553a5145ed5dd21484364cd78d"
 github "antitypical/Result" "3.0.0"
 github "ReactiveCocoa/ReactiveSwift" "228fd564561383a387f338558bd777cd14ca4291"
-github "ReactiveCocoa/ReactiveCocoa" "b6f055719315ccbc7dac694d111db6f23a4cffb2"
+github "pawel-sekara/ReactiveCocoa" "0d380afbb28167da1638a4b3219c8f1a179c9dd4"

@@ -30,7 +30,7 @@ public extension Reactive where Base: UIButton {
         guard let property = properties.object(forKey: state.stringValue) as? MutableProperty<String?> else {
             
             let property = MutableProperty<String?>(self.base.title(for: state))
-            property.producer.take(during: (self.base as UIButton).rac.lifetime).startWithNext { [weak base] value in
+            property.producer.take(during: (self.base as UIButton).rac.lifetime).startWithValues { [weak base] value in
                 base?.setTitle(value, for: state)
             }
             properties.setObject(property, forKey: state.stringValue as NSString)
@@ -53,7 +53,7 @@ public extension Reactive where Base: UIButton {
         guard let property = properties.object(forKey: state.stringValue) as? MutableProperty<NSAttributedString?> else {
             
             let property = MutableProperty<NSAttributedString?>(self.base.attributedTitle(for: state))
-            property.producer.take(during: (self.base as UIButton).rac.lifetime).startWithNext { [weak base] value in
+            property.producer.take(during: (self.base as UIButton).rac.lifetime).startWithValues { [weak base] value in
                 base?.setAttributedTitle(value, for: state)
             }
             properties.setObject(property, forKey: state.stringValue as NSString)
