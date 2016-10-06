@@ -25,8 +25,19 @@ class ReactiveButtonTests: XCTestCase {
     var titleFocused 		= MutableProperty<String?>("titleFocused")
     var enabledProperty     = MutableProperty<Bool>(true)
     
+    var window: UIWindow!
+    var ctrl: UIViewController!
+    
     override func setUp() {
+        window = UIWindow()
+        ctrl = UIViewController()
         sut = UIButton()
+        
+        window.rootViewController = ctrl
+//        window.makeKeyAndVisible()
+//        window.makeKeyAndVisible()
+        
+        ctrl.view.addSubview(sut)
     }
     
     override func tearDown() {
@@ -80,6 +91,23 @@ class ReactiveButtonTests: XCTestCase {
         
         expect(self.sut.isSelected) == false
     }
+    
+//    func testControlEvents_bindSignalToEvent_shouldSendValueWhenReceivedEvent() {
+//        var eventReceived = false
+//        
+//        sut.rac.actions(for: .touchUpInside).observeValues { _ in
+//            eventReceived = true
+//        }
+//        let obs = Observer()
+//    
+//        sut.addTarget(obs, action: #selector(Observer.observed(_:)), for: .touchUpInside)
+//        
+//        print(sut.allControlEvents)
+//        print(sut.allTargets)
+//        
+//
+//        expect(eventReceived).toEventually(beTruthy())
+//    }
     
 }
 

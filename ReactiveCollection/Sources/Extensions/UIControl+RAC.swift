@@ -8,6 +8,7 @@
 
 import Foundation
 import ReactiveSwift
+import enum Result.NoError
 
 public extension UIControl {
     fileprivate struct AssociatedKeys {
@@ -43,5 +44,39 @@ public extension Reactive where Base: UIControl {
         
         return property
     }
+    
+    public func actions(for controlEvents: UIControlEvents) -> Signal<Base, NoError> {
+        return Signal<Base, NoError> { obs in
+            let wrapper = UIControlObserverWrapper(obs)
+            
+            self.base.addTarget(wrapper, action: #selector(UIControlObserverWrapper<Observer<UIControl, NoError>>.sendNext(_:)), for: controlEvents)
+            
+            return ActionDisposable(action: {
+                wrapper.sendCompleted()
+                self.base.removeTarget(wrapper, action: #selector(UIControlObserverWrapper<Observer<UIControl, NoError>>.sendNext(_:)), for: controlEvents)
+            })
+        }
+            .take(during: (self.base as UIControl).rac.lifetime)
+            .observe(on: QueueScheduler.main)
+    }
 }
 
+fileprivate class UIControlObserverWrapper<O: ObserverProtocol> where O.Value: UIControl {
+    
+    var observer: O
+    
+    init(_ observer: O, base: UIControl? = nil) {
+        self.observer = observer
+    }
+    
+    @objc
+    func sendNext(_ sender: UIControl) {
+        self.observer.send(value: sender as! O.Value)
+    }
+    
+    @objc
+    func sendCompleted() {
+        self.observer.sendCompleted()
+    }
+    
+}

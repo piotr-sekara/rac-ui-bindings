@@ -25,7 +25,6 @@ public class TextFieldDelegateProxy: DelegateProxy {
     
     var rac_textSignal: SignalProducer<String, NoError> {
         let textObserver = self.textField.rac.values(forKeyPath: #keyPath(UITextField.text)).map { (any) -> String? in
-            print(any)
             return any as? String
         }.skipNil()
         return SignalProducer.merge(self.rac_textDidChangeProperty.producer, textObserver).skipRepeats().take(during: self.textField.rac.lifetime)
