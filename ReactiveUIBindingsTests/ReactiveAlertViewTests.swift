@@ -116,6 +116,17 @@ class ReactiveAlertViewTests: XCTestCase {
     
     //MARK: - Delegate already set 
     
-    
+    func testAlertViewBindingHavingDelegate_buttonClicked_shouldGetIdx() {
+        self.sut.delegate = self.delegate
+        var eventObserved = -1
+        self.sut.rac.buttonClicked().observeValues { (idx: Int) in
+            eventObserved = idx
+        }
+        
+        self.sut.delegate?.alertView(self.sut, clickedButtonAt: 1)
+        
+        expect(eventObserved).toEventually(equal(1))
+        expect(self.delegate.buttonClicked).to(equal(1))
+    }
     
 }
