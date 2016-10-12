@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D3B8C99D1DAE37DB0034EF60"
-               BuildableName = "ReactiveUIBindings watchOS.framework"
+               BuildableName = "ReactiveUIBindings.framework"
                BlueprintName = "ReactiveUIBindings watchOS"
                ReferencedContainer = "container:ReactiveCollection.xcodeproj">
             </BuildableReference>
@@ -46,7 +46,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D3B8C99D1DAE37DB0034EF60"
-            BuildableName = "ReactiveUIBindings watchOS.framework"
+            BuildableName = "ReactiveUIBindings.framework"
             BlueprintName = "ReactiveUIBindings watchOS"
             ReferencedContainer = "container:ReactiveCollection.xcodeproj">
          </BuildableReference>
@@ -64,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D3B8C99D1DAE37DB0034EF60"
-            BuildableName = "ReactiveUIBindings watchOS.framework"
+            BuildableName = "ReactiveUIBindings.framework"
             BlueprintName = "ReactiveUIBindings watchOS"
             ReferencedContainer = "container:ReactiveCollection.xcodeproj">
          </BuildableReference>
