@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "0D3620E2E64E75F403A5916A24B14E14354566D5",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "0D3620E2E64E75F403A5916A24B14E14354566D5" : 9223372036854775807,
+    "72B9A82EF217B058A52ACF762F661C2BB48F3ACB" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "1FAC6E3E-356C-41A9-8DDD-1D9E73EE66AC",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "0D3620E2E64E75F403A5916A24B14E14354566D5" : "ReactiveUIBindings\/",
+    "72B9A82EF217B058A52ACF762F661C2BB48F3ACB" : "..\/.."
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "ReactiveCollection",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "ReactiveCollection.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/github.com\/codewise\/ReactiveUIBindings.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0D3620E2E64E75F403A5916A24B14E14354566D5"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:codewise\/voluum-ios-app.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "72B9A82EF217B058A52ACF762F661C2BB48F3ACB"
+    }
+  ]
+}
