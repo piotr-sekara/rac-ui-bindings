@@ -41,7 +41,6 @@
 		D3CC379E1D6AFB300019DDC0 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D291D5B5FCD00BA98BD /* TableViewDataSource.swift */; };
 		D3CC37A01D6AFC2A0019DDC0 /* UICollectionView+RAC.m in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D3C1D5CB29700BA98BD /* UICollectionView+RAC.m */; };
 		D3CC37A11D6B00560019DDC0 /* UITableView+RAC.m in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D401D5DC78800BA98BD /* UITableView+RAC.m */; };
-		D3CC37A51D6B1E6E0019DDC0 /* Cartfile.private in Resources */ = {isa = PBXBuildFile; fileRef = D3CC37A41D6B1E6E0019DDC0 /* Cartfile.private */; };
 		D3CC37AF1D6B28570019DDC0 /* ReactiveUIBindings.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3CC37861D6AFA6C0019DDC0 /* ReactiveUIBindings.framework */; };
 		D3CC37B81D6B28EA0019DDC0 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3CC37B61D6B28EA0019DDC0 /* Nimble.framework */; };
 		D3CC37B91D6B28EA0019DDC0 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3CC37B71D6B28EA0019DDC0 /* Quick.framework */; };
@@ -476,7 +475,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3CC37A51D6B1E6E0019DDC0 /* Cartfile.private in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -666,7 +664,7 @@
 				TARGETED_DEVICE_FAMILY = 4;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-				WATCHOS_DEPLOYMENT_TARGET = 3.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Debug;
 		};
@@ -697,14 +695,14 @@
 				TARGETED_DEVICE_FAMILY = 4;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-				WATCHOS_DEPLOYMENT_TARGET = 3.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Release;
 		};
 		D3CC378B1D6AFA6C0019DDC0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -732,7 +730,7 @@
 		D3CC378C1D6AFA6C0019DDC0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
