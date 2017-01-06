@@ -30,14 +30,3 @@ public extension NSObject {
     }
     
 }
-
-extension Reactive where Base: NSObject {
-    
-    public func values(forKeyPath: String) -> SignalProducer<AnyObject?, NoError> {
-        return self.base.values(forKeyPath: forKeyPath)
-    }
-    
-    public var lifetime: Lifetime {
-        return self.base.rac_lifetime
-    }
-}
