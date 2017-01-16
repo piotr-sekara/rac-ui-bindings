@@ -40,9 +40,4 @@ public extension Reactive where Base: UITextField {
         let proxy = TextFieldDelegateProxy.proxy(forObject: self.base)
         return proxy.rac_editingEnded
     }
-    
-    public var textSignal: SignalProducer<String, NoError> {
-        let proxy = TextFieldDelegateProxy.proxy(forObject: self.base)
-        return proxy.rac_textSignal
-    }
 }

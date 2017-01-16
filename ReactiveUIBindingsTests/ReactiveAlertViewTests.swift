@@ -73,7 +73,7 @@ class ReactiveAlertViewTests: XCTestCase {
     
     func testAlertViewBinding_buttonClicked_shouldGetAppropriateIdx() {
         var eventObserved = -1
-        self.sut.rac.buttonClicked().observeValues { (idx: Int) in
+        self.sut.reactive.buttonClicked().observeValues { (idx: Int) in
             eventObserved = idx
         }
         
@@ -87,7 +87,7 @@ class ReactiveAlertViewTests: XCTestCase {
         sut.textField(at: 0)?.text = "fixture"
         var eventObserved = (-1, Optional.some(""))
         
-        self.sut.rac.buttonClicked().observeValues { (idx, textField) in
+        self.sut.reactive.buttonClicked().observeValues { (idx, textField) in
             eventObserved = (idx, textField.text)
         }
         
@@ -103,7 +103,7 @@ class ReactiveAlertViewTests: XCTestCase {
         sut.textField(at: 1)?.text = "password"
         var eventObserved = (-1, Optional.some(""), Optional.some(""))
         
-        self.sut.rac.buttonClicked().observeValues { (idx, login, password) in
+        self.sut.reactive.buttonClicked().observeValues { (idx, login, password) in
             eventObserved = (idx, login.text, password.text)
         }
         
@@ -119,7 +119,7 @@ class ReactiveAlertViewTests: XCTestCase {
     func testAlertViewBindingHavingDelegate_buttonClicked_shouldGetIdx() {
         self.sut.delegate = self.delegate
         var eventObserved = -1
-        self.sut.rac.buttonClicked().observeValues { (idx: Int) in
+        self.sut.reactive.buttonClicked().observeValues { (idx: Int) in
             eventObserved = idx
         }
         

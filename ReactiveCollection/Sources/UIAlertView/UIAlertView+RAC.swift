@@ -11,7 +11,6 @@ import UIKit
 import ReactiveSwift
 import Result
 
-
 public extension UIAlertView {
     
     public weak var forwardDelegate: UIAlertViewDelegate? {

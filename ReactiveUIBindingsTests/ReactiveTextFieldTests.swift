@@ -74,7 +74,7 @@ class ReactiveTextFieldTests: XCTestCase {
     
     func testTextFieldBinding_editingStartedSignal_shouldGetStartedEvents() {
         var eventObserved = false
-        self.sut.rac.editingStarted.observeValues {
+        self.sut.reactive.editingStarted.observeValues {
             eventObserved = true
         }
         
@@ -85,7 +85,7 @@ class ReactiveTextFieldTests: XCTestCase {
     
     func testTextFieldBinding_editingEndedSignal_shouldGetEndedEvents() {
         var eventObserved = false
-        self.sut.rac.editingEnded.observeValues {
+        self.sut.reactive.editingEnded.observeValues {
             eventObserved = true
         }
         
@@ -94,34 +94,13 @@ class ReactiveTextFieldTests: XCTestCase {
         expect(eventObserved).toEventually(beTruthy())
     }
     
-    func testTextFieldBinding_changingTextFieldContent_shouldGetContentViaSignal() {
-        var text = ""
-        self.sut.rac.textSignal.startWithValues { val in
-            text = val
-        }
-        
-        _ = self.sut.delegate?.textField?(sut, shouldChangeCharactersIn: NSRange(location: 0, length: 0), replacementString: "Fixture text")
-        
-        expect(text).toEventually(equal("Fixture text"))
-    }
-    
-    func testBUG_signalShouldEmitWhenChangedManually() {
-        var text = ""
-        self.sut.rac.textSignal.startWithValues { val in
-            text = val
-        }
-        
-        self.sut.text = "Fixture text"
-        
-        expect(text).toEventually(equal("Fixture text"))
-    }
     
     //MARK: - Delegate already set
     
     func testTextFieldBinding_havingDelegateAlready_shouldGetStartedSignal() {
         self.sut.delegate = self.delegate
         var eventObserved = false
-        self.sut.rac.editingStarted.observeValues {
+        self.sut.reactive.editingStarted.observeValues {
             eventObserved = true
         }
         
@@ -134,7 +113,7 @@ class ReactiveTextFieldTests: XCTestCase {
     func testTextFieldBinding_havingDelegateAlready_shouldGetEndedSignal() {
         self.sut.delegate = self.delegate
         var eventObserved = false
-        self.sut.rac.editingEnded.observeValues {
+        self.sut.reactive.editingEnded.observeValues {
             eventObserved = true
         }
         
@@ -144,26 +123,14 @@ class ReactiveTextFieldTests: XCTestCase {
         expect(self.delegate.editingEnded).to(beTruthy())
     }
     
-    func testTextFieldBinding_havingDelegateAlready_shouldGetTextSignal() {
-        self.sut.delegate = self.delegate
-        var text = ""
-        self.sut.rac.textSignal.startWithValues { val in
-            text = val
-        }
-        
-        _ = self.sut.delegate?.textField?(sut, shouldChangeCharactersIn: NSRange(location: 0, length: 0), replacementString: "Fixture text")
-        
-        expect(text).toEventually(equal("Fixture text"))
-        expect(self.delegate.textSignal) == "Fixture text"
-    }
+
     
     func testTextFieldBinding_havingDelegateAlready_receivesAllOtherDelegateMethods() {
         self.sut.delegate = self.delegate
         
         var eventsObserved = 0
-        self.sut.rac.editingStarted.observeValues { eventsObserved += 1 }
-        self.sut.rac.editingEnded.observeValues { eventsObserved += 1 }
-        self.sut.rac.textSignal.skip(first: 1).startWithValues { _ in eventsObserved += 1 }
+        self.sut.reactive.editingStarted.observeValues { eventsObserved += 1 }
+        self.sut.reactive.editingEnded.observeValues { eventsObserved += 1 }
         
         self.sut.delegate?.textFieldDidBeginEditing?(self.sut)
         self.sut.delegate?.textFieldDidEndEditing?(self.sut)
@@ -173,7 +140,7 @@ class ReactiveTextFieldTests: XCTestCase {
         _ = self.sut.delegate?.textFieldShouldReturn?(self.sut)
         _ = self.sut.delegate?.textFieldShouldEndEditing?(self.sut)
         
-        expect(eventsObserved).toEventually(equal(3))
+        expect(eventsObserved).toEventually(equal(2))
         expect(self.delegate.textFieldShouldBeginEditing) == true
         expect(self.delegate.textFieldShouldClear) == true
         expect(self.delegate.textFieldShouldReturn) == true

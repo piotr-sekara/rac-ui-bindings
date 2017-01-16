@@ -65,12 +65,12 @@ extension UICollectionView: UITestCollection {
     
     @discardableResult
     func bindWith(_ property: MutableProperty<[String]>, identifier: String) -> Disposable {
-        return property.bindTo(self.rac.items(cellIdentifier: identifier)) { _ in }
+        return property.bindTo(self.reactive.items(cellIdentifier: identifier)) { _ in }
     }
     
     @discardableResult
     func bindWith(_ producer: SignalProducer<[String], NoError>, identifier: String) -> Disposable {
-        return producer.bindTo(self.rac.items(cellIdentifier: identifier)) { (idx, cell: UICollectionViewCell, elem) in }
+        return producer.bindTo(self.reactive.items(cellIdentifier: identifier)) { (idx, cell: UICollectionViewCell, elem) in }
     }
     
     func numberOfItems(_ section: Int) -> Int {
@@ -102,12 +102,12 @@ extension UITableView: UITestCollection {
     
     @discardableResult
     func bindWith(_ property: MutableProperty<[String]>, identifier: String) -> Disposable {
-        return property.bindTo(self.rac.items(cellIdentifier: identifier)) { _ in }
+        return property.bindTo(self.reactive.items(cellIdentifier: identifier)) { _ in }
     }
     
     @discardableResult
     func bindWith(_ producer: SignalProducer<[String], NoError>, identifier: String) -> Disposable {
-        return producer.bindTo(self.rac.items(cellIdentifier: identifier)) { _ in }
+        return producer.bindTo(self.reactive.items(cellIdentifier: identifier)) { _ in }
     }
     
     func numberOfItems(_ section: Int) -> Int {

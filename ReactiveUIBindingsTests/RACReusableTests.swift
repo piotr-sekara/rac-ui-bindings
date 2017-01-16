@@ -32,7 +32,7 @@ class RACReusableTests: XCTestCase {
     func testCollectionViewCell_prepareForReuseSignal_sendsValuesWhenViewIsReused() {
         var signalReceived = false
         
-        sut.rac.prepareForReuse.observeValues {
+        sut.reactive.prepareForReuse.observeValues {
             signalReceived = true
         }
         
@@ -44,7 +44,7 @@ class RACReusableTests: XCTestCase {
     func testTableViewCell_prepareForReuseSignal_sendValuesWhenViewIsReused() {
         var signalReceived = false
         
-        sut2.rac.prepareForReuse.observeValues {
+        sut2.reactive.prepareForReuse.observeValues {
             signalReceived = true
         }
         

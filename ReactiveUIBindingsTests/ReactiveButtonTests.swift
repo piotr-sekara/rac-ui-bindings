@@ -9,8 +9,8 @@
 import Foundation
 import XCTest
 import Nimble
-
 @testable import ReactiveUIBindings
+import ReactiveCocoa
 import ReactiveSwift
 import Result
 
@@ -18,11 +18,11 @@ class ReactiveButtonTests: XCTestCase {
     
     var sut: UIButton!
     
-    var titleNormal 		= MutableProperty<String?>("titleNormal")
-    var titleHighlighted 	= MutableProperty<String?>("titleHighlighted")
-    var titleDisabled 		= MutableProperty<String?>("titleDisabled")
-    var titleSelected 		= MutableProperty<String?>("titleSelected")
-    var titleFocused 		= MutableProperty<String?>("titleFocused")
+    var titleNormal 		= MutableProperty<String>("titleNormal")
+    var titleHighlighted 	= MutableProperty<String>("titleHighlighted")
+    var titleDisabled 		= MutableProperty<String>("titleDisabled")
+    var titleSelected 		= MutableProperty<String>("titleSelected")
+    var titleFocused 		= MutableProperty<String>("titleFocused")
     var enabledProperty     = MutableProperty<Bool>(true)
     
     var window: UIWindow!
@@ -34,8 +34,6 @@ class ReactiveButtonTests: XCTestCase {
         sut = UIButton()
         
         window.rootViewController = ctrl
-//        window.makeKeyAndVisible()
-//        window.makeKeyAndVisible()
         
         ctrl.view.addSubview(sut)
     }
@@ -73,7 +71,7 @@ class ReactiveButtonTests: XCTestCase {
     }
     
     func testButtonEnabled_bindVariable_shouldSetAndUpdateEnabledState() {
-        sut.rac.enabled <~ self.enabledProperty
+        sut.reactive.isEnabled <~ self.enabledProperty
         
         expect(self.sut.isEnabled) == true
         
@@ -83,7 +81,7 @@ class ReactiveButtonTests: XCTestCase {
     }
     
     func testButtonSelected_bindVariable_shouldSetAndUpdateSelectedState() {
-        sut.rac.selected <~ self.enabledProperty
+        sut.reactive.isSelected <~ self.enabledProperty
         
         expect(self.sut.isSelected) == true
         
@@ -95,7 +93,7 @@ class ReactiveButtonTests: XCTestCase {
 //    func testControlEvents_bindSignalToEvent_shouldSendValueWhenReceivedEvent() {
 //        var eventReceived = false
 //        
-//        sut.rac.actions(for: .touchUpInside).observeValues { _ in
+//        sut.reactive.actions(for: .touchUpInside).observeValues { _ in
 //            eventReceived = true
 //        }
 //        let obs = Observer()
@@ -114,10 +112,10 @@ class ReactiveButtonTests: XCTestCase {
 
 extension ReactiveButtonTests {
     fileprivate func setupBindings() {
-        sut.rac.title(for: .normal) <~ self.titleNormal
-        sut.rac.title(for: .highlighted) <~ self.titleHighlighted
-        sut.rac.title(for: .disabled) <~ self.titleDisabled
-        sut.rac.title(for: .selected) <~ self.titleSelected
-        sut.rac.title(for: .focused) <~ self.titleFocused
+        sut.reactive.title(for: .normal) <~ self.titleNormal
+        sut.reactive.title(for: .highlighted) <~ self.titleHighlighted
+        sut.reactive.title(for: .disabled) <~ self.titleDisabled
+        sut.reactive.title(for: .selected) <~ self.titleSelected
+        sut.reactive.title(for: .focused) <~ self.titleFocused
     }
 }

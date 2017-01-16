@@ -17,16 +17,12 @@
 		D3B8C9411DA7AA230034EF60 /* UIAlertView+RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B8C9401DA7AA230034EF60 /* UIAlertView+RAC.swift */; };
 		D3B8C9431DA7AD200034EF60 /* ReactiveAlertViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B8C9421DA7AD200034EF60 /* ReactiveAlertViewTests.swift */; };
 		D3B8C9A21DAE37DB0034EF60 /* ReactiveUIBindings watchOS.h in Headers */ = {isa = PBXBuildFile; fileRef = D3B8C9A01DAE37DB0034EF60 /* ReactiveUIBindings watchOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D3B8C9A61DAE38150034EF60 /* Reactive.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BFAFAF1D8BE876008A529A /* Reactive.swift */; };
 		D3B8C9A71DAE381D0034EF60 /* NSObject+RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33BD8431D8C1813002D15B8 /* NSObject+RAC.swift */; };
 		D3B8C9A81DAE38A90034EF60 /* RACExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D2C1D5B601F00BA98BD /* RACExtensions.swift */; };
 		D3B8C9AA1DAE42A30034EF60 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3B8C9A91DAE42A30034EF60 /* ReactiveSwift.framework */; };
 		D3B8C9AC1DAE42A40034EF60 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3B8C9AB1DAE42A40034EF60 /* Result.framework */; };
-		D3B8C9E11DB612F00034EF60 /* UICollectionReusableView+RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B8C9E01DB612F00034EF60 /* UICollectionReusableView+RAC.swift */; };
 		D3B8C9E51DB62C7A0034EF60 /* RACReusableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B8C9E41DB62C7A0034EF60 /* RACReusableTests.swift */; };
-		D3B8C9E81DB631270034EF60 /* UITableViewCell+RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B8C9E61DB631240034EF60 /* UITableViewCell+RAC.swift */; };
 		D3BFAFAE1D8AB922008A529A /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3BFAFAD1D8AB922008A529A /* ReactiveSwift.framework */; };
-		D3BFAFB01D8BE876008A529A /* Reactive.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BFAFAF1D8BE876008A529A /* Reactive.swift */; };
 		D3CC37891D6AFA6C0019DDC0 /* ReactiveUIBindings.h in Headers */ = {isa = PBXBuildFile; fileRef = D3CC37881D6AFA6C0019DDC0 /* ReactiveUIBindings.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D3CC37901D6AFB0A0019DDC0 /* DelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D231D5B5EF300BA98BD /* DelegateProxy.swift */; };
 		D3CC37911D6AFB0A0019DDC0 /* CollectionDataSourceProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D311D5C91E300BA98BD /* CollectionDataSourceProxy.swift */; };
@@ -49,7 +45,6 @@
 		D3CC37C11D6B2A5F0019DDC0 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D32E1CF31D58927800BA98BD /* Result.framework */; };
 		D3CC37C21D6B2A610019DDC0 /* Result.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D32E1CF31D58927800BA98BD /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D3CC37D11D6D995C0019DDC0 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CC37D01D6D995C0019DDC0 /* TestHelpers.swift */; };
-		D3CC37DF1D7066DE0019DDC0 /* UIControl+RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CC37DE1D7066DE0019DDC0 /* UIControl+RAC.swift */; };
 		D3CC37E11D706A8A0019DDC0 /* UIButton+RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CC37E01D706A8A0019DDC0 /* UIButton+RAC.swift */; };
 		D3CC37E31D7431B70019DDC0 /* ReactiveButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CC37E21D7431B70019DDC0 /* ReactiveButtonTests.swift */; };
 		D3CC37E41D74611F0019DDC0 /* ReactiveCollectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CC37C71D6C71990019DDC0 /* ReactiveCollectionTests.swift */; };
@@ -124,11 +119,8 @@
 		D3B8C9A11DAE37DB0034EF60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3B8C9A91DAE42A30034EF60 /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = Carthage/Build/watchOS/ReactiveSwift.framework; sourceTree = "<group>"; };
 		D3B8C9AB1DAE42A40034EF60 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/watchOS/Result.framework; sourceTree = "<group>"; };
-		D3B8C9E01DB612F00034EF60 /* UICollectionReusableView+RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionReusableView+RAC.swift"; sourceTree = "<group>"; };
 		D3B8C9E41DB62C7A0034EF60 /* RACReusableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACReusableTests.swift; sourceTree = "<group>"; };
-		D3B8C9E61DB631240034EF60 /* UITableViewCell+RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+RAC.swift"; sourceTree = "<group>"; };
 		D3BFAFAD1D8AB922008A529A /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = Carthage/Build/iOS/ReactiveSwift.framework; sourceTree = "<group>"; };
-		D3BFAFAF1D8BE876008A529A /* Reactive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reactive.swift; sourceTree = "<group>"; };
 		D3CC37861D6AFA6C0019DDC0 /* ReactiveUIBindings.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ReactiveUIBindings.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3CC37881D6AFA6C0019DDC0 /* ReactiveUIBindings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ReactiveUIBindings.h; path = ../ReactiveUIBindings.h; sourceTree = "<group>"; };
 		D3CC378A1D6AFA6C0019DDC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
@@ -139,7 +131,6 @@
 		D3CC37B71D6B28EA0019DDC0 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		D3CC37C71D6C71990019DDC0 /* ReactiveCollectionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveCollectionTests.swift; sourceTree = "<group>"; };
 		D3CC37D01D6D995C0019DDC0 /* TestHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
-		D3CC37DE1D7066DE0019DDC0 /* UIControl+RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIControl+RAC.swift"; sourceTree = "<group>"; };
 		D3CC37E01D706A8A0019DDC0 /* UIButton+RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+RAC.swift"; sourceTree = "<group>"; };
 		D3CC37E21D7431B70019DDC0 /* ReactiveButtonTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveButtonTests.swift; sourceTree = "<group>"; };
 		D3CC37E91D75C4170019DDC0 /* UITextField+RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+RAC.swift"; sourceTree = "<group>"; };
@@ -247,7 +238,6 @@
 				D32E1D331D5CAFE800BA98BD /* CollectionViewDataSourceProxy.swift */,
 				D32E1D351D5CAFF100BA98BD /* CollectionViewDataSource.swift */,
 				D32E1D371D5CAFF900BA98BD /* UICollectionView+RAC.swift */,
-				D3B8C9E01DB612F00034EF60 /* UICollectionReusableView+RAC.swift */,
 			);
 			path = CollectionView;
 			sourceTree = "<group>";
@@ -258,7 +248,6 @@
 				D32E1D251D5B5F6600BA98BD /* UITableView+RAC.swift */,
 				D32E1D271D5B5F9800BA98BD /* TableViewDataSourceProxy.swift */,
 				D32E1D291D5B5FCD00BA98BD /* TableViewDataSource.swift */,
-				D3B8C9E61DB631240034EF60 /* UITableViewCell+RAC.swift */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -268,7 +257,6 @@
 			children = (
 				D32E1D2C1D5B601F00BA98BD /* RACExtensions.swift */,
 				D32E1D431D5DF69D00BA98BD /* HelperExtensions.swift */,
-				D3CC37DE1D7066DE0019DDC0 /* UIControl+RAC.swift */,
 				D3CC37E01D706A8A0019DDC0 /* UIButton+RAC.swift */,
 			);
 			path = Extensions;
@@ -284,7 +272,6 @@
 				D32E1D391D5CB0B300BA98BD /* DataSourceType.swift */,
 				D32E1D3B1D5CB29700BA98BD /* UICollectionView+RAC.h */,
 				D32E1D3C1D5CB29700BA98BD /* UICollectionView+RAC.m */,
-				D3BFAFAF1D8BE876008A529A /* Reactive.swift */,
 				D33BD8431D8C1813002D15B8 /* NSObject+RAC.swift */,
 			);
 			path = Core;
@@ -487,7 +474,6 @@
 			files = (
 				D3B8C9A71DAE381D0034EF60 /* NSObject+RAC.swift in Sources */,
 				D3B8C9A81DAE38A90034EF60 /* RACExtensions.swift in Sources */,
-				D3B8C9A61DAE38150034EF60 /* Reactive.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,17 +482,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3CC37981D6AFB0F0019DDC0 /* CollectionViewDataSource.swift in Sources */,
-				D3B8C9E11DB612F00034EF60 /* UICollectionReusableView+RAC.swift in Sources */,
-				D3BFAFB01D8BE876008A529A /* Reactive.swift in Sources */,
 				D33BD8441D8C1813002D15B8 /* NSObject+RAC.swift in Sources */,
 				D3CC37EA1D75C4170019DDC0 /* UITextField+RAC.swift in Sources */,
 				D3CC37961D6AFB0D0019DDC0 /* HelperExtensions.swift in Sources */,
-				D3B8C9E81DB631270034EF60 /* UITableViewCell+RAC.swift in Sources */,
 				D3CC37EC1D75C6500019DDC0 /* TextFieldDelegateProxy.swift in Sources */,
 				D3CC37901D6AFB0A0019DDC0 /* DelegateProxy.swift in Sources */,
 				D3CC37991D6AFB0F0019DDC0 /* UICollectionView+RAC.swift in Sources */,
 				D3CC37A01D6AFC2A0019DDC0 /* UICollectionView+RAC.m in Sources */,
-				D3CC37DF1D7066DE0019DDC0 /* UIControl+RAC.swift in Sources */,
 				D37D1E6E1D77129900C897AB /* UITextField+RAC.m in Sources */,
 				D3CC379C1D6AFB300019DDC0 /* UITableView+RAC.swift in Sources */,
 				D3CC37E11D706A8A0019DDC0 /* UIButton+RAC.swift in Sources */,
