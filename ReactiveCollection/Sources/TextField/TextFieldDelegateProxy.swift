@@ -24,10 +24,10 @@ public class TextFieldDelegateProxy: DelegateProxy {
     }
     
     var rac_textSignal: SignalProducer<String, NoError> {
-        let textObserver = self.textField.rac.values(forKeyPath: #keyPath(UITextField.text)).map { (any) -> String? in
+        let textObserver = self.textField.reactive.values(forKeyPath: #keyPath(UITextField.text)).map { (any) -> String? in
             return any as? String
         }.skipNil()
-        return SignalProducer.merge(self.rac_textDidChangeProperty.producer, textObserver).skipRepeats().take(during: self.textField.rac.lifetime)
+        return SignalProducer.merge(self.rac_textDidChangeProperty.producer, textObserver).skipRepeats().take(during: self.textField.reactive.lifetime)
     }
     
     public init(textField: UITextField) {

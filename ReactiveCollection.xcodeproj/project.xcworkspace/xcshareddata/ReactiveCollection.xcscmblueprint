@@ -9,7 +9,7 @@
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "1FAC6E3E-356C-41A9-8DDD-1D9E73EE66AC",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "0D3620E2E64E75F403A5916A24B14E14354566D5" : "ReactiveUIBindings\/",
+    "0D3620E2E64E75F403A5916A24B14E14354566D5" : "rac-ui-bindings\/",
     "72B9A82EF217B058A52ACF762F661C2BB48F3ACB" : "..\/.."
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "ReactiveCollection",
