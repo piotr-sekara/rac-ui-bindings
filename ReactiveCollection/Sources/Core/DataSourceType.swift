@@ -13,7 +13,7 @@ public protocol DataSourceType {
     associatedtype Cell
     associatedtype O
     
-    var models: [E]? { get }
+    var models: [E] { get }
     var cellIdentifier: String { get }
     var cellConfiguration: (O, IndexPath, E) -> Cell { get }
     

@@ -19,6 +19,10 @@ protocol ReusableCell: class {
     var reuseIdentifier: String? { get }
 }
 
+enum TestError: Error {
+    case error
+}
+
 class TestTableCell1: UITableViewCell, UITestCell { var data: String? }
 class TestTableCell2: UITableViewCell, UITestCell { var data: String? }
 class TestCollectionCell1: UICollectionViewCell, UITestCell { var data: String? }

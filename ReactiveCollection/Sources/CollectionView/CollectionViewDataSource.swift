@@ -16,7 +16,7 @@ open class CollectionViewDataSource<Element, Cell: UICollectionViewCell>: Collec
     
     open let cellIdentifier: String
     open let cellConfiguration: CellConfiguration
-    open fileprivate(set) var models: [Element]?
+    open fileprivate(set) var models: [Element] = []
     
     init(identifier: String, cellConfiguration: @escaping CellConfiguration) {
         self.cellIdentifier = identifier
@@ -28,12 +28,10 @@ open class CollectionViewDataSource<Element, Cell: UICollectionViewCell>: Collec
     }
     
     open override func object(_ object: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let models = self.models else { return 0 }
         return models.count
     }
     
     open override func object(_ object: UICollectionView, cellForItemAtIndexPath indexPath: IndexPath) -> UICollectionViewCell {
-        guard let models = self.models else { return UICollectionViewCell() }
         return self.cellConfiguration(object, indexPath, models[(indexPath as NSIndexPath).row])
     }
     

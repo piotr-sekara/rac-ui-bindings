@@ -16,7 +16,7 @@ open class TableViewDataSource<E, Cell: UITableViewCell>: TableViewCellProvider,
     
     open let cellIdentifier: String
     open let cellConfiguration: CellConfiguration
-    public private(set) var models: [E]?
+    public private(set) var models: [E] = []
     
     init(identifier: String, cellConfiguration: @escaping CellConfiguration) {
         self.cellIdentifier = identifier
@@ -28,12 +28,10 @@ open class TableViewDataSource<E, Cell: UITableViewCell>: TableViewCellProvider,
     }
     
     public override func object(_ object: UITableView, numberOfItemsInSection section: Int) -> Int {
-        guard let models = self.models else { return 0 }
         return models.count
     }
     
     public override func object(_ object: UITableView, cellForItemAtIndexPath indexPath: IndexPath) -> UITableViewCell {
-        guard let models = self.models else { return UITableViewCell() }
         return self.cellConfiguration(object, indexPath, models[indexPath.row])
     }
     

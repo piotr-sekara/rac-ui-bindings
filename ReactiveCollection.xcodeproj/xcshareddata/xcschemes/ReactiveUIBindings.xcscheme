@@ -38,6 +38,23 @@
                BlueprintName = "ReactiveUIBindingsTests"
                ReferencedContainer = "container:ReactiveCollection.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "RACReusableTests">
+               </Test>
+               <Test
+                  Identifier = "ReactiveAlertViewTests">
+               </Test>
+               <Test
+                  Identifier = "ReactiveButtonTests">
+               </Test>
+               <Test
+                  Identifier = "ReactiveCollectionTests">
+               </Test>
+               <Test
+                  Identifier = "ReactiveTextFieldTests">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
       <MacroExpansion>
