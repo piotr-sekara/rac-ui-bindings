@@ -18,15 +18,16 @@ public extension NSObject {
         static var observers = "observers"
     }
     
-    var methodsAndSelectors: (UnsafeMutablePointer<Method?>?, [String]) {
+    var methodsAndSelectors: (UnsafeMutablePointer<Method>?, [String]) {
         var outCount: UInt32 = 0
-        let forwardMethods = class_copyMethodList(type(of: self), &outCount)
-        var forwardMethodStrings: [String] = []
-        for i in 0 ..< Int(outCount) {
-            forwardMethodStrings.append(String(describing: method_getName(forwardMethods?[i])))
+        if let forwardMethods = class_copyMethodList(type(of: self), &outCount) {
+            var forwardMethodStrings: [String] = []
+            for i in 0 ..< Int(outCount) {
+                forwardMethodStrings.append(String(describing: method_getName(forwardMethods[i])))
+            }
+            return (forwardMethods, forwardMethodStrings)
         }
-        
-        return (forwardMethods, forwardMethodStrings)
+        return (nil, [])
     }
     
 }

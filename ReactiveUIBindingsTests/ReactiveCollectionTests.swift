@@ -196,11 +196,15 @@ class ReactiveCollectionTests<C: UITestCollection, Cell1: UITestCell, Cell2: UIT
 
 class TestRunner: XCTestCase {
     
-    override class func initialize() {
-        super.initialize()
+    override init() {
+        super.init()
+        TestRunner.doInitialize
+    }
+    
+    static let doInitialize: Void = {
         XCTestSuite(forTestCaseClass: ReactiveCollectionTests<UITableView, TestTableCell1, TestTableCell2>.self).run()
         XCTestSuite(forTestCaseClass: ReactiveCollectionTests<UICollectionView, TestCollectionCell1, TestCollectionCell2>.self).run()
-    }
+    }()
 }
 
 

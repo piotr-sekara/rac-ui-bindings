@@ -30,7 +30,7 @@ extension UICollectionView: DataReloadable {
 
 extension DelegateProxy {
     
-    public class func displayWarningsIfNeeded(_ selfDataSource: AnyObject?, newDataSource: AnyObject?) {
+    @objc public class func displayWarningsIfNeeded(_ selfDataSource: AnyObject?, newDataSource: AnyObject?) {
         if newDataSource is DelegateProxy && !(selfDataSource is DelegateProxy) && selfDataSource != nil {
             print("Warning: Binding dataSource with RAC will override one that is already set.")
             print("         Setting dataSource to nil before binding will silence this warning.")

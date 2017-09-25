@@ -42,12 +42,13 @@ open class CollectionDataSourceProxy<C: DataReloadable, T: CellProviderType>: De
         self.removeDataSource(cellIdentifier: dataSource.cellIdentifier)
         self.retainedDataSources.append((cellIdentifier: dataSource.cellIdentifier, dataSource: dataSource as! T))
         
-        signalProducer.map(Array.init).startWithValues { [weak dataSource, weak self] seq in
+        
+        signalProducer.producer.map(Array.init).startWithValues { [weak dataSource, weak self] seq in
             dataSource?.handleUpdate(update: seq)
             self?.contentDidChange()
             }.addTo(compositeDisposable)
         
-        ActionDisposable { [weak self] in
+        AnyDisposable { [weak self] in
             _ = self?.removeDataSource(cellIdentifier: dataSource.cellIdentifier)
             self?.contentDidChange()
             }.addTo(compositeDisposable)
@@ -98,12 +99,13 @@ extension CollectionDataSourceProxy {
         let protocolMethodStrings = C.optionalDataSourceSelectors
         if let ds = self.forwardDelegate {
             let (forwardMethods, forwardSelectors) = ds.methodsAndSelectors
-            
-            for i in 0 ..< forwardSelectors.count {
-                if protocolMethodStrings.contains(forwardSelectors[i]) {
-                    if !class_addMethod(type(of: self), NSSelectorFromString(forwardSelectors[i]), method_getImplementation(forwardMethods?[i]), method_getTypeEncoding(forwardMethods?[i])) {
-                        
-                        method_setImplementation(class_getInstanceMethod(type(of: self), NSSelectorFromString(forwardSelectors[i])), method_getImplementation(forwardMethods?[i]))
+            if let forwardMethods = forwardMethods {
+                for i in 0 ..< forwardSelectors.count {
+                    if protocolMethodStrings.contains(forwardSelectors[i]) {
+                        if !class_addMethod(type(of: self), NSSelectorFromString(forwardSelectors[i]), method_getImplementation(forwardMethods[i]), method_getTypeEncoding(forwardMethods[i])) {
+                            
+                            method_setImplementation(class_getInstanceMethod(type(of: self), NSSelectorFromString(forwardSelectors[i]))!, method_getImplementation(forwardMethods[i]))
+                        }
                     }
                 }
             }

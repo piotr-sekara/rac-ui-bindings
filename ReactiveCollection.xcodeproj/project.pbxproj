@@ -19,8 +19,6 @@
 		D3B8C9A21DAE37DB0034EF60 /* ReactiveUIBindings watchOS.h in Headers */ = {isa = PBXBuildFile; fileRef = D3B8C9A01DAE37DB0034EF60 /* ReactiveUIBindings watchOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D3B8C9A71DAE381D0034EF60 /* NSObject+RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33BD8431D8C1813002D15B8 /* NSObject+RAC.swift */; };
 		D3B8C9A81DAE38A90034EF60 /* RACExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32E1D2C1D5B601F00BA98BD /* RACExtensions.swift */; };
-		D3B8C9AA1DAE42A30034EF60 /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3B8C9A91DAE42A30034EF60 /* ReactiveSwift.framework */; };
-		D3B8C9AC1DAE42A40034EF60 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3B8C9AB1DAE42A40034EF60 /* Result.framework */; };
 		D3B8C9E51DB62C7A0034EF60 /* RACReusableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B8C9E41DB62C7A0034EF60 /* RACReusableTests.swift */; };
 		D3BFAFAE1D8AB922008A529A /* ReactiveSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3BFAFAD1D8AB922008A529A /* ReactiveSwift.framework */; };
 		D3CC37891D6AFA6C0019DDC0 /* ReactiveUIBindings.h in Headers */ = {isa = PBXBuildFile; fileRef = D3CC37881D6AFA6C0019DDC0 /* ReactiveUIBindings.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -117,8 +115,6 @@
 		D3B8C99E1DAE37DB0034EF60 /* ReactiveUIBindings.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ReactiveUIBindings.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3B8C9A01DAE37DB0034EF60 /* ReactiveUIBindings watchOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ReactiveUIBindings watchOS.h"; sourceTree = "<group>"; };
 		D3B8C9A11DAE37DB0034EF60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D3B8C9A91DAE42A30034EF60 /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = Carthage/Build/watchOS/ReactiveSwift.framework; sourceTree = "<group>"; };
-		D3B8C9AB1DAE42A40034EF60 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/watchOS/Result.framework; sourceTree = "<group>"; };
 		D3B8C9E41DB62C7A0034EF60 /* RACReusableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACReusableTests.swift; sourceTree = "<group>"; };
 		D3BFAFAD1D8AB922008A529A /* ReactiveSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveSwift.framework; path = Carthage/Build/iOS/ReactiveSwift.framework; sourceTree = "<group>"; };
 		D3CC37861D6AFA6C0019DDC0 /* ReactiveUIBindings.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ReactiveUIBindings.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,8 +139,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3B8C9AA1DAE42A30034EF60 /* ReactiveSwift.framework in Frameworks */,
-				D3B8C9AC1DAE42A40034EF60 /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,8 +202,6 @@
 		D32E1CF21D58926800BA98BD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D3B8C9AB1DAE42A40034EF60 /* Result.framework */,
-				D3B8C9A91DAE42A30034EF60 /* ReactiveSwift.framework */,
 				D33BD8451D8FB7F4002D15B8 /* ReactiveCocoa.framework */,
 				D3BFAFAD1D8AB922008A529A /* ReactiveSwift.framework */,
 				D3CC37B61D6B28EA0019DDC0 /* Nimble.framework */,
@@ -421,11 +413,11 @@
 					};
 					D3CC37851D6AFA6C0019DDC0 = {
 						CreatedOnToolsVersion = 7.3.1;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0900;
 					};
 					D3CC37A91D6B28570019DDC0 = {
 						CreatedOnToolsVersion = 7.3.1;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Manual;
 					};
 				};
@@ -642,7 +634,8 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -673,7 +666,8 @@
 				PRODUCT_NAME = ReactiveUIBindings;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -703,7 +697,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.codewise.ReactiveUIBindings;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -731,7 +726,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.codewise.ReactiveUIBindings;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -751,7 +747,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.codewise.ReactiveUIBindingsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -769,7 +766,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.codewise.ReactiveUIBindingsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

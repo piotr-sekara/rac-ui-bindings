@@ -40,7 +40,7 @@ open class DelegateProxy: NSObject, DelegateProxyType {
         static var rac_delegateProxyKey = "rac_delegateProxyKey"
     }
     
-    open weak var forwardDelegate: NSObject? 
+    @objc open weak var forwardDelegate: NSObject? 
     
     open class func associatedProxy(_ object: AnyObject) -> AnyObject? {
         return objc_getAssociatedObject(object, &AssociatedKeys.rac_delegateProxyKey) as AnyObject?
